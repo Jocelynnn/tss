@@ -1,0 +1,7 @@
+plan:
+2.17: Jocelyn create the databse
+2.17-2.23: Jocelyn design the UI
+2.24-?: take a break, and wait
+
+happy new year~
+love u~

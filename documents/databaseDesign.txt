@@ -1,0 +1,83 @@
+user:
+username: string（unique) (pk)
+password: string
+realName: string
+email:string
+gender: integer (1 male 2 female)
+role: integer 1（系统管理员）2（授课教师）3（选课学生）4（助教）5（教学负责人）6（选课学生和助教）7（授课教师和教学负责人）
+
+
+admin:
+
+
+
+student:
+studentName: string (pk) foreign key
+grade: string
+
+
+teacher:
+teacherName:string(pk) foreign key
+
+
+teachingAssitant:
+id: string pk （此处改动）
+taName:string  (foreign key) 
+courseId:string (foreign key)
+
+teachingManager
+teachingManagerName:string (pk) foreign key
+
+
+
+
+
+course:
+courseId: string (pk)（e.g. c0101)
+courseName: string(课程名)
+description:string(课程描述）
+semester: string
+teacherName:string (teacher’s username 默认一门课一个老师)
+initializationDeadline: date (指定助教和选课学生的deadline)
+
+studentCourseSelection:
+id: integer (pk)
+studentName: string (student’s username)
+courseId: string 
+
+teacherCourseSelection:
+id: integer (pk)
+teacherName: string (teacher’s username)
+courseId: string 
+
+assignment
+assignmentId:integer(pk)
+courseId:string
+number:integer (第几次作业)
+description:string（作业内容描述）
+submissionDeadline:date(y-m-d-h-m-s)
+gradeDeadline:date(助教批改截止日期）
+format:string (作业文件格式 zip/doc/…)
+score:integer（满分）
+level: string(难度 easy medium hard)
+sample: string (filepath(作业样例）
+generalGrade: string (总体点评)
+
+
+
+studentSubmission
+id:integer(pk)
+studentName: string( student’s username)
+assignmentId: integer( foreign key with assignment)
+submission: string(filepath)
+submitDate: date
+grader:string (TA username )
+grade: integer（0-满分）
+evaluation: string (作业的点评)
+isGraded: integer (1未批改 2已批改）
+isPassed: integer（1 未审阅 3已通过 3未通过 需重批）
+
+
+
+
+

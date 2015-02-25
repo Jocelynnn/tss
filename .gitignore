@@ -1,0 +1,15 @@
+# made by tony
+
+# ignore build files
+/build/
+
+# ingore eclipse default files
+.classpath
+.settings
+.project
+
+# ignore classes
+*.class
+
+# OS generated files
+.DS_Store
