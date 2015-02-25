@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
 			
 			while(result.next()){
 				if(result.getString("password").equals(password)){
-					return result.getInt("type");
+					return result.getInt("role");
 				}
 				else{
 					return 0;

@@ -4,7 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="struts2" extends="struts-default">
+
+	<package name="default" extends="struts-default"  namespace="/tss">
 		<action name="login" class="LoginAction">
 			<result name="error">/views/error.jsp</result>
 			<result name="admin">/views/adminIndex1.jsp</result>

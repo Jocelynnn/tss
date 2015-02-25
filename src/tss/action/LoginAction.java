@@ -1,12 +1,16 @@
 package tss.action;
 
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import tss.service.UserService;
+
 
 public class LoginAction extends BaseAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5183139033860751029L;
 
 	private UserService userService;
@@ -20,11 +24,13 @@ public class LoginAction extends BaseAction {
 	}
 
 	public String execute() {
+	
 		System.out.println(userService == null);
-		switch (userService.validateLogin(request.getParameter("userusername"),
+		switch (userService.validateLogin(request.getParameter("username"),
 				request.getParameter("password"))) {
 		// 无该用户
 		case 0:
+			System.out.println("error!");
 			return "error";
 
 			// 管理员

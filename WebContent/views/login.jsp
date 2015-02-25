@@ -13,8 +13,8 @@
 		<div class="login">
 			<div class="login-screen">
 				<div class="login-form">
-					<form name="login" action="login" method=post>
-						<input type="text" name="name" class="login-field" value="" placeholder="Enter your name" id="login-name">
+					<s:form name="login" action="/tss/login" method="post">
+						<input type="text" name="username" class="login-field" value="" placeholder="Enter your name" id="login-name">
 						<p>
 						<p>
 						<input type="password" name="password" class="login-field" value="" placeholder="Password" id="login-pass">
@@ -22,7 +22,7 @@
 						<p>
 							<input class ="btn btn-primary btn-lg btn-block" name="log" type=submit value="Login">
 						<a class="login-link" href="error.jsp">Don't have an account?</a>
-					</form>
+					</s:form>
 				</div>
 			</div>
 		</div>
