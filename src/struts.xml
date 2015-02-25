@@ -5,6 +5,15 @@
 
 <struts>
 	<package name="struts2" extends="struts-default">
+		<action name="login" class="LoginAction">
+			<result name="error">/views/error.jsp</result>
+			<result name="admin">/views/adminIndex1.jsp</result>
+			<result name="teacher">/views/teacherIndex1.jsp</result>
+			<result name="student">/views/studentIndex1.jsp</result>
+			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
+			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
+
+		</action>
 
 	</package>
 </struts>
