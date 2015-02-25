@@ -51,5 +51,18 @@
 		</property>
 		
 	</bean>
+	
+	
+	<bean id="UserService" class="tss.service.impl.UserServiceImpl">
+		<property name="UserDao">
+			<ref bean="UserDao" />
+		</property>
+	</bean>
+	
+	<bean id="LoginAction" class="tss.action.LoginAction">
+		<property name="UserService">
+			<ref bean="UserService" />
+		</property>
+	</bean>
 
 </beans>
