@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,10 +45,7 @@
 											class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
-
-											<li><a href="#">登出</a></li>
-											<li class="divider"></li>
-											<li><a href="#">链接3</a></li>
+											<li><s:a href="logout.action">登出</s:a></li>
 										</ul></li>
 								</ul>
 							</div>
@@ -64,62 +63,103 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-386299">
 							<div>
+								<s:form action="/action/adminAddUser" method="post">
 
-
-								<form>
-									<select class="combobox">
-										<option>选择角色</option>
-										<option value="2">教师</option>
-										<option value="3">学生</option>
-										<option value="5">教学负责人</option>
-									</select>
-
-									<script type="text/javascript">
-										$(document).ready(function() {
-											$('.combobox').combobox();
-										});
-									</script>
-									<div class="control-group">
-										<label class="control-label" for="inputUsername">用户名</label>
- 										<div class="controls">
- 											<input id="inputUsername" type="text" placeholder="username" />
- 										</div>
- 									</div>
-
-									<div class="control-group">
-										<label class="control-label" for="inputRealname">姓名</label>
-										<div class="controls">
-											<input id="inputRealname" type="text" placeholder="name" />
-										</div>
+									<s:select headerKey="-1" headerValue="选择角色"
+										list="#{'2':'授课教师', '3':'学生','4':'助教','5':'教学负责人'}"
+										name="role" value="-1" />
+									<div>
+										<s:label>用户名</s:label>
+										<s:textfield name="username"></s:textfield>
 									</div>
 
-									<div class="control-group">
-										<label class="control-label" for="inputPassword">密码</label>
-										<div class="controls">
-											<input id="inputPassword" type="password"
-												placeholder="password" />
-										</div>
+									<div>
+										<s:label>姓名</s:label>
+										<s:textfield name="realName"></s:textfield>
 									</div>
-									<div class="control-group">
+
+									<div>
+										<s:label>密码</s:label>
+										<s:password name="password"></s:password>
+									</div>
+
+									<div>
+										<s:label>邮箱</s:label>
+										<s:textfield name="email"></s:textfield>
+									</div>
+									<s:select headerKey="-1" headerValue="选择性别"
+										list="#{'1':'男', '2':'女'}" name="gender" value="-1" />
+									<div>
+										<button class="btn" type="submit">注册</button>
+									</div>
+									<%-- <label  for="username">用户名</label>
+											<input id="username" type="text" placeholder="username" />
+
+										<label class="control-label" for="realName">姓名</label>
+										<div class="controls">
+											<input id="realName" type="text" placeholder="name" />
+										</div>
+
+										<label class="control-label" for="password">密码</label>
+										<div class="controls">
+											<input id="password" type="password" placeholder="password" />
+										</div>
+
+										<label class="control-label" for="email">E-mail</label>
+										<div class="controls">
+											<input id="email" type="text" placeholder="email" />
+										</div>
+
+										<s:select headerKey="-1" headerValue="选择性别"
+											list="#{'1':'男', '2':'女'}" name="gender" value="-1" />
+
 										<div class="controls">
 											<button class="btn" type="submit">注册</button>
-										</div>
-									</div>
-								</form>
+										</div> --%>
+								</s:form>
 							</div>
 
 
 						</div>
 						<div class="tab-pane" id="panel-29008">
-							<form class="form-search">
-								<input class="input-medium search-query" type="text" />
-								<button type="submit" class="btn">查找用户</button>
-							</form>
-							<div id="searchResult" style="display:none;">
-							 
-							
+
+							<div>
+								<s:form class="form-search" action="/action/adminSearchUser">
+									<input class="input-medium search-query" name="searchkey"
+										type="text" />
+									<button type="submit" class="btn">查找用户</button>
+								</s:form>
+
+								<div id="searchResult">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>用户名</th>
+												<th>姓名</th>
+												<th>email</th>
+												<th>性别</th>
+												<th>角色</th>
+											</tr>
+										</thead>
+										<s:iterator value="#request.list" id="user">
+											<tr>
+												<td><s:property value="#user.username" /></td>
+												<td><s:property value="#user.realName" /></td>
+												<td><s:property value="#user.email" /></td>
+												<td><s:property value="#user.gender" /></td>
+												<td><s:property value="#user.role" /></td>
+
+											</tr>
+										</s:iterator>
+									</table>
+								</div>
+
 							</div>
-							
+
+
+
+
+
 						</div>
 					</div>
 				</div>

@@ -13,7 +13,7 @@
 		<div class="login">
 			<div class="login-screen">
 				<div class="login-form">
-					<s:form name="login" action="/tss/login" method="post">
+					<s:form name="login" action="/action/login" method="post">
 						<input type="text" name="username" class="login-field" value="" placeholder="Enter your name" id="login-name">
 						<p>
 						<p>
