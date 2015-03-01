@@ -56,12 +56,48 @@
 				</div>
 				<div class="tabbable" id="tabs-702235">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#panel-386299" data-toggle="tab">注册用户</a>
+						<li class="active"><a href="#panel-386299" data-toggle="tab">修改信息</a>
 						</li>
-						<li><a href="#panel-29008" data-toggle="tab">修改信息</a></li>
+						<li><a href="#panel-29008" data-toggle="tab">注册用户</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-386299">
+							<div>
+								<s:form class="form-search" action="/action/adminSearchUser">
+									<input class="input-medium search-query" name="searchkey"
+										type="text" />
+									<button type="submit" class="btn">查找用户</button>
+								</s:form>
+
+								<div id="searchResult">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>用户名</th>
+												<th>姓名</th>
+												<th>email</th>
+												<th>性别</th>
+												<th>角色</th>
+											</tr>
+										</thead>
+										<s:iterator value="users" id="user">
+											<tr>
+												<td><s:property value="#user.username" /></td>
+												<td><s:property value="#user.realName" /></td>
+												<td><s:property value="#user.email" /></td>
+												<td><s:property value="#user.gender" /></td>
+												<td><s:property value="#user.role" /></td>
+
+											</tr>
+										</s:iterator>
+									</table>
+								</div>
+
+							</div>
+
+
+						</div>
+						<div class="tab-pane" id="panel-29008">
 							<div>
 								<s:form action="/action/adminAddUser" method="post">
 
@@ -118,48 +154,6 @@
 										</div> --%>
 								</s:form>
 							</div>
-
-
-						</div>
-						<div class="tab-pane" id="panel-29008">
-
-							<div>
-								<s:form class="form-search" action="/action/adminSearchUser">
-									<input class="input-medium search-query" name="searchkey"
-										type="text" />
-									<button type="submit" class="btn">查找用户</button>
-								</s:form>
-
-								<div id="searchResult">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>用户名</th>
-												<th>姓名</th>
-												<th>email</th>
-												<th>性别</th>
-												<th>角色</th>
-											</tr>
-										</thead>
-										<s:iterator value="#request.list" id="user">
-											<tr>
-												<td><s:property value="#user.username" /></td>
-												<td><s:property value="#user.realName" /></td>
-												<td><s:property value="#user.email" /></td>
-												<td><s:property value="#user.gender" /></td>
-												<td><s:property value="#user.role" /></td>
-
-											</tr>
-										</s:iterator>
-									</table>
-								</div>
-
-							</div>
-
-
-
-
-
 						</div>
 					</div>
 				</div>
@@ -172,3 +166,4 @@
 
 </body>
 </html>
+
