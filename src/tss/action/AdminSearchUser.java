@@ -11,8 +11,6 @@ public class AdminSearchUser extends BaseAction {
 	 */
 	private static final long serialVersionUID = -4275125167211276105L;
 	private AdminService adminService;
-	
-	
 
 	public AdminService getAdminService() {
 		return adminService;
@@ -22,11 +20,21 @@ public class AdminSearchUser extends BaseAction {
 		this.adminService = adminService;
 	}
 	
+	ArrayList<User> users;
+	
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(ArrayList<User> users) {
+		this.users = users;
+	}
+
 	public String execute(){
 		String searchkey=request.getParameter("searchkey");
 		System.out.println(searchkey);
-		ArrayList<User> users=adminService.searchUser(searchkey);
-		request.setAttribute("userList",users);
+		users=adminService.searchUser(searchkey);
+		System.out.println(users.size());
 		
 		return SUCCESS;
 		
