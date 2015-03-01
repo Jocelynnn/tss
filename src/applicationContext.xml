@@ -7,7 +7,7 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
-<!-- <bean id="..." class="..."> collaborators and configuration for this 
+	<!-- <bean id="..." class="..."> collaborators and configuration for this 
 		bean go here </bean> <bean id="..." class="..."> collaborators and configuration 
 		for this bean go here </bean> more bean definitions go here -->
 
@@ -41,27 +41,53 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<bean id="DaoHelper" class="tss.dao.impl.DaoHelperImpl">
 	</bean>
-	
+
 	<bean id="UserDao" class="tss.dao.impl.UserDaoImpl">
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
 		</property>
-		
+
 	</bean>
-	
-	
+	<bean id="AdminDao" class="tss.dao.impl.AdminDaoImpl">
+		<property name="DaoHelper">
+			<ref bean="DaoHelper" />
+		</property>
+
+	</bean>
+
 	<bean id="UserService" class="tss.service.impl.UserServiceImpl">
 		<property name="UserDao">
 			<ref bean="UserDao" />
 		</property>
 	</bean>
-	
+
+	<bean id="AdminService" class="tss.service.impl.AdminServiceImpl">
+		<property name="AdminDao">
+			<ref bean="AdminDao" />
+		</property>
+	</bean>
+
 	<bean id="LoginAction" class="tss.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService" />
+		</property>
+	</bean>
+
+	<bean id="LogoutAction" class="tss.action.LogoutAction">
+	</bean>
+
+	<bean id="AdminAddUserAction" class="tss.action.AdminAddUser">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
+	
+	<bean id="AdminSearchUserAction" class="tss.action.AdminSearchUser">
+		<property name="AdminService">
+			<ref bean="AdminService" />
 		</property>
 	</bean>
 

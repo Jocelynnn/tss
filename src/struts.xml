@@ -4,8 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+<constant name="struts.ui.theme" value="simple" />
 
-	<package name="default" extends="struts-default"  namespace="/tss">
+	<package name="default" extends="struts-default" namespace="/action">
 		<action name="login" class="LoginAction">
 			<result name="error">/views/error.jsp</result>
 			<result name="admin">/views/adminIndex1.jsp</result>
@@ -16,6 +17,25 @@
 
 		</action>
 
+		<action name="logout" class="LogoutAction">
+			<result name="success">/views/login.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		
+		<action name="adminAddUser" class="AdminAddUserAction">
+			<result name="success">/views/login.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		
+		<action name="adminSearchUser" class="AdminSearchUserAction">
+			<result name="success">/views/adminIndex1.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		
+		
 	</package>
 </struts>
 
