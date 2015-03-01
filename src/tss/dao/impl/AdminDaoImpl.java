@@ -144,8 +144,8 @@ public class AdminDaoImpl implements AdminDao {
 
 		try {
 			stmt = con
-					.prepareStatement("SELECT * FROM user WHERE username LIKE '%?%'");
-			stmt.setString(1, searchkey);
+					.prepareStatement("SELECT * FROM user WHERE username LIKE ?");
+			stmt.setString(1, '%' + searchkey + '%');
 			result = stmt.executeQuery();
 
 			while (result.next()) {
