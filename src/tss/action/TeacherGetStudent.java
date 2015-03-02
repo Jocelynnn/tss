@@ -14,9 +14,11 @@ public class TeacherGetStudent extends BaseAction {
 	private static final long serialVersionUID = 8643299795417540697L;
 	private TeacherService teacherService;
 	
-	ArrayList<User> studentList;
+	ArrayList<User> selectedStudentList;
 	String courseId;
 	int studentCount;
+	String courseName;
+
 	
 	public int getStudentCount() {
 		return studentCount;
@@ -37,12 +39,11 @@ public class TeacherGetStudent extends BaseAction {
 		this.courseName = courseName;
 	}
 
-	String courseName;
 	public ArrayList<User> getStudentList() {
-		return studentList;
+		return selectedStudentList;
 	}
 	public void setStudentList(ArrayList<User> studentList) {
-		this.studentList = studentList;
+		this.selectedStudentList = studentList;
 	}
 	public TeacherService getTeacherService() {
 		return teacherService;
@@ -53,13 +54,19 @@ public class TeacherGetStudent extends BaseAction {
 	
 	public String execute() throws UnsupportedEncodingException{
 		request.setCharacterEncoding("utf-8");
+		
+		
 		courseId=request.getParameter("courseId");
 		courseName=request.getParameter("courseName");
 		System.out.println(courseId);
 		System.out.println(courseName);
-
-		studentList=teacherService.getStudent(request.getParameter("courseId"));
-		studentCount=studentList.size();
+		selectedStudentList=teacherService.getStudent(courseId);
+		studentCount=selectedStudentList.size();
+		
+		request.getSession().setAttribute("courseId", courseId);
+		request.getSession().setAttribute("courseName", courseName);
+		request.getSession().setAttribute("studentCount", studentCount);
+		
 		return SUCCESS;
 	}
 

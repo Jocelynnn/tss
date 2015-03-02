@@ -30,8 +30,7 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/teacherIndex1.jsp">课程管理</a></li>
+									<li class="active"><s:a href="teacherGetCourse.action">课程管理</s:a></li>
 									<li><a
 										href="<%=request.getContextPath()%>/views/teacherIndex2.jsp">作业管理</a></li>
 
@@ -91,9 +90,18 @@
 						<tr>
 							<td><s:property value="#student.username" /></td>
 							<td><s:property value="#student.realName" /></td>
+							<td><a href="#">添加</a></td>
+						</tr>
+					</s:iterator>
+					
+					<s:iterator value="selectedStudentList" id="student">
+						<tr>
+							<td><s:property value="#student.username" /></td>
+							<td><s:property value="#student.realName" /></td>
 							<td><a href="#">退选</a></td>
 						</tr>
 					</s:iterator>
+					
 				</table>
 
 

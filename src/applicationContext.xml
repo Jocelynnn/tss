@@ -132,6 +132,12 @@
 		</property>
 	</bean>
 	
+	<bean id="TeacherGetCourse" class="tss.action.TeacherGetCourse">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
 	<bean id="TeacherGetStudent" class="tss.action.TeacherGetStudent">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />

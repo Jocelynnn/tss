@@ -52,6 +52,11 @@
 			<result name="error">/views/error.jsp</result>
 
 		</action>
+		<action name="teacherGetCourse" class="TeacherGetCourse">
+			<result name="success">/views/teacherIndex1.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
 		
 		<action name="teacherSearchStudent" class="TeacherSearchStudent">
 			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
