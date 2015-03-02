@@ -6,12 +6,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.service.ServiceRegistry;
+
 import tss.dao.AdminDao;
 import tss.dao.DaoHelper;
 import tss.dao.UserDao;
 import tss.model.User;
 
 public class AdminDaoImpl implements AdminDao {
+	private Configuration config;
+	private SessionFactory sessionFactory;
+	private Session session;
+	
 	private DaoHelper daoHelper;
 	private UserDao userDao;
 
@@ -166,4 +177,24 @@ public class AdminDaoImpl implements AdminDao {
 		return null;
 	}
 
+	@Override
+	public boolean save(User user) {
+		try {
+			System.out.println(user.getUsername() + "!!!!!!");
+			config = new Configuration().configure();
+			sessionFactory=config.buildSessionFactory();	
+			session=sessionFactory.openSession();
+			Transaction tx=session.beginTransaction();
+			session.save(user); //保存Entity到数据库中
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("ok");
+			return true;
+		}catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }
