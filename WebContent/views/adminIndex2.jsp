@@ -46,7 +46,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
 
-											<li><a href="#">登出</a></li>
+											<li><s:a href="logout.action">登出</s:a></li>
 											<li class="divider"></li>
 											<li><a href="#">链接3</a></li>
 										</ul></li>
@@ -119,7 +119,7 @@
 
 									<div>
 										<s:select headerKey="-1" headerValue="选择学期"
-											list="#{'1':'1', '2':'2','3':'3','4':'4'}" name="semester"
+											list="#{'1':'2015 Winter', '2':'2015 Fall','3':'2015 Summer','4':'2015 Spring'}" name="semester"
 											value="-1" />
 									</div>
 

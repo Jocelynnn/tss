@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,66 +65,39 @@
 			</div>
 
 			<div class="col-md-4 col-md-offset-4">
-				<label>当前课程：课程名</label> <label>已有学生：100人</label>
+				<s:label>当前课程：<s:property value='courseName' />
+				</s:label>
+				<s:label>已有学生：<s:property value='studentCount' />人</s:label>
 			</div>
 
-			<form class="form-search">
-				<input class="input-medium search-query" type="text" />
+			<s:form class="form-search" action="/action/teacherSearchStudent">
+				<input class="input-medium search-query" type="text"
+					name="searchkey" />
 				<button type="submit" class="btn">查找用户</button>
-			</form>
-			<div id="searchResult" style="display: none;">
-			</div>
+			</s:form>
+			<div id="searchResult" style="display: none;"></div>
 
 			<label>学生列表</label>
 			<div id="allStudentList">
-			<table class="table table-hover table-bordered">
-						<thead>
-							<tr>
-								<th>学号</th>
-								<th>姓名</th>
-								<th>状态</th>
-								<th>啦啦</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td><a
-									href="#">退选</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="success">
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="error">
-								<td>2</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="warning">
-								<td>3</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="info">
-								<td>4</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-						</tbody>
-					</table>
-			
-			
-			</div>
-			
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>学号</th>
+							<th>姓名</th>
+							<th>状态</th>
+						</tr>
+					</thead>
+					<s:iterator value="studentList" id="student">
+						<tr>
+							<td><s:property value="#student.username" /></td>
+							<td><s:property value="#student.realName" /></td>
+							<td><a href="#">退选</a></td>
+						</tr>
+					</s:iterator>
+				</table>
 
+
+			</div>
 		</div>
 
 

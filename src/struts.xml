@@ -47,6 +47,18 @@
 
 		</action>
 		
+		<action name="teacherGetStudent" class="TeacherGetStudent">
+			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		
+		<action name="teacherSearchStudent" class="TeacherSearchStudent">
+			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		
 		
 		
 		

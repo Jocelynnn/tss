@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,6 +32,7 @@
 								<ul class="nav">
 									<li class="active"><a
 										href="<%=request.getContextPath()%>/views/teacherIndex1.jsp">课程管理</a></li>
+
 									<li><a
 										href="<%=request.getContextPath()%>/views/teacherIndex2.jsp">作业管理</a></li>
 
@@ -56,49 +59,31 @@
 				</div>
 
 				<div>
-					<table class="table table-hover table-bordered">
+					<table class="table table-hover table-bordered ">
 						<thead>
 							<tr>
 								<th>课程编号</th>
 								<th>课程名</th>
+								<th>开课学期</th>
 								<th>选课学生</th>
 								<th>助教</th>
 							</tr>
 						</thead>
-						<tbody>
+						<s:iterator value="teacherCourses" id="course">
 							<tr>
-								<td>1</td>
-								<td>TB - Monthly</td>
+								<td><s:property value="#course.courseId" /></td>
+								<td><s:property value="#course.courseName" /></td>
+								<td><s:property value="#course.semester" /></td>
 								<td><a
-									href="<%=request.getContextPath()%>/views/teacherIndex1_addStudent.jsp">现在添加</a></td>
-								<td><a href="<%=request.getContextPath()%>/views/teacherIndex1_addTA.jsp">现在添加</a></td>
+									href="teacherGetStudent.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
+								<td><a
+									href="<%=request.getContextPath()%>/views/teacherIndex1_addTA.jsp">现在添加</a></td>
+
+
 							</tr>
-							<tr class="success">
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="error">
-								<td>2</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="warning">
-								<td>3</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-							<tr class="info">
-								<td>4</td>
-								<td>TB - Monthly</td>
-								<td><a href="#">现在添加</a></td>
-								<td><a href="#">现在添加</a></td>
-							</tr>
-						</tbody>
+						</s:iterator>
 					</table>
+
 
 				</div>
 			</div>

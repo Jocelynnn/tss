@@ -70,7 +70,10 @@
 								</s:form>
 
 								<div id="searchResult">
-									<table class="table">
+									<%
+										String[] rows = {"success","error","warning","info"};
+									%>
+									<table class="table table-hover table-bordered">
 										<thead>
 											<tr>
 												<th>用户名</th>
@@ -81,7 +84,7 @@
 											</tr>
 										</thead>
 										<s:iterator value="users" id="user">
-											<tr>
+											<tr class="success">
 												<td><s:property value="#user.username" /></td>
 												<td><s:property value="#user.realName" /></td>
 												<td><s:property value="#user.email" /></td>

@@ -78,7 +78,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `tss`.`studentCourseSelection` (
   `id` INT NOT NULL COMMENT '	',
   `courseId` VARCHAR(255) NOT NULL,
-  `studentNmae` VARCHAR(255) NOT NULL,
+  `studentName` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

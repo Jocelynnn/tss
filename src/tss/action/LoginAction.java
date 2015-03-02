@@ -1,19 +1,44 @@
 package tss.action;
 
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.util.ArrayList;
 
+import tss.model.Course;
+import tss.service.TeacherService;
 import tss.service.UserService;
-
 
 public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 5183139033860751029L;
 
 	private UserService userService;
+	private TeacherService teacherService;
+	ArrayList<Course> teacherCourses;
+	public ArrayList<Course> getTeacherCourses() {
+		return teacherCourses;
+	}
+
+	public void setTeacherCourses(ArrayList<Course> teacherCourses) {
+		this.teacherCourses = teacherCourses;
+	}
+
+	private ArrayList<Course> courseList;
+
+	public TeacherService getTeacherService() {
+		return teacherService;
+	}
+
+	public void setTeacherService(TeacherService teacherService) {
+		this.teacherService = teacherService;
+	}
+
+
+	public ArrayList<Course> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(ArrayList<Course> courseList) {
+		this.courseList = courseList;
+	}
 
 	public UserService getUserService() {
 		return userService;
@@ -24,7 +49,7 @@ public class LoginAction extends BaseAction {
 	}
 
 	public String execute() {
-	
+
 		System.out.println(userService == null);
 		switch (userService.validateLogin(request.getParameter("username"),
 				request.getParameter("password"))) {
@@ -42,6 +67,8 @@ public class LoginAction extends BaseAction {
 
 			// 授课教师
 		case 2:
+			teacherCourses = teacherService.getTeacherCourses(request
+					.getParameter("username"));
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
