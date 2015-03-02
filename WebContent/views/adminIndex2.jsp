@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,62 +59,85 @@
 				</div>
 				<div class="tabbable" id="tabs-702235">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#panel-386299" data-toggle="tab">新增课程</a>
+						<li class="active"><a href="#panel-29008" data-toggle="tab">修改课程信息</a></li>
+						<li ><a href="#panel-386299" data-toggle="tab">新增课程</a>
 						</li>
-						<li><a href="#panel-29008" data-toggle="tab">修改课程信息</a></li>
 					</ul>
 					<div class="tab-content">
-						<div class="tab-pane active" id="panel-386299">
+						<div class="tab-pane active" id="panel-29008">
 							<div>
-								<div class="control-group">
-									<label class="control-label" for="CourseID">课程编号</label>
-									<div class="controls">
-										<input id="CourseID" type="text" placeholder="identifier" />
-									</div>
+								<s:form class="form-search" action="/action/adminSearchCourses">
+									<input class="input-medium search-query" name="searchkey"
+										type="text" />
+									<button type="submit" class="btn">查找课程</button>
+								</s:form>
+
+								<div id="searchResult">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>课程编号</th>
+												<th>课程名</th>
+												<th>课程描述</th>
+												<th>学期</th>
+												<th>授课教师</th>
+											</tr>
+										</thead>
+										<s:iterator value="courses" id="course">
+											<tr>
+												<td><s:property value="#course.courseId" /></td>
+												<td><s:property value="#course.courseName" /></td>
+												<td><s:property value="#course.description" /></td>
+												<td><s:property value="#course.semester" /></td>
+												<td><s:property value="#course.teacherName" /></td>
+
+											</tr>
+										</s:iterator>
+									</table>
 								</div>
 
-								<div class="control-group">
-									<label class="control-label" for="inputCourseName">课程名</label>
-									<div class="controls">
-										<input id="inputCourseName" type="text" placeholder="课程名" />
+							</div>
+						</div>
+						<div class="tab-pane " id="panel-386299">
+							<div>
+								<s:form action="/action/adminAddCourses" method="post">
+									<div>
+										<s:label>课程编号</s:label>
+										<s:textfield name="courseid"></s:textfield>
 									</div>
-								</div>
 
-								<div class="control-group">
-									<label class="control-label" for="inputCourseDescription">课程描述</label>
-									<div class="controls">
-										<input id="inputCourseDescription" type="text"
-											placeholder="description" />
-									</div>
-								</div>
 
-								<div class="control-group">
-									<label class="control-label" for="inputCourseSemester">开课学期</label>
-									<div class="controls">
-										<input id="inputCourseSemester" type="text"
-											placeholder="semester" />
+									<div>
+										<s:label>课程名</s:label>
+										<s:textfield name="coursename"></s:textfield>
 									</div>
-								</div>
 
-								<div class="control-group">
-									<label class="control-label" for="inputCourseInstructor">授课教师</label>
-									<div class="controls">
-										<input id="inputCourseInstructor" type="text"
-											placeholder="instructor" />
+									<div>
+										<s:label>课程描述</s:label>
+										<s:textfield name="description"></s:textfield>
 									</div>
-								</div>
+
+									<div>
+										<s:select headerKey="-1" headerValue="选择学期"
+											list="#{'1':'1', '2':'2','3':'3','4':'4'}" name="semester"
+											value="-1" />
+									</div>
+
+									<div>
+										<s:label>授课教师</s:label>
+										<s:textfield name="instructor"></s:textfield>
+									</div>
+
+									<div>
+										<button class="btn" type="submit">添加</button>
+									</div>
+								</s:form>
 
 							</div>
 
 
 						</div>
-						<div class="tab-pane" id="panel-29008">
-							<form class="form-search">
-								<input class="input-medium search-query" type="text" />
-								<button type="submit" class="btn">查找课程</button>
-							</form>
-							<div id="searchResult" style="display: none;"></div>
-						</div>
+
 					</div>
 
 

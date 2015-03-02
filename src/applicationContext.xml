@@ -57,6 +57,13 @@
 		</property>
 
 	</bean>
+	
+	<bean id="CourseDao" class="tss.dao.impl.CourseDaoImpl">
+		<property name="DaoHelper">
+			<ref bean="DaoHelper" />
+		</property>
+
+	</bean>
 
 	<bean id="UserService" class="tss.service.impl.UserServiceImpl">
 		<property name="UserDao">
@@ -67,6 +74,9 @@
 	<bean id="AdminService" class="tss.service.impl.AdminServiceImpl">
 		<property name="AdminDao">
 			<ref bean="AdminDao" />
+		</property>
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
 		</property>
 	</bean>
 
@@ -90,5 +100,19 @@
 			<ref bean="AdminService" />
 		</property>
 	</bean>
+	
+	<bean id="AdminAddCoursesAction" class="tss.action.AdminAddCourses">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
+	
+	<bean id="AdminSearchCoursesAction" class="tss.action.AdminSearchCourses">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
+	
+	
 
 </beans>

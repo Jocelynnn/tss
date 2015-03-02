@@ -1,5 +1,7 @@
 package tss.action;
 
+import java.io.UnsupportedEncodingException;
+
 import tss.model.User;
 import tss.service.AdminService;
 
@@ -39,7 +41,9 @@ public class AdminAddUser extends BaseAction {
 		this.adminService = adminService;
 	}
 
-	public String execute(){
+	public String execute() throws UnsupportedEncodingException{
+		request.setCharacterEncoding("utf-8");
+		
 		String username=request.getParameter("username");
 		String realName=request.getParameter("realName");
 		String password=request.getParameter("password");

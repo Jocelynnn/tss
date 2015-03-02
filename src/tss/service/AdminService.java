@@ -2,12 +2,16 @@ package tss.service;
 
 import java.util.ArrayList;
 
+import tss.model.Course;
 import tss.model.User;
 
 
 public interface AdminService {
 	public boolean addUser(User user);
 	public ArrayList<User> searchUser(String searchKey);
+	public ArrayList<Course> searchCourse(String searchKey);
+	
+	public boolean addCourse(Course course);
 	
 	
 	public ArrayList<User> getAllTeacher();
