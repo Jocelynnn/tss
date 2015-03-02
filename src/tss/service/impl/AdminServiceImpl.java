@@ -3,11 +3,22 @@ package tss.service.impl;
 import java.util.ArrayList;
 
 import tss.dao.AdminDao;
+import tss.dao.CourseDao;
+import tss.model.Course;
 import tss.model.User;
 import tss.service.AdminService;
 
 public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
+	private CourseDao courseDao;
+
+	public CourseDao getCourseDao() {
+		return courseDao;
+	}
+
+	public void setCourseDao(CourseDao courseDao) {
+		this.courseDao = courseDao;
+	}
 
 	public AdminDao getAdminDao() {
 		return adminDao;
@@ -101,6 +112,19 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return adminDao.searchUser(searchKey);
 	}
+
+	@Override
+	public boolean addCourse(Course course) {
+		// TODO Auto-generated method stub
+		
+		return courseDao.addCourse(course);
+	}
+	@Override
+	public ArrayList<Course> searchCourse(String searchKey) {
+		// TODO Auto-generated method stub
+		return courseDao.getCourses(searchKey);
+	}
+
 
 	
 
