@@ -31,8 +31,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
-//		return adminDao.addUser(user);
-		return adminDao.save(user);
+		return adminDao.addUser(user);
 	}
 	
 
