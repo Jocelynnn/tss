@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,10 +30,10 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li ><a
-										href="<%=request.getContextPath()%>/views/teacherIndex1.jsp">课程管理</a></li>
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/teacherIndex2.jsp">作业管理</a></li>
+									<li><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li class="active"><s:a
+											href="teacherGetAssignments.action">作业管理</s:a></li>
+
 
 
 								</ul>
@@ -72,8 +74,7 @@
 				<div class="control-group">
 					<label class="control-label" for="submissionDeadline">提交截止日期</label>
 					<div class="controls">
-						<input id="submissionDeadline" type="text"
-							placeholder="deadline" />
+						<input id="submissionDeadline" type="text" placeholder="deadline" />
 					</div>
 				</div>
 
@@ -87,44 +88,39 @@
 				<div class="control-group">
 					<label class="control-label" for="format">作业文件格式</label>
 					<div class="controls">
-						<input id="format" type="text"
-							placeholder="format" />
+						<input id="format" type="text" placeholder="format" />
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="fullGrade">满分</label>
 					<div class="controls">
-						<input id="fullGrade" type="text"
-							placeholder="fullGrade" />
+						<input id="fullGrade" type="text" placeholder="fullGrade" />
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="difficulty">难度：三个选项</label>
 					<div class="controls">
-						<input id="difficulty" type="text"
-							placeholder="difficulty" />
+						<input id="difficulty" type="text" placeholder="difficulty" />
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="example">样例：上传文件</label>
 					<div class="controls">
-						<input id="example" type="text"
-							placeholder="example" />
+						<input id="example" type="text" placeholder="example" />
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="generalGrade">总体点评</label>
 					<div class="controls">
-						<input id="generalGrade" type="text"
-							placeholder="generalGrade" />
+						<input id="generalGrade" type="text" placeholder="generalGrade" />
 					</div>
 				</div>
-				
-				
+
+
 
 
 

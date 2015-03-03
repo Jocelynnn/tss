@@ -76,7 +76,7 @@ public class TeacherGetStudent extends BaseAction {
 	}
 
 	public String execute() throws UnsupportedEncodingException {
-		request.setCharacterEncoding("utf-8");
+//		request.setCharacterEncoding("utf-8");
 		
 
 		courseId=request.getParameter("courseId");

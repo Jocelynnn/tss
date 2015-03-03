@@ -86,7 +86,10 @@
 
 								</tr>
 							</s:iterator>
-
+							<tr>
+								<td> </td>
+								<td colspan=4><a href="#">新作业</a></td>
+							</tr>
 						</s:iterator>
 					</table>
 

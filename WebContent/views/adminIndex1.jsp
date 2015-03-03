@@ -45,7 +45,7 @@
 											class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
-											<li><s:a href="logout.action">登出</s:a></li>
+											<li><s:a href="/tss/action/logout.action" >登出</s:a></li>
 										</ul></li>
 								</ul>
 							</div>
