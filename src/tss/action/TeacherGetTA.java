@@ -1,38 +1,25 @@
 package tss.action;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import tss.model.User;
 import tss.service.TeacherService;
 
-public class TeacherGetStudent extends BaseAction {
+public class TeacherGetTA extends BaseAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4661100504333480679L;
-	/**
-	 * 
-	 */
+	private static final long serialVersionUID = -4759590243583783792L;
+
 	private TeacherService teacherService;
 	ArrayList<User> studentList;
-	ArrayList<User> selectedStudentList;
-	String courseName;
+	
+
+	ArrayList<User> taList;
 	String courseId;
-	int studentCount;
-
-
-	public ArrayList<User> getSelectedStudentList() {
-		return selectedStudentList;
-	}
-
-	public void setSelectedStudentList(ArrayList<User> selectedStudentList) {
-		this.selectedStudentList = selectedStudentList;
-	}
-
-
+	String courseName;
 	public String getCourseName() {
 		return courseName;
 	}
@@ -41,23 +28,7 @@ public class TeacherGetStudent extends BaseAction {
 		this.courseName = courseName;
 	}
 
-	public String getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
-	}
-
-	public int getStudentCount() {
-		return studentCount;
-	}
-
-	public void setStudentCount(int studentCount) {
-		this.studentCount = studentCount;
-	}
-
-	
+	int taCount;
 
 	public ArrayList<User> getStudentList() {
 		return studentList;
@@ -65,6 +36,13 @@ public class TeacherGetStudent extends BaseAction {
 
 	public void setStudentList(ArrayList<User> studentList) {
 		this.studentList = studentList;
+	}
+	public int getTaCount() {
+		return taCount;
+	}
+
+	public void setTaCount(int taCount) {
+		this.taCount = taCount;
 	}
 
 	public TeacherService getTeacherService() {
@@ -75,28 +53,40 @@ public class TeacherGetStudent extends BaseAction {
 		this.teacherService = teacherService;
 	}
 
-	public String execute() throws UnsupportedEncodingException {
-		request.setCharacterEncoding("utf-8");
-		
+	public ArrayList<User> getTaList() {
+		return taList;
+	}
 
+	public void setTaList(ArrayList<User> taList) {
+		this.taList = taList;
+	}
+
+	public String getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+
+	public String execute(){
+		
 		courseId=request.getParameter("courseId");
 		courseName=request.getParameter("courseName");
-		System.out.println(courseId);
-		System.out.println(courseName);
-		selectedStudentList = teacherService.getStudent(courseId);
-		studentList = teacherService.getAllStudent();
-		studentCount = selectedStudentList.size();
 
+		studentList=teacherService.getAllStudent();
+		taList=teacherService.getCourseTA(courseId);
+		taCount=taList.size();
+		
 		request.getSession().setAttribute("courseId", courseId);
 		request.getSession().setAttribute("courseName", courseName);
-		request.getSession().setAttribute("studentCount", studentCount);
 		
 //		remove the overlapping part in two lists
 		Iterator<User> iter1 = studentList.iterator();
 		while (iter1.hasNext()) {
 			User current = iter1.next();
 			String studentId1 = current.getUsername();
-			Iterator<User> iter2 = selectedStudentList.iterator();
+			Iterator<User> iter2 = taList.iterator();
 			while (iter2.hasNext()) {
 				String studentId2 = iter2.next().getUsername();
 				if (studentId1.equals(studentId2)){
@@ -106,8 +96,6 @@ public class TeacherGetStudent extends BaseAction {
 				}
 			}
 		}
-		System.out.println(studentList.size());
-		System.out.println("!!!");
 		return SUCCESS;
 
 	}

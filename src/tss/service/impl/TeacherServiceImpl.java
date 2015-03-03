@@ -46,4 +46,40 @@ public class TeacherServiceImpl implements TeacherService {
 		return studentDao.searchStudent(searchkey);
 	}
 
+	@Override
+	public ArrayList<User> getAllStudent() {
+		// TODO Auto-generated method stub
+		return studentDao.getAllStudent();
+	}
+
+	@Override
+	public ArrayList<User> getCourseTA(String courseId) {
+		// TODO Auto-generated method stub
+		return studentDao.getCourseTA(courseId);
+	}
+
+	@Override
+	public boolean addCourseStudent(String courseId, String studentId) {
+		// TODO Auto-generated method stub
+		return courseDao.addCourseStudent(courseId, studentId);
+	}
+
+	@Override
+	public boolean addCourseTA(String courseId, String taId) {
+		// TODO Auto-generated method stub
+		return courseDao.addCourseTA(courseId, taId);
+	}
+
+	@Override
+	public boolean removeCourseStudent(String courseId, String studentId) {
+		// TODO Auto-generated method stub
+		return courseDao.removeCourseStudent(courseId, studentId);
+	}
+
+	@Override
+	public boolean removeCourseTA(String courseId, String taId) {
+		// TODO Auto-generated method stub
+		return courseDao.removeCourseTA(courseId, taId);
+	}
+
 }

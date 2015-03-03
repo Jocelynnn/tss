@@ -151,9 +151,10 @@ public class CourseDaoImpl implements CourseDao {
 				stmt.setString(1, username);
 				result = stmt.executeQuery();
 				while (result.next()) {
-					studentList.add(new User(result.getString("username"), null, result
-							.getString("realName"), result.getString("email"),
-							result.getInt("gender"),result.getInt("role")));
+					studentList.add(new User(result.getString("username"),
+							null, result.getString("realName"), result
+									.getString("email"), result
+									.getInt("gender"), result.getInt("role")));
 				}
 
 			}
@@ -169,6 +170,114 @@ public class CourseDaoImpl implements CourseDao {
 		}
 
 		return null;
+	}
+
+	@Override
+	public boolean addCourseStudent(String courseId, String studentId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("INSERT INTO studentCourseSelection(courseId, studentName) values (?,?)");
+			stmt.setString(1, courseId);
+			stmt.setString(2, studentId);
+
+			if (stmt.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean addCourseTA(String courseId, String taId) {
+		// TODO Auto-generated method stub
+				Connection con = daoHelper.getConnection();
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+
+				try {
+					stmt = con
+							.prepareStatement("INSERT INTO teachingAssistant(assistantName, courseId) values (?,?)");
+					stmt.setString(1, taId);
+					stmt.setString(2, courseId);
+
+					if (stmt.executeUpdate() != 0) {
+						return true;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					daoHelper.closeConnection(con);
+					daoHelper.closePreparedStatement(stmt);
+					daoHelper.closeResult(result);
+				}
+
+				return false;
+	}
+
+	@Override
+	public boolean removeCourseStudent(String courseId, String studentId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("DELETE FROM studentCourseSelection WHERE courseId= ? AND studentName= ? ");
+			stmt.setString(1, courseId);
+			stmt.setString(2, studentId);
+
+			if (stmt.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean removeCourseTA(String courseId, String taId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("DELETE FROM teachingAssistant WHERE assistantName = ? And courseId = ?");
+			stmt.setString(1, taId);
+			stmt.setString(2, courseId);
+
+			if (stmt.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return false;
 	}
 
 }

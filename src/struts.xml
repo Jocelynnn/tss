@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.theme" value="simple" />
 
 	<package name="default" extends="struts-default" namespace="/action">
 		<action name="login" class="LoginAction">
@@ -22,32 +22,37 @@
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="adminAddUser" class="AdminAddUserAction">
 			<result name="success">/views/login.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="adminSearchUser" class="AdminSearchUserAction">
 			<result name="success">/views/adminIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="adminAddCourses" class="AdminAddCoursesAction">
 			<result name="success">/views/adminIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="adminSearchCourses" class="AdminSearchCoursesAction">
 			<result name="success">/views/adminIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="teacherGetStudent" class="TeacherGetStudent">
+			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+			<result name="error">/views/error.jsp</result>
+
+		</action>
+		<action name="teacherSearchStudent" class="TeacherSearchStudent">
 			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
@@ -58,15 +63,37 @@
 
 		</action>
 		
-		<action name="teacherSearchStudent" class="TeacherSearchStudent">
-			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+		<action name="teacherGetTA" class="TeacherGetTA">
+			<result name="success">/views/teacherIndex1_addTA.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
 		
+		<action name="teacherAddTA" class="TeacherAddTA">
+			<result name="success">/views/teacherIndex1_addTA.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 		
+		<action name="teacherAddStudent" class="TeacherAddStudent">
+			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 		
+		<action name="teacherRemoveTA" class="TeacherRemoveTA">
+			<result name="success">/views/teacherIndex1_addTA.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 		
+		<action name="teacherRemoveStudent" class="TeacherRemoveStudent">
+			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+
+
+
+
+
+
 	</package>
 </struts>
 

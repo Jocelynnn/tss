@@ -2,6 +2,7 @@ package tss.action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import tss.model.User;
 import tss.service.TeacherService;
@@ -15,6 +16,10 @@ public class TeacherSearchStudent extends BaseAction {
 	private TeacherService teacherService;
 	ArrayList<User> studentList;
 	ArrayList<User> selectedStudentList;
+	String courseName;
+	String courseId;
+	int studentCount;
+
 
 	public ArrayList<User> getSelectedStudentList() {
 		return selectedStudentList;
@@ -24,7 +29,6 @@ public class TeacherSearchStudent extends BaseAction {
 		this.selectedStudentList = selectedStudentList;
 	}
 
-	String courseName;
 
 	public String getCourseName() {
 		return courseName;
@@ -50,8 +54,7 @@ public class TeacherSearchStudent extends BaseAction {
 		this.studentCount = studentCount;
 	}
 
-	String courseId;
-	int studentCount;
+	
 
 	public ArrayList<User> getStudentList() {
 		return studentList;
@@ -71,20 +74,37 @@ public class TeacherSearchStudent extends BaseAction {
 
 	public String execute() throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
+		
 
 		courseId = (String) request.getSession().getAttribute("courseId");
 		courseName = (String) request.getSession().getAttribute("courseName");
 		System.out.println(courseId);
 		System.out.println(courseName);
 		selectedStudentList = teacherService.getStudent(courseId);
-		studentCount = selectedStudentList.size();
-
 		studentList = teacherService.searchStudent(request
 				.getParameter("searchkey"));
+
+		studentCount = selectedStudentList.size();
+
+
+//		remove the overlapping part in two lists
+		Iterator<User> iter1 = studentList.iterator();
+		while (iter1.hasNext()) {
+			User current = iter1.next();
+			String studentId1 = current.getUsername();
+			Iterator<User> iter2 = selectedStudentList.iterator();
+			while (iter2.hasNext()) {
+				String studentId2 = iter2.next().getUsername();
+				if (studentId1.equals(studentId2)){
+					studentList.remove(current);
+					iter1=studentList.iterator();
+
+				}
+			}
+		}
 		System.out.println(studentList.size());
 		System.out.println("!!!");
 		return SUCCESS;
 
 	}
-
 }

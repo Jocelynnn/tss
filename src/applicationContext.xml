@@ -57,14 +57,14 @@
 		</property>
 
 	</bean>
-	
+
 	<bean id="CourseDao" class="tss.dao.impl.CourseDaoImpl">
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
 		</property>
 
 	</bean>
-	
+
 	<bean id="StudentDao" class="tss.dao.impl.StudentDaoImpl">
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
@@ -93,7 +93,7 @@
 		<property name="StudentDao">
 			<ref bean="StudentDao" />
 		</property>
-		
+
 	</bean>
 
 	<bean id="LoginAction" class="tss.action.LoginAction">
@@ -113,41 +113,72 @@
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="AdminSearchUserAction" class="tss.action.AdminSearchUser">
 		<property name="AdminService">
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="AdminAddCoursesAction" class="tss.action.AdminAddCourses">
 		<property name="AdminService">
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="AdminSearchCoursesAction" class="tss.action.AdminSearchCourses">
 		<property name="AdminService">
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeacherGetCourse" class="tss.action.TeacherGetCourse">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeacherGetStudent" class="tss.action.TeacherGetStudent">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-	
+
+
 	<bean id="TeacherSearchStudent" class="tss.action.TeacherSearchStudent">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-
+	<bean id="TeacherGetTA" class="tss.action.TeacherGetTA">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherAddTA" class="tss.action.TeacherAddTA">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherAddStudent" class="tss.action.TeacherAddStudent">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherRemoveTA" class="tss.action.TeacherRemoveTA">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherRemoveStudent" class="tss.action.TeacherRemoveStudent">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	
 </beans>

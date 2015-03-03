@@ -76,7 +76,7 @@
 								<td><a
 									href="teacherGetStudent.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
 								<td><a
-									href="<%=request.getContextPath()%>/views/teacherIndex1_addTA.jsp">现在添加</a></td>
+									href="teacherGetTA.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
 
 
 							</tr>

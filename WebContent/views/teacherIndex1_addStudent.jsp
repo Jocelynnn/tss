@@ -74,9 +74,8 @@
 					name="searchkey" />
 				<button type="submit" class="btn">查找用户</button>
 			</s:form>
-			<div id="searchResult" style="display: none;"></div>
 
-			<label>学生列表</label>
+			<label>未选择学生列表</label>
 			<div id="allStudentList">
 				<table class="table table-hover table-bordered">
 					<thead>
@@ -90,18 +89,34 @@
 						<tr>
 							<td><s:property value="#student.username" /></td>
 							<td><s:property value="#student.realName" /></td>
-							<td><a href="#">添加</a></td>
+							<td><a href="teacherAddStudent.action?studentId=<s:property value='#student.username'/>">添加</a></td>
 						</tr>
 					</s:iterator>
-					
-					<s:iterator value="selectedStudentList" id="student">
+
+				</table>
+
+
+			</div>
+
+			<label>已选择学生列表</label>
+			<div id="selectedStudentList">
+				<table class="table table-hover table-bordered">
+					<thead>
 						<tr>
-							<td><s:property value="#student.username" /></td>
-							<td><s:property value="#student.realName" /></td>
-							<td><a href="#">退选</a></td>
+							<th>学号</th>
+							<th>姓名</th>
+							<th>状态</th>
+						</tr>
+					</thead>
+
+					<s:iterator value="selectedStudentList" id="selectedStudent">
+						<tr>
+							<td><s:property value="#selectedStudent.username" /></td>
+							<td><s:property value="#selectedStudent.realName" /></td>
+							<td><a href="teacherRemoveStudent.action?studentId=<s:property value='#selectedStudent.username'/>">退选</a></td>
 						</tr>
 					</s:iterator>
-					
+
 				</table>
 
 
