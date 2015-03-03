@@ -204,6 +204,12 @@
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
+	<bean id="TeacherAddAssignment" class="tss.action.TeacherAddAssignment">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
 	
 	<bean id="StudentSearchCourse" class="tss.action.StudentSearchCourse">
 		<property name="StudentService">

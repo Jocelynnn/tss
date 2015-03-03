@@ -31,7 +31,7 @@
 		</action>
 
 		<action name="adminAddUser" class="AdminAddUserAction">
-			<result name="success">/views/login.jsp</result>
+			<result name="success">/views/adminIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
@@ -98,6 +98,11 @@
 		
 		<action name="teacherGetAssignments" class="TeacherGetAssignments">
 			<result name="success">/views/teacherIndex2.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+		
+		<action name="teacherAddAssignment" class="TeacherAddAssignment">
+			<result name="success">/views/teacherIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 

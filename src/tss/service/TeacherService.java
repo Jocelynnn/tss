@@ -17,6 +17,7 @@ public interface TeacherService {
 	public Map<String,ArrayList<Assignment>> getCourseAssignments(String teacherId);	
 	public boolean addCourseStudent(String courseId,String studentId);
 	public boolean addCourseTA(String courseId,String taId);
+	public boolean addAssignment(Assignment assignment);
 	public boolean removeCourseStudent(String courseId,String studentId);
 	public boolean removeCourseTA(String courseId,String taId);
 }

@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import tss.dao.AssignmentDao;
 import tss.dao.CourseDao;
 import tss.dao.DaoHelper;
@@ -15,6 +20,10 @@ import tss.model.Assignment;
 import tss.model.Course;
 
 public class AssignmentDaoImpl implements AssignmentDao {
+	private Configuration config;
+	private SessionFactory sessionFactory;
+	private Session session;
+	
 	private DaoHelper daoHelper;
 	public DaoHelper getDaoHelper() {
 		return daoHelper;
@@ -86,5 +95,27 @@ public class AssignmentDaoImpl implements AssignmentDao {
 		else
 			return null;
 	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean save(Assignment a) {
+		// TODO Auto-generated method stub
+		try {
+			System.out.println(a.getCourseId() + "!!!!!!");
+			config = new Configuration().configure();
+			sessionFactory=config.buildSessionFactory();	
+			session=sessionFactory.openSession();
+			Transaction tx=session.beginTransaction();
+			session.save(a); //保存Entity到数据库中
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("ok");
+			return true;
+		}catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		return false;	}
 
 }

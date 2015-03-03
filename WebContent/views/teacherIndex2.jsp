@@ -87,8 +87,9 @@
 								</tr>
 							</s:iterator>
 							<tr>
-								<td> </td>
-								<td colspan=4><a href="#">新作业</a></td>
+								<td></td>
+								<td colspan=4><a
+										href="/tss/views/teacherIndex2_addAssignment.jsp?courseId=<s:property value="#column.key"/>">新作业</a></td>
 							</tr>
 						</s:iterator>
 					</table>

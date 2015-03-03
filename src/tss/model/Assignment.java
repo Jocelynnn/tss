@@ -2,7 +2,14 @@ package tss.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="assignment")
 public class Assignment {
+	@Id
 	public int id;
 	public String courseId;
 	public String courseName;

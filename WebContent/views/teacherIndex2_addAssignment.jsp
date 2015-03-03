@@ -55,7 +55,7 @@
 					</div>
 				</div>
 
-				<label>当前课程： 课程名</label>
+				<label>当前课程： <s:property value="courseId"/></label>
 
 				<div class="control-group">
 					<label class="control-label" for="number">作业编号:自动生成~</label>
