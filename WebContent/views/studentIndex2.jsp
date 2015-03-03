@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,9 +30,8 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li ><a
-										href="<%=request.getContextPath()%>/views/studentIndex1.jsp">我的课程</a></li>
-									<li class="active"><a
+									<li class="active"><s:a href="/tss/action/studentSearchCourse.action" >我的课程</s:a></li>
+									<li><a
 										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">我的作业</a></li>
 
 

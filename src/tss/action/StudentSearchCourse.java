@@ -29,7 +29,7 @@ public class StudentSearchCourse extends BaseAction {
 	}
 
 	public String execute() {
-		courseList = (ArrayList<Course>) studentService.getStuStudiedCourses(request.getParameter("userName"));
+		courseList = (ArrayList<Course>) studentService.getStuStudiedCourses((String) request.getSession().getAttribute("username"));
 
 		if (courseList != null){
 			return SUCCESS;
