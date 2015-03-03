@@ -13,6 +13,8 @@ public class LoginAction extends BaseAction {
 	private UserService userService;
 	private TeacherService teacherService;
 	ArrayList<Course> teacherCourses;
+	private String userName;
+	
 	public ArrayList<Course> getTeacherCourses() {
 		return teacherCourses;
 	}
@@ -47,10 +49,19 @@ public class LoginAction extends BaseAction {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public String execute() {
 
 		System.out.println(userService == null);
+		this.userName = request.getParameter("username");
 		switch (userService.validateLogin(request.getParameter("username"),
 				request.getParameter("password"))) {
 		// 无该用户
@@ -114,4 +125,5 @@ public class LoginAction extends BaseAction {
 		}
 
 	}
+
 }

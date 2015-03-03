@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +32,7 @@
 								<ul class="nav">
 									<li class="active"><a
 										href="<%=request.getContextPath()%>/views/studentIndex1.jsp">我的课程</a></li>
-									<li ><a
+									<li><a
 										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">我的作业</a></li>
 
 
@@ -52,7 +54,6 @@
 
 						</div>
 					</div>
-
 				</div>
 
 				<div>
@@ -67,44 +68,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
-							</tr>
-
-							<tr class="success">
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
-
-							</tr>
-							<tr class="error">
-								<td>2</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
-
-							</tr>
-							<tr class="warning">
-								<td>3</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
-							</tr>
-							<tr class="info">
-								<td>4</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
-							</tr>
+							<s:iterator value="courseList" id="course">
+								<tr class="success">
+									<td><s:property value="#course.courseId" /></td>
+									<td><s:property value="#course.courseName" /></td>
+									<td><s:property value="#course.description" /></td>
+									<td><s:property value="#course.semester" /></td>
+									<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
+								</tr>
+							</s:iterator>
 						</tbody>
 					</table>
 

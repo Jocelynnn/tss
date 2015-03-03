@@ -11,12 +11,19 @@
 			<result name="error">/views/error.jsp</result>
 			<result name="admin">/views/adminIndex1.jsp</result>
 			<result name="teacher">/views/teacherIndex1.jsp</result>
-			<result name="student">/views/studentIndex1.jsp</result>
 			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
 			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
-
+			<result name="student" type="redirectAction">
+				<param name="actionName">studentSearchCourse</param>
+				<param name="userName">${userName}</param>
+			</result>
 		</action>
 
+		<action name="studentSearchCourse" class="StudentSearchCourse">
+			<result name="success">/views/studentIndex1.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+		
 		<action name="logout" class="LogoutAction">
 			<result name="success">/views/login.jsp</result>
 			<result name="error">/views/error.jsp</result>
