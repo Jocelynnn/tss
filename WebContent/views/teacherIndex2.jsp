@@ -30,9 +30,10 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li class="active"><s:a
+											href="teacherGetAssignments.action">作业管理</s:a></li>
 
-									<li><s:a href="teacherGetAssignments.action">作业管理</s:a></li>
 
 
 								</ul>
@@ -50,42 +51,66 @@
 										</ul></li>
 								</ul>
 							</div>
-
 						</div>
 					</div>
-
 				</div>
 
 				<div>
-					<table class="table table-hover table-bordered ">
+					<table class="table table-hover table-bordered">
 						<thead>
 							<tr>
-								<th>课程编号</th>
+								<!-- 								<th>课程编号</th>
+ -->
 								<th>课程名</th>
-								<th>开课学期</th>
-								<th>选课学生</th>
-								<th>助教</th>
+								<th>作业编号</th>
+								<th>作业描述</th>
+								<th>提交截止日期</th>
+								<th>批改截止日期</th>
+
 							</tr>
 						</thead>
-						<s:iterator value="teacherCourses" id="course">
-							<tr>
-								<td><s:property value="#course.courseId" /></td>
-								<td><s:property value="#course.courseName" /></td>
-								<td><s:property value="#course.semester" /></td>
-								<td><a
-									href="teacherGetStudent.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
-								<td><a
-									href="teacherGetTA.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
+						<s:iterator value="allAssigns" id="column">
+							<s:set var="total" name="total" value="#column.value.size" />
+							<s:iterator value="#column.value" id="col" status="st">
+								<tr>
+									<s:if test="#st.first">
+										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
+ --%>
+										<td rowspan="${total}"><s:property value="courseName" /></td>
 
+									</s:if>
+									<td><s:property value="number" /></td>
+									<td><s:property value="description" /></td>
+									<td><s:property value="submissionDeadline" /></td>
+									<td><s:property value="gradeDeadline" /></td>
 
-							</tr>
+								</tr>
+							</s:iterator>
+
 						</s:iterator>
 					</table>
 
 
 				</div>
+
+
+
+
+
 			</div>
+
+
+
+
+
+
 		</div>
+
+
+	</div>
+
+
+
 	</div>
 
 </body>

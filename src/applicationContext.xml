@@ -64,6 +64,16 @@
 		</property>
 
 	</bean>
+	
+	<bean id="AssignmentDao" class="tss.dao.impl.AssignmentDaoImpl">
+		<property name="DaoHelper">
+			<ref bean="DaoHelper" />
+		</property>
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
+		</property>
+
+	</bean>
 
 	<bean id="StudentDao" class="tss.dao.impl.StudentDaoImpl">
 		<property name="DaoHelper">
@@ -92,6 +102,9 @@
 		</property>
 		<property name="StudentDao">
 			<ref bean="StudentDao" />
+		</property>
+		<property name="AssignmentDao">
+			<ref bean="AssignmentDao" />
 		</property>
 
 	</bean>
@@ -179,6 +192,13 @@
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
+	
+	<bean id="TeacherGetAssignments" class="tss.action.TeacherGetAssignments">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
 	
 	
 </beans>

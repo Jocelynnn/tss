@@ -1,9 +1,12 @@
 package tss.service.impl;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import tss.dao.AssignmentDao;
 import tss.dao.CourseDao;
 import tss.dao.StudentDao;
+import tss.model.Assignment;
 import tss.model.Course;
 import tss.model.User;
 import tss.service.TeacherService;
@@ -11,6 +14,15 @@ import tss.service.TeacherService;
 public class TeacherServiceImpl implements TeacherService {
 	private CourseDao courseDao;
 	private StudentDao studentDao;
+	private AssignmentDao assignmentDao;
+
+	public AssignmentDao getAssignmentDao() {
+		return assignmentDao;
+	}
+
+	public void setAssignmentDao(AssignmentDao assignmentDao) {
+		this.assignmentDao = assignmentDao;
+	}
 
 	public StudentDao getStudentDao() {
 		return studentDao;
@@ -80,6 +92,13 @@ public class TeacherServiceImpl implements TeacherService {
 	public boolean removeCourseTA(String courseId, String taId) {
 		// TODO Auto-generated method stub
 		return courseDao.removeCourseTA(courseId, taId);
+	}
+
+	@Override
+	public Map<String,ArrayList<Assignment>> getCourseAssignments(String teacherId) {
+		// TODO Auto-generated method stub
+		
+		return assignmentDao.getCourseAssignment(teacherId);
 	}
 
 }

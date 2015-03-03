@@ -88,6 +88,11 @@
 			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="teacherGetAssignments" class="TeacherGetAssignments">
+			<result name="success">/views/teacherIndex2.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 
 
 
