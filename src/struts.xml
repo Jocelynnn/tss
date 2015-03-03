@@ -15,7 +15,6 @@
 			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
 			<result name="student" type="redirectAction">
 				<param name="actionName">studentSearchCourse</param>
-				<param name="userName">${userName}</param>
 			</result>
 		</action>
 

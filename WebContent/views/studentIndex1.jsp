@@ -30,8 +30,7 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/studentIndex1.jsp">我的课程</a></li>
+									<li class="active"><s:a href="/tss/action/studentSearchCourse.action" >我的课程</s:a></li>
 									<li><a
 										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">我的作业</a></li>
 
