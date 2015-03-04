@@ -40,7 +40,7 @@ public class SubmissionDaoImpl implements SubmissionDao {
 				submissionList
 						.add(new Submission(result.getInt("id"), result
 								.getInt("assignmentId"), result
-								.getString("studentId"), result
+								.getString("studentId"), result.getString("studentName"),result
 								.getString("submission"), result
 								.getDate("submitDate"), result
 								.getString("grader"), result.getInt("grade"),
