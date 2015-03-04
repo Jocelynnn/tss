@@ -5,6 +5,7 @@ import java.util.Map;
 
 import tss.model.Assignment;
 import tss.model.Course;
+import tss.model.Submission;
 import tss.model.User;
 
 public interface TeacherService {
@@ -13,6 +14,8 @@ public interface TeacherService {
 	public ArrayList<User> searchStudent(String searchkey);
 	public ArrayList<User> getAllStudent();
 	public ArrayList<User> getCourseTA(String courseId);
+	
+	public ArrayList<Submission> submissionList(int assignmentId);
 	
 	public Map<String,ArrayList<Assignment>> getCourseAssignments(String teacherId);	
 	public boolean addCourseStudent(String courseId,String studentId);

@@ -8,6 +8,7 @@ import tss.dao.CourseDao;
 import tss.dao.StudentDao;
 import tss.model.Assignment;
 import tss.model.Course;
+import tss.model.Submission;
 import tss.model.User;
 import tss.service.TeacherService;
 
@@ -111,6 +112,12 @@ public class TeacherServiceImpl implements TeacherService {
 	public String getCourseName(String courseId) {
 		// TODO Auto-generated method stub
 		return courseDao.getCourseName(courseId);
+	}
+
+	@Override
+	public ArrayList<Submission> submissionList(int assignmentId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

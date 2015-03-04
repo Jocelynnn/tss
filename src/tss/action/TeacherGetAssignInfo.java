@@ -1,5 +1,9 @@
 package tss.action;
 
+import java.util.ArrayList;
+
+import tss.model.Assignment;
+import tss.model.Submission;
 import tss.service.TeacherService;
 
 public class TeacherGetAssignInfo extends BaseAction {
@@ -10,9 +14,22 @@ public class TeacherGetAssignInfo extends BaseAction {
 	private static final long serialVersionUID = 5875780621512792364L;
 	private TeacherService teacherService;
 	private int assignId;
+	private ArrayList<Submission> submissionList;
 	
 	
 	
+	public ArrayList<Submission> getSubmissionList() {
+		return submissionList;
+	}
+
+
+
+	public void setSubmissionList(ArrayList<Submission> submissionList) {
+		this.submissionList = submissionList;
+	}
+
+
+
 	public TeacherService getTeacherService() {
 		return teacherService;
 	}
@@ -39,6 +56,7 @@ public class TeacherGetAssignInfo extends BaseAction {
 
 	public String execute(){
 		assignId=Integer.valueOf(request.getParameter("assignId"));
+		
 		
 		return SUCCESS;
 	}

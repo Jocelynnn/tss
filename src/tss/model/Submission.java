@@ -5,6 +5,23 @@ import java.util.Date;
 public class Submission {
 	public int id;
 	public int assignmentId;
+	public Submission(int id, int assignmentId, String studentId,
+			String submission, Date submitDate, String grader, int grade,
+			String evaluation, int isGraded, int isPassed) {
+		super();
+		this.id = id;
+		this.assignmentId = assignmentId;
+		this.studentId = studentId;
+		this.submission = submission;
+		this.submitDate = submitDate;
+		this.grader = grader;
+		this.grade = grade;
+		this.evaluation = evaluation;
+		this.isGraded = isGraded;
+		this.isPassed = isPassed;
+	}
+
+
 	public String studentId;
 	
 	public String submission;
