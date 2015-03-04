@@ -202,28 +202,28 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public boolean addCourseTA(String courseId, String taId) {
 		// TODO Auto-generated method stub
-				Connection con = daoHelper.getConnection();
-				PreparedStatement stmt = null;
-				ResultSet result = null;
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
 
-				try {
-					stmt = con
-							.prepareStatement("INSERT INTO teachingAssistant(assistantName, courseId) values (?,?)");
-					stmt.setString(1, taId);
-					stmt.setString(2, courseId);
+		try {
+			stmt = con
+					.prepareStatement("INSERT INTO teachingAssistant(assistantName, courseId) values (?,?)");
+			stmt.setString(1, taId);
+			stmt.setString(2, courseId);
 
-					if (stmt.executeUpdate() != 0) {
-						return true;
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					daoHelper.closeConnection(con);
-					daoHelper.closePreparedStatement(stmt);
-					daoHelper.closeResult(result);
-				}
+			if (stmt.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
 
-				return false;
+		return false;
 	}
 
 	@Override
@@ -283,31 +283,61 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public String getCourseName(String courseId) {
 		// TODO Auto-generated method stub
-				Connection con = daoHelper.getConnection();
-				PreparedStatement stmt = null;
-				ResultSet result = null;
-				String courseName=null;
-				
-				try {
-					stmt = con
-							.prepareStatement("SELECT * FROM course WHERE courseId = ?");
-					stmt.setString(1, courseId);
-					result = stmt.executeQuery();
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String courseName = null;
 
-					while (result.next()) {
-						courseName=result.getString("courseName");
-					}
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM course WHERE courseId = ?");
+			stmt.setString(1, courseId);
+			result = stmt.executeQuery();
 
-					return courseName;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					daoHelper.closeConnection(con);
-					daoHelper.closePreparedStatement(stmt);
-					daoHelper.closeResult(result);
-				}
+			while (result.next()) {
+				courseName = result.getString("courseName");
+			}
 
-				return null;
+			return courseName;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getTACourses(String taId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<String> courseList = new ArrayList<String>();
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM teachingAssistant WHERE assistantId = ?");
+			stmt.setString(1, taId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				courseList.add(result.getString("courseId"));
+			}
+
+			return courseList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
 	}
 
 }

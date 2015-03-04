@@ -9,6 +9,7 @@ public interface CourseDao {
 	public boolean addCourse(Course course);
 	public ArrayList<Course> getCourses(String searchKey); 
 	public ArrayList<Course> getTeacherCourses(String teacherName);
+	public ArrayList<String> getTACourses(String taId);
 	public ArrayList<User> getCourseStudent(String courseId);
 	
 	public boolean addCourseStudent(String courseId,String studentId);

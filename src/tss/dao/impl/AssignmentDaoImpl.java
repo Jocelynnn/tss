@@ -124,7 +124,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
 		Connection con = daoHelper.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
-		String courseName=null;
 		Assignment a=null;
 		
 		try {
@@ -156,6 +155,58 @@ public class AssignmentDaoImpl implements AssignmentDao {
 		}
 
 		return null;
+	}
+
+	@Override
+	public Map<String, ArrayList<Assignment>> getTACourseAssignment(String taId) {
+		// TODO Auto-generated method stub
+		
+				Map<String, ArrayList<Assignment>> allAssign=new HashMap<String,ArrayList<Assignment>>();
+				ArrayList<String> courses=courseDao.getTACourses(taId);
+				
+				Connection con = daoHelper.getConnection();
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+				
+
+				for(String c:courses){
+					
+					try {
+						ArrayList<Assignment> assigns=new ArrayList<Assignment>();
+
+						stmt = con
+								.prepareStatement("SELECT * FROM assignment WHERE courseId = ?");
+						stmt.setString(1, c);
+						result = stmt.executeQuery();
+
+						while (result.next()) {
+							assigns.add(new Assignment(result.getInt("id"), result
+									.getString("courseId"), result.getString("courseName"),
+									result.getInt("number"), result
+											.getString("description"), result
+											.getString("format"), result
+											.getDate("submissionDeadline"), result
+											.getDate("gradeDeadline"), result
+											.getInt("score"), result.getString("level"),
+									result.getString("sample"), result
+											.getString("generalGrade")));
+						}
+						allAssign.put(c, assigns);
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} 
+				}
+				
+					daoHelper.closeConnection(con);
+					daoHelper.closePreparedStatement(stmt);
+					daoHelper.closeResult(result);
+				
+				
+				if(!allAssign.isEmpty())
+					return allAssign;
+				else
+					return null;
 	}
 
 }

@@ -125,7 +125,7 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public ArrayList<Submission> submissionList(int assignmentId) {
+	public ArrayList<Submission> getSubmissionList(int assignmentId) {
 		// TODO Auto-generated method stub
 		return submissionDao.getAssignSubmissions(assignmentId);
 	}

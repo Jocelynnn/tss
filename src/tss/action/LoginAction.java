@@ -5,6 +5,7 @@ import java.util.Map;
 
 import tss.model.Assignment;
 import tss.model.Course;
+import tss.service.TaService;
 import tss.service.TeacherService;
 import tss.service.UserService;
 
@@ -14,6 +15,7 @@ public class LoginAction extends BaseAction {
 
 	private UserService userService;
 	private TeacherService teacherService;
+	private TaService taService;
 	ArrayList<Course> teacherCourses;
 	Map<String,ArrayList<Assignment>> allAssigns;
 	private String userName;
@@ -24,6 +26,14 @@ public class LoginAction extends BaseAction {
 
 	public void setAllAssigns(Map<String, ArrayList<Assignment>> allAssigns) {
 		this.allAssigns = allAssigns;
+	}
+
+	public TaService getTaService() {
+		return taService;
+	}
+
+	public void setTaService(TaService taService) {
+		this.taService = taService;
 	}
 
 	public ArrayList<Course> getTeacherCourses() {
@@ -105,9 +115,12 @@ public class LoginAction extends BaseAction {
 
 			// 助教
 		case 4:
+			allAssigns=taService.getCourseAssignments(request
+					.getParameter("username"));
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
+			
 			return "teachingAssistant";
 
 			// 教学负责人

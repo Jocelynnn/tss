@@ -34,7 +34,7 @@
 									<li><a href="#">助教</a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">助教<strong class="caret"></strong></a>
+										class="dropdown-toggle" href="#">学生<strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
 
@@ -51,43 +51,42 @@
 				</div>
 
 				<div>
-					<table class="table table-hover table-bordered">
+					<table class="table table-hover table-bordered ">
 						<thead>
 							<tr>
-								<!-- 								<th>课程编号</th>
- -->
-								<th>课程名</th>
-								<th>作业编号</th>
-								<th>作业描述</th>
-								<th>满分</th>
-								<th>难度</th>
-								<th>提交截止日期</th>
-								<th>批改截止日期</th>
-
+								<th>编号</th>
+								<th>学生学号</th>
+								<th>学生姓名</th>
+								<th>文件路径</th>
+								<th>提交时间</th>
+								<th>批改人</th>
+								<th>分数</th>
+								<th>评价</th>
+								<th>审核</th>
 							</tr>
 						</thead>
-						<s:iterator value="allAssigns" id="column">
-							<s:set var="total" name="total" value="#column.value.size" />
-							<s:iterator value="#column.value" id="col" status="st">
-								<tr>
-									<s:if test="#st.first">
-										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
- --%>
-										<td rowspan="${total}"><s:property value="courseName" /></td>
-
-									</s:if>
-									<td><a
-										href="/tss/action/taGetAssignSubmission?assignId=<s:property value="id" />"><s:property
-												value="number" /></a></td>
-									<td><s:property value="description" /></td>
-									<td><s:property value="score" /></td>
-									<td><s:property value="level" /></td>
-									<td><s:property value="submissionDeadline" /></td>
-									<td><s:property value="gradeDeadline" /></td>
-
-								</tr>
-							</s:iterator>
-							
+						<s:iterator value="submissionList" id="submission">
+							<tr>
+								<td><s:property value="#submission.id" /></td>
+								<td><s:property value="#submission.studentId" /></td>
+								<td><s:property value="#submission.studentName" /></td>
+								<td><s:property value="#submission.submission" /></td>
+								<%-- <td><s:date name="#submission.submitDate"
+										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
+								<td><s:property value="#submission.submitDate" /></td>
+								<td><s:property value="#submission.grader" /></td>
+								<td><s:property value="#submission.grade" /></td>
+								<td><s:property value="#submission.evaluation" /></td>
+								<s:if test="%{#submission.isPassed==1}">
+									<td><a href="#">未审核</a></td>
+								</s:if>
+								<s:if test="%{#submission.isPassed==2}">
+									<td><a href="#">已通过</a></td>
+								</s:if>
+								<s:if test="%{#submission.isPassed==3}">
+									<td><a href="#">未通过</a></td>
+								</s:if>
+							</tr>
 						</s:iterator>
 					</table>
 

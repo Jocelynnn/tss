@@ -129,9 +129,12 @@
 		</property>
 	</bean>
 
-	<bean id="TAService" class="tss.service.impl.TAServiceImpl">
+	<bean id="TaService" class="tss.service.impl.TaServiceImpl">
 		<property name="AssignmentDao">
 			<ref bean="AssignmentDao" />
+		</property>
+		<property name="SubmissionDao">
+			<ref bean="SubmissionDao" />
 		</property>
 	</bean>
 	<bean id="LoginAction" class="tss.action.LoginAction">
@@ -141,8 +144,8 @@
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
-		<property name="TAService">
-			<ref bean="TAService" />
+		<property name="TaService">
+			<ref bean="TaService" />
 		</property>
 	</bean>
 
@@ -246,7 +249,11 @@
 			<ref bean="StudentService" />
 		</property>
 	</bean>
-
+	<bean id="TAGetAssignSubmission" class="tss.action.TAGetAssignSubmission">
+		<property name="TaService">
+			<ref bean="TaService" />
+		</property>
+	</bean>
 	<bean id="TeacherUpload" class="tss.action.UploadTeacherSampleAction">
 	</bean>
 

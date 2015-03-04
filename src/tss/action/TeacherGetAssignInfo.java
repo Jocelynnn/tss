@@ -102,7 +102,7 @@ public class TeacherGetAssignInfo extends BaseAction {
 		
 		courseName=assignment.getCourseName();
 		assignNumber=assignment.getNumber();
-		submissionList=teacherService.submissionList(assignId);
+		submissionList=teacherService.getSubmissionList(assignId);
 		
 		
 		return SUCCESS;

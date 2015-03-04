@@ -15,7 +15,7 @@ public interface TeacherService {
 	public ArrayList<User> getAllStudent();
 	public ArrayList<User> getCourseTA(String courseId);
 	
-	public ArrayList<Submission> submissionList(int assignmentId);
+	public ArrayList<Submission> getSubmissionList(int assignmentId);
 	
 	public Map<String,ArrayList<Assignment>> getCourseAssignments(String teacherId);	
 	public boolean addCourseStudent(String courseId,String studentId);

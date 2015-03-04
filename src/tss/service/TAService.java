@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import tss.model.Assignment;
+import tss.model.Submission;
 
-public interface TAService {
+public interface TaService {
 	public 	Map<String,ArrayList<Assignment>> getCourseAssignments(String taId);
+	public Assignment getAssignment(int assignId);
+	public ArrayList<Submission> getSubmissionList(int assignmentId);
+
 
 
 }
