@@ -117,11 +117,10 @@
 
 						<div>
 							<s:label>作业文件格式</s:label>
-							<input type="checkbox" name="format" value="doc">doc<br />
-							<input type="checkbox" name="format" value="pdf">pdf<br />
-							<input type="checkbox" name="format" value="zip">zip<br />
+							<input type="checkbox" name="format" value="doc">doc
+							<input type="checkbox" name="format" value="pdf">pdf
+							<input type="checkbox" name="format" value="zip">zip
 
-							<s:textfield>其他 </s:textfield>
 						</div>
 
 						<div>

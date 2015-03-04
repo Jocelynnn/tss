@@ -30,9 +30,9 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li><s:a href="/tss/action/teacherGetCourse.action">课程管理</s:a></li>
 									<li class="active"><s:a
-											href="teacherGetAssignments.action">作业管理</s:a></li>
+											href="/tss/action/teacherGetAssignments.action">作业管理</s:a></li>
 
 
 
@@ -65,6 +65,7 @@
 								<th>作业编号</th>
 								<th>作业描述</th>
 								<th>满分</th>
+								<th>难度</th>
 								<th>提交截止日期</th>
 								<th>批改截止日期</th>
 
@@ -80,17 +81,18 @@
 										<td rowspan="${total}"><s:property value="courseName" /></td>
 
 									</s:if>
-									<td><s:property value="number" /></td>
-									<td><s:property value="description" /></td>
+									<td><s:a href="/tss/action/"><s:property value="number" /></s:a></td>
 									<td><s:property value="description" /></td>
 									<td><s:property value="score" /></td>
+									<td><s:property value="level" /></td>
+									<td><s:property value="submissionDeadline" /></td>
 									<td><s:property value="gradeDeadline" /></td>
 
 								</tr>
 							</s:iterator>
 							<tr>
 								<td></td>
-								<td colspan=4><a
+								<td colspan=6><a
 									href="/tss/views/teacherIndex2_addAssignment.jsp?courseId=<s:property value="#column.key"/>&count=<s:property value="#column.value.size+1"/>">新作业</a></td>
 							</tr>
 						</s:iterator>

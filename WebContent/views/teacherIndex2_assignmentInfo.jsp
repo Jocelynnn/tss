@@ -30,9 +30,9 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li><s:a href="/tss/action/teacherGetCourse.action">课程管理</s:a></li>
 									<li class="active"><s:a
-											href="teacherGetAssignments.action">作业管理</s:a></li>
+											href="/tss/action/teacherGetAssignments.action">作业管理</s:a></li>
 
 
 

@@ -105,6 +105,11 @@
 			<result name="success">/views/teacherIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="teacherGetAssignInfo" class="TeacherGetAssignInfo">
+			<result name="success">/views/teacherIndex2_assignmentInfo.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 
 		<action name="teacherAddAssignment" class="TeacherAddAssignment">
 			<result name="success" type="redirectAction">
@@ -112,6 +117,8 @@
 			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		
 
 		<action name="upload" class="Upload">
 			<result name="success">/views/message.jsp</result>

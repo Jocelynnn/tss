@@ -210,6 +210,12 @@
 		</property>
 	</bean>
 	
+	<bean id="TeacherGetAssignInfo" class="tss.action.TeacherGetAssignInfo">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
 	
 	<bean id="StudentSearchCourse" class="tss.action.StudentSearchCourse">
 		<property name="StudentService">
@@ -218,7 +224,6 @@
 	</bean>
 	
 	<bean id="Upload" class="tss.action.UploadAction">
-		
 	</bean>
 	
 	
