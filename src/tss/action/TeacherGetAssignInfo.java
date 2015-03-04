@@ -38,8 +38,8 @@ public class TeacherGetAssignInfo extends BaseAction {
 
 
 	public String execute(){
-		assignId=Integer.valueOf(request.getParameter("id"));
+		assignId=Integer.valueOf(request.getParameter("assignId"));
 		
-		return null;
+		return SUCCESS;
 	}
 }

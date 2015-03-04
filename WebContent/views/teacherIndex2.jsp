@@ -81,7 +81,7 @@
 										<td rowspan="${total}"><s:property value="courseName" /></td>
 
 									</s:if>
-									<td><s:a href="/tss/action/"><s:property value="number" /></s:a></td>
+									<td><a href="/tss/action/teacherGetAssignInfo?assignId=<s:property value="id" />"><s:property value="number" /></a></td>
 									<td><s:property value="description" /></td>
 									<td><s:property value="score" /></td>
 									<td><s:property value="level" /></td>

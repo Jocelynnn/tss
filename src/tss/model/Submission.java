@@ -5,6 +5,7 @@ import java.util.Date;
 public class Submission {
 	public int id;
 	public int assignmentId;
+	public String studentId;
 	
 	public String submission;
 	public Date submitDate;
