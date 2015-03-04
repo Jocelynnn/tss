@@ -9,15 +9,15 @@ public class Submission {
 	
 	public String studentId;
 	public String studentName;
-	
-	
-
-
 	public String submission;
 	public Date submitDate;
 	public String grader;
 	public int grade;
 	public String evaluation;
+//	(1未批改 2已批改）
+	public int isGraded;
+//	1 未审阅 2已通过 3未通过 需重批
+	public int isPassed;
 	
 	
 	public String getStudentName() {
@@ -47,10 +47,7 @@ public Submission(int id, int assignmentId, String studentId,
 	}
 
 
-//	(1未批改 2已批改）
-	public int isGraded;
-//	1 未审阅 3已通过 3未通过 需重批
-	public int isPassed;
+
 	
 	
 	

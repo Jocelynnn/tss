@@ -109,13 +109,21 @@
 								<td><s:property value="#submission.studentId" /></td>
 								<td><s:property value="#submission.studentName" /></td>
 								<td><s:property value="#submission.submission" /></td>
-								<td><s:date name="#submission.submitDate"
-										format="yyyy/MM/dd hh:mm:ss" /></td>
+								<%-- <td><s:date name="#submission.submitDate"
+										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
+								<td><s:property value="#submission.submitDate" /></td>
 								<td><s:property value="#submission.grader" /></td>
 								<td><s:property value="#submission.grade" /></td>
 								<td><s:property value="#submission.evaluation" /></td>
-								<td><a href="#">通过</a></td>
-
+								<s:if test="%{#submission.isPassed==1}">
+									<td><a href="#">未审核</a></td>
+								</s:if>
+								<s:if test="%{#submission.isPassed==2}">
+									<td><a href="#">已通过</a></td>
+								</s:if>
+								<s:if test="%{#submission.isPassed==3}">
+									<td><a href="#">未通过</a></td>
+								</s:if>
 							</tr>
 						</s:iterator>
 					</table>

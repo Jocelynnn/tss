@@ -1,7 +1,9 @@
 package tss.action;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import tss.model.Assignment;
 import tss.model.Course;
 import tss.service.TeacherService;
 import tss.service.UserService;
@@ -13,8 +15,17 @@ public class LoginAction extends BaseAction {
 	private UserService userService;
 	private TeacherService teacherService;
 	ArrayList<Course> teacherCourses;
+	Map<String,ArrayList<Assignment>> allAssigns;
 	private String userName;
 	
+	public Map<String, ArrayList<Assignment>> getAllAssigns() {
+		return allAssigns;
+	}
+
+	public void setAllAssigns(Map<String, ArrayList<Assignment>> allAssigns) {
+		this.allAssigns = allAssigns;
+	}
+
 	public ArrayList<Course> getTeacherCourses() {
 		return teacherCourses;
 	}
