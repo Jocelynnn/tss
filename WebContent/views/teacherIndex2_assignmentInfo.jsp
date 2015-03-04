@@ -12,6 +12,7 @@
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 
+
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
@@ -61,27 +62,24 @@
 				</div>
 				<div>
 					<s:label>作业编号:</s:label>
-					<s:property value="assignment"></s:property>
+					<s:property value="assignNumber"></s:property>
 				</div>
 
 
 
-				<form action="/tss/action/upload.action"
+				<form action="/tss/action/teacherUpload.action"
 					enctype="multipart/form-data" method="post">
-					文件:<input type="file" name="image"> <input type="submit"
-						value="上传" />
+					<s:label>作业范例：</s:label>
+					<input type="file" name="image" id="image">
+					<button class="btn" type="submit">上传</button>
+					<s:property value="alterstr" />
 				</form>
 
 				<div>
 					<s:label>总体点评</s:label>
 					<s:textarea></s:textarea>
-
+					<button class="btn" type="submit">提交</button>
 				</div>
-
-
-
-
-
 			</div>
 
 

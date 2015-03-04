@@ -22,6 +22,8 @@ public class TeacherGetAssignInfo extends BaseAction {
 	
 	
 	
+
+
 	public int getAssignNumber() {
 		return assignNumber;
 	}

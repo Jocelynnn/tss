@@ -12,6 +12,8 @@
 	<!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
 	<constant name="struts.multipart.saveDir " value="/temp" />
 
+	
+	
 	<package name="default" extends="struts-default" namespace="/action">
 		<action name="login" class="LoginAction">
 			<result name="error">/views/error.jsp</result>
@@ -105,7 +107,7 @@
 			<result name="success">/views/teacherIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherGetAssignInfo" class="TeacherGetAssignInfo">
 			<result name="success">/views/teacherIndex2_assignmentInfo.jsp</result>
 			<result name="error">/views/error.jsp</result>
@@ -117,16 +119,13 @@
 			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
-		
 
-		<action name="upload" class="Upload">
-			<result name="success">/views/message.jsp</result>
+
+
+		<action name="teacherUpload" class="TeacherUpload">
+			<result name="success">/views/teacherIndex2_assignmentInfo.jsp</result>
+			<result name="error">/views/error.jsp</result>
 		</action>
-
-
-
-
 
 
 	</package>

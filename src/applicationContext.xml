@@ -235,7 +235,7 @@
 		</property>
 	</bean>
 	
-	<bean id="Upload" class="tss.action.UploadAction">
+	<bean id="TeacherUpload" class="tss.action.UploadTeacherSampleAction">
 	</bean>
 	
 	
