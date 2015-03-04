@@ -5,7 +5,12 @@
 
 <struts>
 	<constant name="struts.ui.theme" value="simple" />
+	<!--解决乱码 -->
 	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+	<constant name="struts.multipart.maxSize" value="10701096" />
+	<!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+	<constant name="struts.multipart.saveDir " value="/temp" />
 
 	<package name="default" extends="struts-default" namespace="/action">
 		<action name="login" class="LoginAction">
@@ -106,6 +111,10 @@
 				<param name="actionName">teacherGetAssignments</param>
 			</result>
 			<result name="error">/views/error.jsp</result>
+		</action>
+
+		<action name="upload" class="Upload">
+			<result name="success">/views/message.jsp</result>
 		</action>
 
 

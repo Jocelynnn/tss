@@ -217,4 +217,9 @@
 		</property>
 	</bean>
 	
+	<bean id="Upload" class="tss.action.UploadAction">
+		
+	</bean>
+	
+	
 </beans>

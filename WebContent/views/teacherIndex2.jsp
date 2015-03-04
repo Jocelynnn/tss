@@ -64,6 +64,7 @@
 								<th>课程名</th>
 								<th>作业编号</th>
 								<th>作业描述</th>
+								<th>满分</th>
 								<th>提交截止日期</th>
 								<th>批改截止日期</th>
 
@@ -81,7 +82,8 @@
 									</s:if>
 									<td><s:property value="number" /></td>
 									<td><s:property value="description" /></td>
-									<td><s:property value="submissionDeadline" /></td>
+									<td><s:property value="description" /></td>
+									<td><s:property value="score" /></td>
 									<td><s:property value="gradeDeadline" /></td>
 
 								</tr>

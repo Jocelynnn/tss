@@ -22,11 +22,14 @@ public class AdminAddCourses extends BaseAction {
 	private static final long serialVersionUID = 2708091952575783614L;
 	
 	public String execute(){
+		String[] semesters={"2015 winter","2015 fall","2015 summber","2015 spring"};
 		String courseid=request.getParameter("courseid");
 		System.out.println(courseid);
 		String courseName=request.getParameter("coursename");
 		String description=request.getParameter("description");
-		String semester=request.getParameter("semester");
+		
+		int s=Integer.valueOf(request.getParameter("semester"));
+		String semester=semesters[s];
 		String instructor=request.getParameter("instructor");
 		Date date=new Date();
 
