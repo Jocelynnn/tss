@@ -8,12 +8,20 @@ import java.util.ArrayList;
 
 import tss.dao.DaoHelper;
 import tss.dao.SubmissionDao;
-import tss.model.Course;
 import tss.model.Submission;
 
 public class SubmissionDaoImpl implements SubmissionDao {
 
 	private DaoHelper daoHelper;
+
+	public DaoHelper getDaoHelper() {
+		return daoHelper;
+	}
+
+	public void setDaoHelper(DaoHelper daoHelper) {
+		this.daoHelper = daoHelper;
+	}
+
 	@Override
 	public ArrayList<Submission> getAssignSubmissions(int assignmentId) {
 		// TODO Auto-generated method stub
@@ -29,12 +37,16 @@ public class SubmissionDaoImpl implements SubmissionDao {
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				submissionList.add(new Submission(result.getInt("id"), result
-						.getInt("assignmentId"), result.getString("studentId"),result
-						.getString("submission"),
-						result.getDate("submitDate"), result
-								.getString("grader"), result
-								.getInt("grade"),result.getString("evaluation"),result.getInt("isGraded"),result.getInt("isPassed")));
+				submissionList
+						.add(new Submission(result.getInt("id"), result
+								.getInt("assignmentId"), result
+								.getString("studentId"), result
+								.getString("submission"), result
+								.getDate("submitDate"), result
+								.getString("grader"), result.getInt("grade"),
+								result.getString("evaluation"), result
+										.getInt("isGraded"), result
+										.getInt("isPassed")));
 			}
 
 			return submissionList;

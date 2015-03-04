@@ -14,10 +14,50 @@ public class TeacherGetAssignInfo extends BaseAction {
 	private static final long serialVersionUID = 5875780621512792364L;
 	private TeacherService teacherService;
 	private int assignId;
+	private int assignNumber;
+
+	private Assignment assignment;
+	private String courseName;
 	private ArrayList<Submission> submissionList;
 	
 	
 	
+	public int getAssignNumber() {
+		return assignNumber;
+	}
+
+
+
+	public void setAssignNumber(int assignNumber) {
+		this.assignNumber = assignNumber;
+	}
+
+
+
+	public Assignment getAssignment() {
+		return assignment;
+	}
+
+
+
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
+	}
+
+
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+
+
 	public ArrayList<Submission> getSubmissionList() {
 		return submissionList;
 	}
@@ -56,6 +96,11 @@ public class TeacherGetAssignInfo extends BaseAction {
 
 	public String execute(){
 		assignId=Integer.valueOf(request.getParameter("assignId"));
+		assignment=teacherService.getAssignment(assignId);
+		
+		courseName=assignment.getCourseName();
+		assignNumber=assignment.getNumber();
+		submissionList=teacherService.submissionList(assignId);
 		
 		
 		return SUCCESS;

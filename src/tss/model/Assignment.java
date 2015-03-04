@@ -31,6 +31,12 @@ public class Assignment {
 		this.generalGrade = generalGrade;
 	}
 	public String courseName;
+	public String getCourseName() {
+		return courseName;
+	}
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 	public int number;
 	public String description;
 	public String format;

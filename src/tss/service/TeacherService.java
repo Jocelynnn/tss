@@ -25,4 +25,5 @@ public interface TeacherService {
 	public boolean removeCourseTA(String courseId,String taId);
 	
 	public String getCourseName(String courseId);
+	public Assignment getAssignment(int assignId);
 }

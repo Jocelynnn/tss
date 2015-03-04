@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ taglib prefix="s" uri="/struts-tags"%>
-	
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,7 +45,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
 
-											<li><a href="#">登出</a></li>
+											<li><a href="/tss/action/logout.action">登出</a></li>
 											<li class="divider"></li>
 											<li><a href="#">链接3</a></li>
 										</ul></li>
@@ -55,54 +55,28 @@
 					</div>
 				</div>
 
-				<label>当前课程： 课程名</label>
-
-				<div class="control-group">
-					<label class="control-label" for="number">作业编号</label>
-					
+				<div>
+					<s:label>当前课程:  </s:label>
+					<s:property value="courseName"></s:property>
+				</div>
+				<div>
+					<s:label>作业编号:</s:label>
+					<s:property value="assignment"></s:property>
 				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="description">作业描述</label>
-					
-				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="submissionDeadline">提交截止日期</label>
-					
-				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="gradeDealine">批改截止日期</label>
-					
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="format">作业文件格式</label>
-					
-				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="fullGrade">满分</label>
-					
-				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="difficulty">难度：三个选项</label>
-					
-				</div>
-				
 				<div class="control-group">
 					<label class="control-label" for="example">样例：上传文件</label>
-					
+
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="generalGrade">总体点评</label>
-					
+
 				</div>
-				
-				
+
+
 
 
 
@@ -119,8 +93,6 @@
 	</div>
 
 
-
-	</div>
 
 </body>
 </html>

@@ -118,4 +118,44 @@ public class AssignmentDaoImpl implements AssignmentDao {
 		
 		return false;	}
 
+	@Override
+	public Assignment getAssignment(int assignId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String courseName=null;
+		Assignment a=null;
+		
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM assignment WHERE assignmentId = ?");
+			stmt.setInt(1, assignId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				a=new Assignment(result.getInt("id"), result
+						.getString("courseId"), result.getString("courseName"),
+						result.getInt("number"), result
+								.getString("description"), result
+								.getString("format"), result
+								.getDate("submissionDeadline"), result
+								.getDate("gradeDeadline"), result
+								.getInt("score"), result.getString("level"),
+						result.getString("sample"), result
+								.getString("generalGrade"));
+			}
+
+			return a;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
 }

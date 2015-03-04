@@ -57,6 +57,8 @@
 		</property>
 
 	</bean>
+	
+	
 
 	<bean id="CourseDao" class="tss.dao.impl.CourseDaoImpl">
 		<property name="DaoHelper">
@@ -73,6 +75,13 @@
 			<ref bean="CourseDao" />
 		</property>
 
+	</bean>
+	
+	<bean id="SubmissionDao" class="tss.dao.impl.SubmissionDaoImpl">
+		<property name="DaoHelper">
+			<ref bean="DaoHelper" />
+		</property>
+		
 	</bean>
 
 	<bean id="StudentDao" class="tss.dao.impl.StudentDaoImpl">

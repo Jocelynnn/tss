@@ -6,6 +6,7 @@ import java.util.Map;
 import tss.dao.AssignmentDao;
 import tss.dao.CourseDao;
 import tss.dao.StudentDao;
+import tss.dao.SubmissionDao;
 import tss.model.Assignment;
 import tss.model.Course;
 import tss.model.Submission;
@@ -16,6 +17,7 @@ public class TeacherServiceImpl implements TeacherService {
 	private CourseDao courseDao;
 	private StudentDao studentDao;
 	private AssignmentDao assignmentDao;
+	private SubmissionDao submissionDao;
 
 	public AssignmentDao getAssignmentDao() {
 		return assignmentDao;
@@ -117,7 +119,13 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public ArrayList<Submission> submissionList(int assignmentId) {
 		// TODO Auto-generated method stub
-		return null;
+		return submissionDao.getAssignSubmissions(assignmentId);
+	}
+
+	@Override
+	public Assignment getAssignment(int assignId) {
+		// TODO Auto-generated method stub
+		return assignmentDao.getAssignment(assignId);
 	}
 
 }
