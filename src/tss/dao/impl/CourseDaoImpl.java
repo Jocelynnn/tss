@@ -280,4 +280,34 @@ public class CourseDaoImpl implements CourseDao {
 		return false;
 	}
 
+	@Override
+	public String getCourseName(String courseId) {
+		// TODO Auto-generated method stub
+				Connection con = daoHelper.getConnection();
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+				String courseName=null;
+				
+				try {
+					stmt = con
+							.prepareStatement("SELECT * FROM course WHERE courseId = ?");
+					stmt.setString(1, courseId);
+					result = stmt.executeQuery();
+
+					while (result.next()) {
+						courseName=result.getString("courseName");
+					}
+
+					return courseName;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					daoHelper.closeConnection(con);
+					daoHelper.closePreparedStatement(stmt);
+					daoHelper.closeResult(result);
+				}
+
+				return null;
+	}
+
 }

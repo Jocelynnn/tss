@@ -107,4 +107,10 @@ public class TeacherServiceImpl implements TeacherService {
 		return assignmentDao.save(a);
 	}
 
+	@Override
+	public String getCourseName(String courseId) {
+		// TODO Auto-generated method stub
+		return courseDao.getCourseName(courseId);
+	}
+
 }

@@ -12,18 +12,6 @@ public class Assignment {
 	@Id
 	public int id;
 	public String courseId;
-	public String courseName;
-	public int number;
-	public String description;
-	public String format;
-	public Date submissionDeadline;
-	public Date gradeDeadline;
-	public int score;
-	public String level;
-	public String sample;
-	public String generalGrade;
-	
-	
 	public Assignment(int id, String courseId, String courseName, int number,
 			String description, String format, Date submissionDeadline,
 			Date gradeDeadline, int score, String level, String sample,
@@ -41,6 +29,33 @@ public class Assignment {
 		this.level = level;
 		this.sample = sample;
 		this.generalGrade = generalGrade;
+	}
+	public String courseName;
+	public int number;
+	public String description;
+	public String format;
+	public Date submissionDeadline;
+	public Date gradeDeadline;
+	public int score;
+	public String level;
+	public String sample;
+	public String generalGrade;
+	
+	
+	public Assignment(String courseId, String courseName, int number,
+			String description, String format, Date submissionDeadline,
+			Date gradeDeadline, int score, String level) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.number = number;
+		this.description = description;
+		this.format = format;
+		this.submissionDeadline = submissionDeadline;
+		this.gradeDeadline = gradeDeadline;
+		this.score = score;
+		this.level = level;
+		
 	}
 	public int getId() {
 		return id;

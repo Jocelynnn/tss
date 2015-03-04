@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,11 +12,34 @@
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 
+
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="jqueryui/style.css">
+<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			minDate : -0,
+			maxDate : "+4M +10D"
+		});
+
+	});
+
+	$(function() {
+		$("#datepicker1").datepicker({
+			minDate : -0,
+			maxDate : "+4M +10D"
+		});
+	});
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,9 +56,9 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><s:a href="teacherGetCourse.action">课程管理</s:a></li>
+									<li><s:a href="/tss/action/teacherGetCourse.action">课程管理</s:a></li>
 									<li class="active"><s:a
-											href="teacherGetAssignments.action">作业管理</s:a></li>
+											href="/tss/action/teacherGetAssignments.action">作业管理</s:a></li>
 
 
 
@@ -55,58 +81,66 @@
 					</div>
 				</div>
 
-				<label>当前课程： <s:property value="courseId"/></label>
+				<div>
+					<s:form action="/action/teacherAddAssignment" method="post">
+						<%-- <%String courseId=request.getParameter("courseId"); %>
+						<label><%=courseId %></label> --%>
 
-				<div class="control-group">
-					<label class="control-label" for="number">作业编号:自动生成~</label>
-					<div class="controls">
-						<input id="number" type="text" placeholder="identifier" />
-					</div>
-				</div>
+						<div>
+							<s:label>当前课程:  </s:label>
+							<s:textfield name="courseId" value="%{#parameters.courseId}"
+								readonly="true">
+							</s:textfield>
+						</div>
+						<div>
+							<s:label>作业编号:</s:label>
+							<s:textfield name="number" value="%{#parameters.count}"
+								readonly="true">
+							</s:textfield>
+						</div>
 
-				<div class="control-group">
-					<label class="control-label" for="description">作业描述</label>
-					<div class="controls">
-						<input id="description" type="text" placeholder="作业描述" />
-					</div>
-				</div>
+						<div>
+							<s:label>作业描述</s:label>
+							<s:textarea name="description"></s:textarea>
+						</div>
 
-				<div class="control-group">
-					<label class="control-label" for="submissionDeadline">提交截止日期</label>
-					<div class="controls">
-						<input id="submissionDeadline" type="text" placeholder="deadline" />
-					</div>
-				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="gradeDealine">批改截止日期</label>
-					<div class="controls">
-						<input id="gradeDealine" type="text" placeholder="deadline" />
-					</div>
-				</div>
+						<div>
+							<s:label>提交截止日期</s:label>
+							<input type="text" id="datepicker" name="submissionDeadline">
+						</div>
 
-				<div class="control-group">
-					<label class="control-label" for="format">作业文件格式</label>
-					<div class="controls">
-						<input id="format" type="text" placeholder="format" />
-					</div>
-				</div>
+						<div>
+							<s:label>批改截止日期</s:label>
+							<input type="text" id="datepicker1" name="gradeDeadline">
+						</div>
 
-				<div class="control-group">
-					<label class="control-label" for="fullGrade">满分</label>
-					<div class="controls">
-						<input id="fullGrade" type="text" placeholder="fullGrade" />
-					</div>
-				</div>
+						<div>
+							<s:label>作业文件格式</s:label>
+							<input type="checkbox" name="format" value="doc">doc<br />
+							<input type="checkbox" name="format" value="pdf">pdf<br />
+							<input type="checkbox" name="format" value="zip">zip<br />
 
-				<div class="control-group">
-					<label class="control-label" for="difficulty">难度：三个选项</label>
-					<div class="controls">
-						<input id="difficulty" type="text" placeholder="difficulty" />
-					</div>
-				</div>
+							<s:textfield>其他 </s:textfield>
+						</div>
 
-				<div class="control-group">
+						<div>
+							<s:label>满分</s:label>
+							<s:textfield name="score"></s:textfield>
+						</div>
+
+
+						<div>
+							<s:select headerKey="-1" headerValue="作业难度"
+								list="#{'1':'easy', '2':'middle','3':'hard'}" name="level"
+								value="-1" />
+						</div>
+
+						<div>
+							<button class="btn" type="submit">提交</button>
+						</div>
+
+						<!-- <div class="control-group">
 					<label class="control-label" for="example">样例：上传文件</label>
 					<div class="controls">
 						<input id="example" type="text" placeholder="example" />
@@ -118,27 +152,17 @@
 					<div class="controls">
 						<input id="generalGrade" type="text" placeholder="generalGrade" />
 					</div>
+				</div> -->
+
+
+					</s:form>
 				</div>
-
-
-
-
-
 			</div>
-
-
-
-
-
-
 		</div>
-
-
 	</div>
 
 
 
-	</div>
 
 </body>
 </html>

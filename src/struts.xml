@@ -5,6 +5,7 @@
 
 <struts>
 	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<package name="default" extends="struts-default" namespace="/action">
 		<action name="login" class="LoginAction">
@@ -22,7 +23,7 @@
 			<result name="success">/views/studentIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="logout" class="LogoutAction">
 			<result name="success">/views/login.jsp</result>
 			<result name="error">/views/error.jsp</result>
@@ -68,40 +69,42 @@
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="teacherGetTA" class="TeacherGetTA">
 			<result name="success">/views/teacherIndex1_addTA.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>
-		
+
 		<action name="teacherAddTA" class="TeacherAddTA">
 			<result name="success">/views/teacherIndex1_addTA.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherAddStudent" class="TeacherAddStudent">
 			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherRemoveTA" class="TeacherRemoveTA">
 			<result name="success">/views/teacherIndex1_addTA.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherRemoveStudent" class="TeacherRemoveStudent">
 			<result name="success">/views/teacherIndex1_addStudent.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherGetAssignments" class="TeacherGetAssignments">
 			<result name="success">/views/teacherIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherAddAssignment" class="TeacherAddAssignment">
-			<result name="success">/views/teacherIndex1.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">teacherGetAssignments</param>
+			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 

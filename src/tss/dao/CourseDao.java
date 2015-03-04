@@ -15,6 +15,8 @@ public interface CourseDao {
 	public boolean addCourseTA(String courseId,String taId);
 	public boolean removeCourseStudent(String courseId,String studentId);
 	public boolean removeCourseTA(String courseId,String taId);
+	
+	public String getCourseName(String courseId);
 
 
 }
