@@ -115,6 +115,9 @@
 		<property name="AssignmentDao">
 			<ref bean="AssignmentDao" />
 		</property>
+		<property name="SubmissionDao">
+			<ref bean="SubmissionDao" />
+		</property>
 
 	</bean>
 	

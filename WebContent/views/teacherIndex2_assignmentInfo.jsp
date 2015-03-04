@@ -66,13 +66,15 @@
 
 
 
-				<div class="control-group">
-					<label class="control-label" for="example">样例：上传文件</label>
+				<form action="/tss/action/upload.action"
+					enctype="multipart/form-data" method="post">
+					文件:<input type="file" name="image"> <input type="submit"
+						value="上传" />
+				</form>
 
-				</div>
-
-				<div class="control-group">
-					<label class="control-label" for="generalGrade">总体点评</label>
+				<div>
+					<s:label>总体点评</s:label>
+					<s:textarea></s:textarea>
 
 				</div>
 

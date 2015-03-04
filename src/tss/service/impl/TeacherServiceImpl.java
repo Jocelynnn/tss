@@ -19,6 +19,14 @@ public class TeacherServiceImpl implements TeacherService {
 	private AssignmentDao assignmentDao;
 	private SubmissionDao submissionDao;
 
+	public SubmissionDao getSubmissionDao() {
+		return submissionDao;
+	}
+
+	public void setSubmissionDao(SubmissionDao submissionDao) {
+		this.submissionDao = submissionDao;
+	}
+
 	public AssignmentDao getAssignmentDao() {
 		return assignmentDao;
 	}

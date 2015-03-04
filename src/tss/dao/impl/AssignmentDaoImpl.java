@@ -129,7 +129,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 		
 		try {
 			stmt = con
-					.prepareStatement("SELECT * FROM assignment WHERE assignmentId = ?");
+					.prepareStatement("SELECT * FROM assignment WHERE id = ?");
 			stmt.setInt(1, assignId);
 			result = stmt.executeQuery();
 
