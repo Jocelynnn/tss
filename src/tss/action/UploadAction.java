@@ -15,8 +15,7 @@ public class UploadAction extends BaseAction{
     private String imageContentType; //文件类型
 
     public String execute() throws Exception {
-        String realpath = "/Users/jiangbingjie/Documents";
-        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
+        String realpath = "/Users/uploadFiles";
         System.out.println("realpath: "+realpath);
         if (image != null) {
             File savefile = new File(new File(realpath), imageFileName);

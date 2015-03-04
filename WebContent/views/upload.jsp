@@ -12,8 +12,6 @@
     </head>
 
     <body>
-        <!-- ${pageContext.request.contextPath}/upload/execute_upload.do -->
-        <!-- ${pageContext.request.contextPath}/upload2/upload2.do -->
         <form action="/tss/action/upload.action" 
               enctype="multipart/form-data" method="post">
             文件:<input type="file" name="image">
