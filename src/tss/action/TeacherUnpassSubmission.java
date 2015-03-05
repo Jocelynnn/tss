@@ -12,10 +12,40 @@ public class TeacherUnpassSubmission extends BaseAction {
 	 */
 	private TeacherService teacherService;
 	private int submissionId;
+	private String assignId;
+
+	
+
+	public String getAssignId() {
+		return assignId;
+	}
+
+	public void setAssignId(String assignId) {
+		this.assignId = assignId;
+	}
+
+	public TeacherService getTeacherService() {
+		return teacherService;
+	}
+
+	public void setTeacherService(TeacherService teacherService) {
+		this.teacherService = teacherService;
+	}
+
+	public int getSubmissionId() {
+		return submissionId;
+	}
+
+	public void setSubmissionId(int submissionId) {
+		this.submissionId = submissionId;
+	}
 
 	public String execute() {
+		assignId=request.getParameter("assignId");
 		submissionId = Integer.valueOf(request.getParameter("submissionId"));
-		teacherService.passSubmission(submissionId);
-		return null;
+		if (teacherService.unpassSubmission(submissionId))
+			return SUCCESS;
+		else
+			return ERROR;
 	}
 }

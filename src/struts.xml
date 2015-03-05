@@ -30,14 +30,15 @@
 			<result name="success">/views/studentIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="studentGetAssignment" class="StudentGetAssignment">
 			<result name="success">/views/studentIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="studentGetSingleAssignment" class="StudentGetSingleAssignment">
-			<result name="success">/views/studentIndex2_submitAssignment.jsp</result>
+			<result name="success">/views/studentIndex2_submitAssignment.jsp
+			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 
@@ -130,7 +131,8 @@
 			<result name="error">/views/error.jsp</result>
 		</action>
 		<action name="taGetAssignSubmission" class="TAGetAssignSubmission">
-			<result name="success">/views/teachingAssistant_assignmentInfo.jsp</result>
+			<result name="success">/views/teachingAssistant_assignmentInfo.jsp
+			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 
@@ -145,6 +147,22 @@
 			<result name="error">/views/error.jsp</result>
 		</action>
 
+
+		<action name="teacherPassSubmission" class="TeacherPassSubmission">
+			<result name="success" type="redirectAction">
+				<param name="actionName">teacherGetAssignInfo</param>
+				<param name="assignId">${assignId}</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+
+		<action name="teacherUnpassSubmission" class="TeacherUnpassSubmission">
+			<result name="success" type="redirectAction">
+				<param name="actionName">teacherGetAssignInfo</param>
+				<param name="assignId">${assignId}</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

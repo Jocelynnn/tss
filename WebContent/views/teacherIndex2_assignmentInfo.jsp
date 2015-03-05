@@ -128,8 +128,9 @@
 								<td><s:property value="#submission.grade" /></td>
 								<td><s:property value="#submission.evaluation" /></td>
 								<td><a
-									href="teacherPassSubmission.action?submissionId=<s:property value='#submission.id'/>">通过</a>
-									<a href="#">不通过</a></td>
+									href="teacherPassSubmission.action?submissionId=<s:property value='#submission.id'/>&assignId=<s:property value='assignId'/>">通过</a>
+									<a
+									href="teacherUnpassSubmission.action?submissionId=<s:property value='#submission.id'/>&assignId=<s:property value='assignId'/>">不通过</a></td>
 							</tr>
 						</s:iterator>
 					</table>
@@ -165,7 +166,10 @@
 								<td><s:property value="#submission.grader" /></td>
 								<td><s:property value="#submission.grade" /></td>
 								<td><s:property value="#submission.evaluation" /></td>
-								<td><a href="#">通过</a></td>
+								<td><a
+									href="teacherPassSubmission.action?submissionId=<s:property value='#submission.id'/>&assignId=<s:property value='assignId'/>">通过</a>
+									<a
+									href="teacherUnpassSubmission.action?submissionId=<s:property value='#submission.id'/>&assignId=<s:property value='assignId'/>">不通过</a></td>
 							</tr>
 						</s:iterator>
 					</table>

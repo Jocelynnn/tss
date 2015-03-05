@@ -29,6 +29,8 @@ public class SubmissionDaoImpl implements SubmissionDao {
 	public void setDaoHelper(DaoHelper daoHelper) {
 		this.daoHelper = daoHelper;
 	}
+	
+
 
 	@Override
 	public ArrayList<Submission> getAssignSubmissions(int assignmentId) {
@@ -126,7 +128,7 @@ public class SubmissionDaoImpl implements SubmissionDao {
 			stmt = con
 					.prepareStatement("SELECT * FROM studentSubmission WHERE assignmentId = ? AND isPassed = ? AND isGraded = ?");
 			stmt.setInt(1, assignmentId);
-//			2 for unpassed 
+//			2 for passed 
 			stmt.setInt(2, 2);
 //			2 for graded
 			stmt.setInt(3, 2);
@@ -324,13 +326,58 @@ public class SubmissionDaoImpl implements SubmissionDao {
 	@Override
 	public boolean teacherPassSubmission(int submissionId) {
 		// TODO Auto-generated method stub
-		return false;
+		Submission s=this.getSubmission(submissionId);
+//		2 for passed
+		s.setIsPassed(2);
+		this.updateSubmission(s);
+		return true;
 	}
 
 	@Override
 	public boolean teacherUnpassSubmission(int submissionId) {
 		// TODO Auto-generated method stub
-		return false;
+		Submission s=this.getSubmission(submissionId);
+//		3 for unpassed
+		s.setIsPassed(3);
+		this.updateSubmission(s);
+		return true;
 	}
+
+	@Override
+	public  Submission getSubmission(int submissionId) {
+		// TODO Auto-generated method stub
+				Connection con = daoHelper.getConnection();
+				PreparedStatement stmt = null;
+				ResultSet result = null;
+
+				try {
+					stmt = con
+							.prepareStatement("SELECT * FROM studentSubmission WHERE id = ?");
+					stmt.setInt(1, submissionId);
+					result = stmt.executeQuery();
+
+					while (result.next()) {
+						return new Submission(result.getInt("id"), result
+										.getInt("assignmentId"), result
+										.getString("studentId"), result.getString("studentName"),result
+										.getString("submission"), result
+										.getDate("submitDate"), result
+										.getString("grader"), result.getInt("grade"),
+										result.getString("evaluation"), result
+												.getInt("isGraded"), result
+												.getInt("isPassed"));
+					}
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					daoHelper.closeConnection(con);
+					daoHelper.closePreparedStatement(stmt);
+					daoHelper.closeResult(result);
+				}
+
+				return null;
+	}
+	
 
 }

@@ -285,5 +285,19 @@
 			<ref bean="StudentService" />
 		</property>
 	</bean>
+	
+	<bean id="TeacherPassSubmission" class="tss.action.TeacherPassSubmission">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherUnpassSubmission" class="tss.action.TeacherUnpassSubmission">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
+	
 
 </beans>

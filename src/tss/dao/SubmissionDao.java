@@ -13,6 +13,7 @@ public interface SubmissionDao {
 	public ArrayList<Submission> getGradedSubmission(int assignmentId);
 	public ArrayList<Submission> getUnviewedSubmission(int assignmentId);
 
+	public Submission getSubmission(int submissionId);
 	public boolean saveSubmission(Submission submission);
 	public boolean updateSubmission(Submission submission);
 	

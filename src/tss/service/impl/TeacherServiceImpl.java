@@ -169,13 +169,13 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public boolean passSubmission(int submissionId) {
 		// TODO Auto-generated method stub
-		return false;
+		return submissionDao.teacherPassSubmission(submissionId);
 	}
 
 	@Override
 	public boolean unpassSubmission(int submissionId) {
 		// TODO Auto-generated method stub
-		return false;
+		return submissionDao.teacherUnpassSubmission(submissionId);
 	}
 
 }
