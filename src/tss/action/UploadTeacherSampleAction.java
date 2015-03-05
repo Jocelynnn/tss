@@ -1,7 +1,9 @@
 package tss.action;
 
 import java.io.File;
+
 import org.apache.commons.io.FileUtils;
+
 import com.opensymphony.xwork2.ActionContext;
 
 @SuppressWarnings("serial")
@@ -25,6 +27,12 @@ public class UploadTeacherSampleAction extends BaseAction {
 		String realpath = "/Users/uploadFiles/teacherSample";
 		System.out.println("realpath: " + realpath);
 		if (image != null) {
+//			文件重命名
+			String[] temp = this.imageFileName.split("\\.");
+			this.imageFileName = "Sample_"+request.getParameter("courseId") + "_"
+					+ request.getParameter("assignNumber") + "_"
+					+ request.getSession().getAttribute("username") + "."
+					+ temp[temp.length - 1];
 			File savefile = new File(new File(realpath), imageFileName);
 			if (!savefile.getParentFile().exists())
 				savefile.getParentFile().mkdirs();
