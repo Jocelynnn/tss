@@ -1,8 +1,15 @@
 package tss.model;
 
 import java.util.Date;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="studentSubmission")
 public class Submission {
+	@Id
 	public int id;
 	public int assignmentId;
 	

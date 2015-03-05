@@ -6,11 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import tss.dao.DaoHelper;
 import tss.dao.SubmissionDao;
 import tss.model.Submission;
 
 public class SubmissionDaoImpl implements SubmissionDao {
+	private Configuration config;
+	private SessionFactory sessionFactory;
+	private Session session;
 
 	private DaoHelper daoHelper;
 
@@ -227,6 +235,45 @@ public class SubmissionDaoImpl implements SubmissionDao {
 				}
 
 				return null;
+	}
+
+	@Override
+	public boolean saveSubmission(Submission submission) {
+		try {
+			config = new Configuration().configure();
+			sessionFactory=config.buildSessionFactory();	
+			session=sessionFactory.openSession();
+			Transaction tx=session.beginTransaction();
+			session.save(submission); //保存Entity到数据库中
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("ok");
+			return true;
+		}catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	@Override
+	public boolean updateSubmission(Submission submission) {
+		try {
+			config = new Configuration().configure();
+			sessionFactory=config.buildSessionFactory();	
+			session=sessionFactory.openSession();
+			Transaction tx=session.beginTransaction();
+			session.update(submission); //保存Entity到数据库中
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("ok");
+			return true;
+		}catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }

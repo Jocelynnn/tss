@@ -11,6 +11,6 @@ public interface AssignmentDao {
 	public Assignment getAssignment(int assignId);
 	
 	public Map<String,ArrayList<Assignment>> getTACourseAssignment(String taId);
-
-
+	public Assignment getOneAssignment(int assignmentId);
+	public Map<String,ArrayList<Assignment>> getStudentAssignment(String studentId);
 }

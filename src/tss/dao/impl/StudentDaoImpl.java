@@ -11,6 +11,7 @@ import java.util.List;
 import tss.dao.DaoHelper;
 import tss.dao.StudentDao;
 import tss.model.Course;
+import tss.model.Submission;
 import tss.model.User;
 
 public class StudentDaoImpl implements StudentDao {
@@ -192,4 +193,33 @@ public class StudentDaoImpl implements StudentDao {
 		return null;
 	}
 
+	@Override
+	public Submission getSingleSubmission(String studentId, int assignmentId) {
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM studentSubmission WHERE assignmentId = ? AND studentId = ?");
+			stmt.setInt(1, assignmentId);
+			stmt.setString(2, studentId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				return new Submission(result.getInt("id"), result.getInt("assignmentId"), result.getString("studentId"), result.getString("studentName"),
+						result.getString("submission"), result.getDate("submitDate"), result.getString("grader"), 
+						result.getInt("grade"), result.getString("evaluation"), result.getInt("isGraded"), result.getInt("isPassed"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
 }

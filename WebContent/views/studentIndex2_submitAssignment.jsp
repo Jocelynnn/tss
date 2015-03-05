@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -30,8 +29,8 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><s:a
-											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li><a
+										href="<%=request.getContextPath()%>/views/teacherIndex1.jsp">我的课程</a></li>
 									<li class="active"><a
 										href="<%=request.getContextPath()%>/views/teacherIndex2.jsp">我的作业</a></li>
 
@@ -58,9 +57,19 @@
 				</div>
 
 				<div>
-					<label>课程名</label> <label>作业编号</label> <label>作业描述</label> <label>deadline</label>
-					<button>提交</button>
+					<form action="/tss/action/uploadStudentAssignAction.action"
+						enctype="multipart/form-data" method="post">
+						<input type="hidden" name="courseId" value="<s:property value="assignment.courseId"/>">
+						<input type="hidden" name="assignmentNumber" value="<s:property value="assignment.number"/>">
+						<input type="hidden" name="assignmentId" value="<s:property value="assignment.id"/>">
 
+						<label>课程名: <s:property value="assignment.courseName"/> </label> 
+						<label>作业编号: <s:property value="assignment.number"/></label> 
+						<label>作业描述: <s:property value="assignment.description"/></label> 
+						<label>截止时间: <s:property value="assignment.submissionDeadline"/></label>
+						<label> <input type="file" name="image"></label> 
+						<label> <input type="submit" value="上传" /></label>
+					</form>
 				</div>
 
 			</div>

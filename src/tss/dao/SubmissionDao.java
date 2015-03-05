@@ -12,5 +12,6 @@ public interface SubmissionDao {
 	public ArrayList<Submission> getUngradedSubmission(int assignmentId);
 	public ArrayList<Submission> getGradedSubmission(int assignmentId);
 
-
+	public boolean saveSubmission(Submission submission);
+	public boolean updateSubmission(Submission submission);
 }

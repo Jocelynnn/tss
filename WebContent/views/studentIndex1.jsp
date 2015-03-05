@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -31,8 +31,8 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
 									<li class="active"><s:a href="/tss/action/studentSearchCourse.action" >我的课程</s:a></li>
-									<li><a
-										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">我的作业</a></li>
+									<li><s:a
+											href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>

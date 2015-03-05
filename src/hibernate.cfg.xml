@@ -17,7 +17,7 @@
 
 <mapping class="tss.model.User" />  
 <mapping class="tss.model.Assignment" />        
-      
+<mapping class="tss.model.Submission" />
 
 </session-factory>
 </hibernate-configuration>

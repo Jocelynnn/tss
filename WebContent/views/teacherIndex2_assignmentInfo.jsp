@@ -61,8 +61,8 @@
 					<s:property value="courseName"></s:property>
 				</div>
 				<div>
-					<s:label>作业编号:</s:label>
-					<s:property value="assignNumber"></s:property>
+					<s:label>作业编号:<s:property value="assignNumber"></s:property></s:label>
+					
 				</div>
 
 
@@ -72,6 +72,7 @@
 					<s:label>作业范例：</s:label>
 					<input type="file" name="image" id="image">
 					<button class="btn" type="submit">上传</button>
+					<s:label><s:property value="alterstr"></s:property></s:label>
 				</form>
 
 				<div>
@@ -81,7 +82,7 @@
 				</div>
 				<div>
 					<button class="btn" type="submit">提交</button>
-
+					
 				</div>
 
 				<br> <br> <br> <br>

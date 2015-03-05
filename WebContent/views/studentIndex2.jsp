@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -30,9 +30,10 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><s:a href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">我的作业</a></li>
+									<li class="active"><s:a
+											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li><s:a
+											href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
@@ -60,58 +61,38 @@
 					<table class="table table-hover table-bordered">
 						<thead>
 							<tr>
+								<!-- 								<th>课程编号</th>
+ -->
 								<th>课程名</th>
 								<th>作业编号</th>
 								<th>作业描述</th>
-								<th>deadline</th>
-								<th>提交</th>
+								<th>难度</th>
+								<th>提交截止日期</th>
+								<th>我的提交</th>
+
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td>未提交 <a
-									href="<%=request.getContextPath()%>/views/studentIndex2_submitAssignment.jsp">现在提交</a></td>
-							</tr>
+						<s:iterator value="courseAssignments" id="column">
+							<s:set var="total" name="total" value="#column.value.size" />
+							<s:iterator value="#column.value" id="col" status="st">
+								<tr>
+									<s:if test="#st.first">
+										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
+ --%>
+										<td rowspan="${total}"><s:property value="courseName" /></td>
 
-							<tr class="success">
-								<td>1</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td>已提交 <a
-									href="<%=request.getContextPath()%>/views/studentIndex2_submitAssignment.jsp">修改</a></td>
-							</tr>
-							<tr class="error">
-								<td>2</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td>未提交 <a
-									href="<%=request.getContextPath()%>/views/studentIndex2_submitAssignment.jsp">现在提交</a></td>
-							</tr>
-							<tr class="warning">
-								<td>3</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td>未提交 <a
-									href="<%=request.getContextPath()%>/views/studentIndex2_submitAssignment.jsp">现在提交</a></td>
-							</tr>
-							<tr class="info">
-								<td>4</td>
-								<td>TB - Monthly</td>
-								<td>something</td>
-								<td>something</td>
-								<td>未提交 <a
-									href="<%=request.getContextPath()%>/views/studentIndex2_submitAssignment.jsp">现在提交</a></td>
-							</tr>
-						</tbody>
+									</s:if>
+									<td><s:a href="/tss/action/">
+											<s:property value="number" />
+										</s:a></td>
+									<td><s:property value="description" /></td>
+									<td><s:property value="level" /></td>
+									<td><s:property value="submissionDeadline" /></td>
+									<td><s:a href="/tss/action/studentGetSingleAssignment.action?assignmentId=%{#col.Id}">作业详情</s:a></td>
+								</tr>
+							</s:iterator>
+						</s:iterator>
 					</table>
-
 				</div>
 
 			</div>

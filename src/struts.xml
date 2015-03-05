@@ -30,6 +30,16 @@
 			<result name="success">/views/studentIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="studentGetAssignment" class="StudentGetAssignment">
+			<result name="success">/views/studentIndex2.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+		
+		<action name="studentGetSingleAssignment" class="StudentGetSingleAssignment">
+			<result name="success">/views/studentIndex2_submitAssignment.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 
 		<action name="logout" class="LogoutAction">
 			<result name="success">/views/login.jsp</result>
@@ -130,6 +140,10 @@
 			<result name="error">/views/error.jsp</result>
 		</action>
 
+		<action name="uploadStudentAssignAction" class="UploadStudentAssignAction">
+			<result name="success">/views/message.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 
 	</package>
 </struts>
