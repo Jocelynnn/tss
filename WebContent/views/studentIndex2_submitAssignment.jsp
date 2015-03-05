@@ -62,13 +62,34 @@
 						<input type="hidden" name="courseId" value="<s:property value="assignment.courseId"/>">
 						<input type="hidden" name="assignmentNumber" value="<s:property value="assignment.number"/>">
 						<input type="hidden" name="assignmentId" value="<s:property value="assignment.id"/>">
+						<input type="hidden" name="submissionId" value="<s:property value="submission.id"/>">
 
+						
 						<label>课程名: <s:property value="assignment.courseName"/> </label> 
 						<label>作业编号: <s:property value="assignment.number"/></label> 
 						<label>作业描述: <s:property value="assignment.description"/></label> 
 						<label>截止时间: <s:property value="assignment.submissionDeadline"/></label>
-						<label> <input type="file" name="image"></label> 
-						<label> <input type="submit" value="上传" /></label>
+						
+						<s:if test="%{type==1}">
+							<label> <input type="file" name="image"></label> 
+							<label> <input type="submit" value="上传" /></label>
+						</s:if>
+						
+						<s:if test="%{type==2}">
+							<label>已提交作业名称: <s:property value="fileName"/></label>
+							<label> <input type="file" name="image"></label> 
+							<label> <input type="submit" value="上传" /></label>
+						</s:if>
+						
+						<s:if test="%{type==3}">
+							<label>已提交作业名称: <s:property value="fileName"/></label>
+							<label>提交日期: <s:property value="submission.submitDate"/></label>
+						</s:if>
+						
+						<s:if test="%{type==4}">
+							<label>提交情况: 你完了，你作业没交~</label>
+						</s:if>
+						
 					</form>
 				</div>
 

@@ -50,11 +50,19 @@ public class UploadStudentAssignAction extends BaseAction {
 			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 			Date date = new Date();
 			
+			System.out.println("!!!" + request.getParameter("submissionId") + "~~~");
 			// 保存到数据库submission信息
-			System.out.println(studentService == null);
-			studentService.saveOrUpdateSubmission(new Submission(0,  Integer.parseInt(request.getParameter("assignmentId")),
-					(String) request.getSession().getAttribute("username"), "", realpath + "/" + imageFileName,
+			if (request.getParameter("submissionId").equals("")){
+				studentService.saveSubmission(new Submission(0,  Integer.parseInt(request.getParameter("assignmentId")),
+					(String) request.getSession().getAttribute("username"), studentService.getUserRealname((String) request.getSession().getAttribute("username")) , realpath + "/" + imageFileName,
 					sdf.parse(sdf.format(date)), "", -1, "", 1, 1));
+			}
+			else{
+				studentService.updateSubmission(new Submission(Integer.parseInt(request.getParameter("submissionId")), Integer.parseInt(request.getParameter("assignmentId")),
+						(String) request.getSession().getAttribute("username"), studentService.getUserRealname((String) request.getSession().getAttribute("username")), realpath + "/" + imageFileName,
+						sdf.parse(sdf.format(date)), "", -1, "", 1, 1));
+			}
+			
 
 			return SUCCESS;
 		}

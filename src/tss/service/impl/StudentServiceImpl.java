@@ -7,16 +7,25 @@ import java.util.Map;
 import tss.dao.AssignmentDao;
 import tss.dao.StudentDao;
 import tss.dao.SubmissionDao;
+import tss.dao.UserDao;
 import tss.model.Assignment;
 import tss.model.Course;
 import tss.model.Submission;
+import tss.model.User;
 import tss.service.StudentService;
 
 public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	private AssignmentDao assignmentDao;
 	private SubmissionDao submissionDao;
+	private UserDao userDao;
 	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
 	public SubmissionDao getSubmissionDao() {
 		return submissionDao;
 	}
@@ -57,12 +66,21 @@ public class StudentServiceImpl implements StudentService {
 		return assignmentDao.getOneAssignment(assignmentId);
 	}
 	@Override
-	public boolean saveOrUpdateSubmission(Submission submission) {
-		if (submissionDao.saveSubmission(submission) == false){
-			return submissionDao.updateSubmission(submission);
+	public boolean saveSubmission(Submission submission) {
+		return submissionDao.saveSubmission(submission);
+	}
+	@Override
+	public boolean updateSubmission(Submission submission) {
+		return submissionDao.updateSubmission(submission);
+	}
+	@Override
+	public String getUserRealname(String userId) {
+		User user = userDao.getPersonalInfo(userId);
+		if (user != null){
+			return user.getRealName();
 		}
 		else{
-			return true;
+			return null;
 		}
 	}
 	

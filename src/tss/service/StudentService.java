@@ -14,5 +14,8 @@ public interface StudentService {
 	public Submission getSingleSubmission (String studentName, int assignmentId);
 	
 	public Assignment getOneAssignment(int assignmentId);
-	public boolean saveOrUpdateSubmission(Submission submission);
+	public boolean saveSubmission(Submission submission);
+	public boolean updateSubmission(Submission submission);
+	
+	public String getUserRealname(String userId);
 }

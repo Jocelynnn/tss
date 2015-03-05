@@ -135,6 +135,9 @@
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
 		</property>
+		<property name="UserDao">
+			<ref bean="UserDao" />
+		</property>
 	</bean>
 
 	<bean id="TaService" class="tss.service.impl.TaServiceImpl">

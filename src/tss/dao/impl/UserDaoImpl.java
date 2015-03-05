@@ -21,7 +21,29 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getPersonalInfo(String username) {
-		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		
+		try {
+			stmt = con.prepareStatement("SELECT * FROM user WHERE username = ?");
+			stmt.setString(1, username);
+			result = stmt.executeQuery();
+			
+			while(result.next()){
+				return new User(result.getString("username"), result.getString("password"), result.getString("realName"),
+						result.getString("email"), result.getInt("gender"), result.getInt("role"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+		
 		return null;
 	}
 
