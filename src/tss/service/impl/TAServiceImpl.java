@@ -47,4 +47,28 @@ public class TaServiceImpl implements TaService{
 		return submissionDao.getAssignSubmissions(assignmentId);
 	}
 
+	@Override
+	public ArrayList<Submission> getUnpassedSubmission(int assignmentId) {
+		// TODO Auto-generated method stub
+		return submissionDao.getUnpassedSubmission(assignmentId);
+	}
+
+	@Override
+	public ArrayList<Submission> getPassedSubmission(int assignmentId) {
+		// TODO Auto-generated method stub
+		return submissionDao.getPassedSubmission(assignmentId);
+	}
+
+	@Override
+	public ArrayList<Submission> getUngradedSubmission(int assignmentId) {
+		// TODO Auto-generated method stub
+		return submissionDao.getUngradedSubmission(assignmentId);
+	}
+
+	@Override
+	public ArrayList<Submission> getGradedSubmission(int assignmentId) {
+		// TODO Auto-generated method stub
+		return submissionDao.getGradedSubmission(assignmentId);
+	}
+
 }

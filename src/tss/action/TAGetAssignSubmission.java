@@ -17,7 +17,44 @@ public class TAGetAssignSubmission extends BaseAction {
 	private int assignNumber;
 	private Assignment assignment;
 	private String courseName;
-	private ArrayList<Submission> submissionList;
+	private ArrayList<Submission> passedSubmissionList;
+	private ArrayList<Submission> unpassedSubmissionList;
+	private ArrayList<Submission> ungradedSubmissionList;
+	private ArrayList<Submission> gradedSubmissionList;
+
+	public ArrayList<Submission> getPassedSubmissionList() {
+		return passedSubmissionList;
+	}
+
+	public void setPassedSubmissionList(ArrayList<Submission> passedSubmissionList) {
+		this.passedSubmissionList = passedSubmissionList;
+	}
+
+	public ArrayList<Submission> getUnpassedSubmissionList() {
+		return unpassedSubmissionList;
+	}
+
+	public void setUnpassedSubmissionList(
+			ArrayList<Submission> unpassedSubmissionList) {
+		this.unpassedSubmissionList = unpassedSubmissionList;
+	}
+
+	public ArrayList<Submission> getUngradedSubmissionList() {
+		return ungradedSubmissionList;
+	}
+
+	public void setUngradedSubmissionList(
+			ArrayList<Submission> ungradedSubmissionList) {
+		this.ungradedSubmissionList = ungradedSubmissionList;
+	}
+
+	public ArrayList<Submission> getGradedSubmissionList() {
+		return gradedSubmissionList;
+	}
+
+	public void setGradedSubmissionList(ArrayList<Submission> gradedSubmissionList) {
+		this.gradedSubmissionList = gradedSubmissionList;
+	}
 
 	public TaService getTaService() {
 		return taService;
@@ -59,13 +96,7 @@ public class TAGetAssignSubmission extends BaseAction {
 		this.courseName = courseName;
 	}
 
-	public ArrayList<Submission> getSubmissionList() {
-		return submissionList;
-	}
-
-	public void setSubmissionList(ArrayList<Submission> submissionList) {
-		this.submissionList = submissionList;
-	}
+	
 
 	public String execute() {
 		assignId = Integer.valueOf(request.getParameter("assignId"));
@@ -73,7 +104,11 @@ public class TAGetAssignSubmission extends BaseAction {
 
 		courseName = assignment.getCourseName();
 		assignNumber = assignment.getNumber();
-		submissionList = taService.getSubmissionList(assignId);
+		
+		passedSubmissionList = taService.getPassedSubmission(assignId);
+		unpassedSubmissionList=taService.getUnpassedSubmission(assignId);
+		gradedSubmissionList=taService.getGradedSubmission(assignId);
+		ungradedSubmissionList=taService.getUngradedSubmission(assignId);
 
 		return SUCCESS;
 
