@@ -84,6 +84,7 @@
 						<s:if test="%{type==3}">
 							<label>已提交作业名称: <s:property value="fileName"/></label>
 							<label>提交日期: <s:property value="submission.submitDate"/></label>
+							<label>分数: <s:property value="submission.grade"/></label>
 						</s:if>
 						
 						<s:if test="%{type==4}">
