@@ -298,6 +298,12 @@
 		</property>
 	</bean>
 	
+	<bean id="AutoSync" class="tss.action.AutoSync">
+	</bean>
+	
+	<bean id="TaDownloadStuAssignment" class="tss.action.TaDownloadStuAssignment">
+	</bean>
+	
 	
 
 </beans>
