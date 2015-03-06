@@ -209,6 +209,7 @@
 
 								<div>
 									<s:label>未通过教师审核作业</s:label>
+
 									<table class="table table-hover table-bordered " id="tb">
 										<thead>
 											<tr>
@@ -224,26 +225,34 @@
 											</tr>
 										</thead>
 										<s:iterator value="unpassedSubmissionList" id="submission">
-											<tr class="error" onclick=>
-												<td><s:property value="#submission.id" /></td>
-												<td><s:property value="#submission.studentId" /></td>
-												<td><s:property value="#submission.studentName" /></td>
-												<%-- <td><s:property value="#submission.submission" /></td> --%>
-												<td>
-													<a href="/tss/action/taDownloadStuAssignment.action?url=<s:property value='#submission.submission'/>" >点击下载</a>
-												</td>
-												<%-- <td><s:date name="#submission.submitDate"
+											<s:form action="/action/taSubmitGrade" method="post">
+												<input type="hidden" name="submissionId"
+													value="<s:property value="#submission.id"/>" />
+												<input type="hidden" name="assignId"
+													value="<s:property value="#submission.assignmentId"/>" />
+
+												<tr class="error">
+													<td><s:property value="#submission.id" /></td>
+													<td><s:property value="#submission.studentId" /></td>
+													<td><s:property value="#submission.studentName" /></td>
+													<%-- <td><s:property value="#submission.submission" /></td> --%>
+													<td><a
+														href="/tss/action/taDownloadStuAssignment.action?url=<s:property value='#submission.submission'/>">点击下载</a>
+													</td>
+													<%-- <td><s:date name="#submission.submitDate"
 										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
-												<td><s:property value="#submission.submitDate" /></td>
-												<td><s:property value="#submission.grader" /></td>
-												<%-- 												<td><span><s:property value="#submission.grade" /></span></td>
- --%>
-												<td><s:textfield maxlength="3" style="width: 25px"
-														value="%{#submission.grade}"></s:textfield></td>
-												<td><s:textarea
-															value="%{#submission.grade}"></s:textarea></td>
-												<td><a href="#">保存</a></td>
-											</tr>
+													<td><s:property value="#submission.submitDate" /></td>
+													<td><s:property value="#submission.grader" /></td>
+													<td><s:textfield name="grade" maxlength="3"
+															style="width: 25px" value="%{#submission.grade}"></s:textfield></td>
+													<td><s:textarea name="evaluation"
+															value="%{#submission.evaluation}"></s:textarea></td>
+													<td>
+														<button class="btn" type="submit">保存</button>
+
+													</td>
+												</tr>
+											</s:form>
 										</s:iterator>
 									</table>
 								</div>
@@ -271,20 +280,35 @@
 												<th>教师审核</th>
 											</tr>
 										</thead>
-										<s:iterator value="ungradedSubmissionList" id="submission">
-											<tr>
-												<td><s:property value="#submission.id" /></td>
-												<td><s:property value="#submission.studentId" /></td>
-												<td><s:property value="#submission.studentName" /></td>
-												<td><s:property value="#submission.submission" /></td>
-												<%-- <td><s:date name="#submission.submitDate"
+										<s:iterator value="unpassedSubmissionList" id="submission">
+											<s:form action="/action/taSubmitGrade" method="post">
+												<input type="hidden" name="submissionId"
+													value="<s:property value="#submission.id"/>" />
+												<input type="hidden" name="assignId"
+													value="<s:property value="#submission.assignmentId"/>" />
+
+												<tr>
+													<td><s:property value="#submission.id" /></td>
+													<td><s:property value="#submission.studentId" /></td>
+													<td><s:property value="#submission.studentName" /></td>
+													<%-- <td><s:property value="#submission.submission" /></td> --%>
+													<td><a
+														href="/tss/action/taDownloadStuAssignment.action?url=<s:property value='#submission.submission'/>">点击下载</a>
+													</td>
+													<%-- <td><s:date name="#submission.submitDate"
 										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
-												<td><s:property value="#submission.submitDate" /></td>
-												<td><s:property value="#submission.grader" /></td>
-												<td><s:property value="#submission.grade" /></td>
-												<td><s:property value="#submission.evaluation" /></td>
-												<td><a href="#">未审核</a></td>
-											</tr>
+													<td><s:property value="#submission.submitDate" /></td>
+													<td><s:property value="#submission.grader" /></td>
+													<td><s:textfield name="grade" maxlength="3"
+															style="width: 25px" value="%{#submission.grade}"></s:textfield></td>
+													<td><s:textarea name="evaluation"
+															value="%{#submission.evaluation}"></s:textarea></td>
+													<td>
+														<button class="btn" type="submit">保存</button>
+
+													</td>
+												</tr>
+											</s:form>
 										</s:iterator>
 									</table>
 								</div>
@@ -314,11 +338,13 @@
 											</tr>
 										</thead>
 										<s:iterator value="passedSubmissionList" id="submission">
-											<tr>
+											<tr class="success">
 												<td><s:property value="#submission.id" /></td>
 												<td><s:property value="#submission.studentId" /></td>
 												<td><s:property value="#submission.studentName" /></td>
-												<td><s:property value="#submission.submission" /></td>
+												<td><a
+													href="/tss/action/taDownloadStuAssignment.action?url=<s:property value='#submission.submission'/>">点击下载</a>
+												</td>
 												<%-- <td><s:date name="#submission.submitDate"
 										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
 												<td><s:property value="#submission.submitDate" /></td>

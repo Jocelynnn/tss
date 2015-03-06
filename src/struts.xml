@@ -166,15 +166,23 @@
 
 		<action name="autoSync" class="AutoSync">
 		</action>
-		
-		<action name="taDownloadStuAssignment" class="TaDownloadStuAssignment">  
-           <result name="success" type="stream">  
-               <param name="contentType">text/plain</param>  
-               <param name="contentDisposition">attachment;fileName="${fileName}"</param>  
-               <param name="inputName">downloadFile</param>  
-               <param name="bufferSize">1024</param>  
-           </result>  
-       </action>
+
+		<action name="taDownloadStuAssignment" class="TaDownloadStuAssignment">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+		<action name="taSubmitGrade" class="TaSubmitGrade">
+			<result name="success" type="redirectAction">
+				<param name="actionName">taGetAssignSubmission</param>
+				<param name="assignId">${assignId}</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

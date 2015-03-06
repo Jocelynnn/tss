@@ -9,7 +9,7 @@ import tss.model.Assignment;
 import tss.model.Submission;
 import tss.service.TaService;
 
-public class TaServiceImpl implements TaService{
+public class TaServiceImpl implements TaService {
 	private AssignmentDao assignmentDao;
 	private SubmissionDao submissionDao;
 
@@ -71,4 +71,9 @@ public class TaServiceImpl implements TaService{
 		return submissionDao.getGradedSubmission(assignmentId);
 	}
 
+	@Override
+	public boolean submitGrade(int submissionId, int grade, String evaluation) {
+		// TODO Auto-generated method stub
+		return submissionDao.taSubmitGrade(submissionId, grade, evaluation);
+	}
 }
