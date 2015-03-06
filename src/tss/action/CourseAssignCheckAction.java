@@ -1,9 +1,6 @@
 package tss.action;
 
-import com.sun.net.httpserver.Authenticator.Success;
-
 import tss.service.TeachingManagerService;
-import tss.service.impl.TeachingManagerServiceImpl;
 
 public class CourseAssignCheckAction extends BaseAction {
 	/**
@@ -27,6 +24,10 @@ public class CourseAssignCheckAction extends BaseAction {
 		// 作业数量
 		int assignCount = teachingManagerService.getAssignmentList().size();
 		request.setAttribute("assignCount", assignCount);
+		
+		// 不及格分数数量
+		
+		// 及格分数数量
 		
 		return SUCCESS;
 	}
