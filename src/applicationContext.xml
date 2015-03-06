@@ -333,5 +333,11 @@
 			<ref bean="AdminService" />
 		</property>
 	</bean>
+	
+	<bean id="CourseAssignCheckAction" class="tss.action.CourseAssignCheckAction">
+		<property name="TeachingManagerService">
+			<ref bean="TeachingManagerService" />
+		</property>
+	</bean>
 
 </beans>

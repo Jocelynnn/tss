@@ -197,6 +197,11 @@
 			<result name="success">/views/adminIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="courseAssignCheckAction" class="CourseAssignCheckAction">
+			<result name="success">/views/courseAssignview.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

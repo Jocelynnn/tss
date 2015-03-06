@@ -355,7 +355,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
 		try {
 			stmt = con
-					.prepareStatement("SELECT * FROM assignment where sourseId");
+					.prepareStatement("SELECT * FROM assignment");
 			result = stmt.executeQuery();
 
 			while (result.next()) {
