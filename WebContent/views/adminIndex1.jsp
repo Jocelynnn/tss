@@ -31,9 +31,9 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
 									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/adminIndex1.jsp">用户管理</a></li>
+										href="/tss/action/adminGetAllUser.action">用户管理</a></li>
 									<li><a
-										href="<%=request.getContextPath()%>/views/adminIndex2.jsp">课程管理</a></li>
+										href="/tss/action/adminGetAllCourse.action">课程管理</a></li>
 
 
 								</ul>
@@ -73,22 +73,21 @@
 									<%
 										String[] rows = { "success", "error", "warning", "info" };
 									%>
-									<s:form action="/action/adminModifyUser" method="post">
-										<table class="table table-hover table-bordered">
-											<thead>
+									<table class="table table-hover table-bordered">
+										<thead>
+											<tr>
+												<th>用户名</th>
+												<th>姓名</th>
+												<th>密码</th>
+												<th>email</th>
+												<th>性别</th>
+												<th>角色</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<s:iterator value="users" id="user">
+											<s:form action="/action/adminModifyUser" method="post">
 												<tr>
-													<th>用户名</th>
-													<th>姓名</th>
-													<th>密码</th>
-													<th>email</th>
-													<th>性别</th>
-													<th>角色</th>
-													<th>操作</th>
-												</tr>
-											</thead>
-											<s:iterator value="users" id="user">
-												<tr>
-													<s:password></s:password>
 													<td><s:textfield style="width: 100px" name="username"
 															value="%{#user.username}"></s:textfield></td>
 													<td><s:textfield style="width: 100px" name="realName"
@@ -106,9 +105,9 @@
 
 													</td>
 												</tr>
-											</s:iterator>
-										</table>
-									</s:form>
+											</s:form>
+										</s:iterator>
+									</table>
 
 								</div>
 

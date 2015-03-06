@@ -160,7 +160,7 @@ public class AdminDaoImpl implements AdminDao {
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				users.add(new User(result.getString("username"), null, result
+				users.add(new User(result.getString("username"), result.getString("password"), result
 						.getString("realName"), result.getString("email"),
 						result.getInt("gender"),result.getInt("role")));
 			}

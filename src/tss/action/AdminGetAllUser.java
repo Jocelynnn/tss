@@ -25,18 +25,22 @@ public class AdminGetAllUser extends BaseAction {
 	}
 
 
-	public ArrayList<User> getUserList() {
+	
+
+
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 
 
-	public void setUserList(ArrayList<User> userList) {
-		this.users = userList;
+	public void setUsers(ArrayList<User> users) {
+		this.users = users;
 	}
 
 
 	public String execute(){
 		users=adminService.getAllUser();
+		System.out.println("all users");
 		if(!users.isEmpty())
 			return SUCCESS;
 		else

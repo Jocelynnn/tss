@@ -14,6 +14,7 @@ public interface AdminService {
 	public ArrayList<Course> searchCourse(String searchKey);
 	
 	public boolean addCourse(Course course);
+	public boolean updateCourse(Course course);
 	
 	public ArrayList<User> getAllUser();
 	public ArrayList<User> getAllTeacher();
@@ -31,5 +32,5 @@ public interface AdminService {
 	public boolean updateTeachingAssistan(User user, String password);
 	public boolean updateTeachingManager(User user, String password);
 	
-
+	public ArrayList<Course> getAllCourse();
 }

@@ -18,6 +18,8 @@
 <mapping class="tss.model.User" />  
 <mapping class="tss.model.Assignment" />        
 <mapping class="tss.model.Submission" />
+<mapping class="tss.model.Course" />
+
 
 </session-factory>
 </hibernate-configuration>

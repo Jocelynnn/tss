@@ -197,9 +197,21 @@
 			<result name="success">/views/adminIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="courseAssignCheckAction" class="CourseAssignCheckAction">
 			<result name="success">/views/courseAssignview.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+
+		<action name="adminModifyCourse" class="AdminModifyCourse">
+			<result name="success" type="redirectAction">
+				<param name="actionName">adminGetAllCourse</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+
+		<action name="adminGetAllCourse" class="AdminGetAllCourse">
+			<result name="success">/views/adminIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 	</package>

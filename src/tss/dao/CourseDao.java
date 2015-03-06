@@ -19,6 +19,7 @@ public interface CourseDao {
 	public boolean removeCourseTA(String courseId,String taId);
 	
 	public String getCourseName(String courseId);
+	public boolean updateCourse(Course c);
 
 
 }

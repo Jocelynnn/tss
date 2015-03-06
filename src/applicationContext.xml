@@ -327,16 +327,27 @@
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="AdminGetAllUser" class="tss.action.AdminGetAllUser">
 		<property name="AdminService">
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="CourseAssignCheckAction" class="tss.action.CourseAssignCheckAction">
 		<property name="TeachingManagerService">
 			<ref bean="TeachingManagerService" />
+		</property>
+	</bean>
+	<bean id="AdminModifyCourse" class="tss.action.AdminModifyCourse">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
+
+	<bean id="AdminGetAllCourse" class="tss.action.AdminGetAllCourse">
+		<property name="AdminService">
+			<ref bean="AdminService" />
 		</property>
 	</bean>
 

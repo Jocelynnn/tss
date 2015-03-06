@@ -147,6 +147,18 @@ public class AdminServiceImpl implements AdminService {
 		return userDao.getAllUser();
 	}
 
+	@Override
+	public ArrayList<Course> getAllCourse() {
+		// TODO Auto-generated method stub
+		return courseDao.getCourseList();
+	}
+
+	@Override
+	public boolean updateCourse(Course course) {
+		// TODO Auto-generated method stub
+		return courseDao.updateCourse(course);
+	}
+
 
 	
 

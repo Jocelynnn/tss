@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import tss.dao.CourseDao;
 import tss.dao.DaoHelper;
 import tss.model.Course;
@@ -15,6 +20,9 @@ import tss.model.User;
 
 public class CourseDaoImpl implements CourseDao {
 	private DaoHelper daoHelper;
+	private Configuration config;
+	private SessionFactory sessionFactory;
+	private Session session;
 
 	public DaoHelper getDaoHelper() {
 		return daoHelper;
@@ -370,6 +378,26 @@ public class CourseDaoImpl implements CourseDao {
 		}
 
 		return null;
+	}
+
+	@Override
+	public boolean updateCourse(Course c) {
+		try {
+			config = new Configuration().configure();
+			sessionFactory = config.buildSessionFactory();
+			session = sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			session.update(c); // 保存Entity到数据库中
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("ok");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 }
