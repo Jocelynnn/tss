@@ -307,4 +307,81 @@ public class AssignmentDaoImpl implements AssignmentDao {
 			return null;
 	}
 
+	@Override
+	public ArrayList<Assignment> getCourseAssign(int courseId) {
+		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM assignment where sourseId = ?");
+			stmt.setInt(1, courseId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				assignmentList.add(new Assignment(result.getInt("id"), result
+						.getString("courseId"), result.getString("courseName"),
+						result.getInt("number"), result
+								.getString("description"), result
+								.getString("format"), result
+								.getDate("submissionDeadline"), result
+								.getDate("gradeDeadline"), result
+								.getInt("score"), result.getString("level"),
+						result.getString("sample"), result
+								.getString("generalGrade")));
+			}
+			
+			return assignmentList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
+	@Override
+	public ArrayList<Assignment> getAssignmentList() {
+		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM assignment where sourseId");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				assignmentList.add(new Assignment(result.getInt("id"), result
+						.getString("courseId"), result.getString("courseName"),
+						result.getInt("number"), result
+								.getString("description"), result
+								.getString("format"), result
+								.getDate("submissionDeadline"), result
+								.getDate("gradeDeadline"), result
+								.getInt("score"), result.getString("level"),
+						result.getString("sample"), result
+								.getString("generalGrade")));
+			}
+			
+			return assignmentList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
 }

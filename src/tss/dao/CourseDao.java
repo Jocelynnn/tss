@@ -11,6 +11,7 @@ public interface CourseDao {
 	public ArrayList<Course> getTeacherCourses(String teacherName);
 	public ArrayList<String> getTACourses(String taId);
 	public ArrayList<User> getCourseStudent(String courseId);
+	public ArrayList<Course> getCourseList();
 	
 	public boolean addCourseStudent(String courseId,String studentId);
 	public boolean addCourseTA(String courseId,String taId);

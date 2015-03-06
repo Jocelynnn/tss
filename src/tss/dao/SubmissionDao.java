@@ -6,6 +6,7 @@ import tss.model.Submission;
 
 public interface SubmissionDao {
 	public ArrayList<Submission> getAssignSubmissions(int assignmentId);
+	public ArrayList<Submission> getSubmissionList();
 	
 	public ArrayList<Submission> getUnpassedSubmission(int assignmentId);
 	public ArrayList<Submission> getPassedSubmission(int assignmentId);

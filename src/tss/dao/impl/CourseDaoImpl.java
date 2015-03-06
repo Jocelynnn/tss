@@ -312,7 +312,6 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	public ArrayList<String> getTACourses(String taId) {
-		// TODO Auto-generated method stub
 		Connection con = daoHelper.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -326,6 +325,39 @@ public class CourseDaoImpl implements CourseDao {
 
 			while (result.next()) {
 				courseList.add(result.getString("courseId"));
+			}
+
+			return courseList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
+	@Override
+	public ArrayList<Course> getCourseList() {
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<Course> courseList = new ArrayList<Course>();
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM course");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				courseList.add(new Course(result.getString("courseId"), result
+						.getString("courseName"), result
+						.getString("description"),
+						result.getString("semester"), result
+								.getString("teacherName"), result
+								.getDate("initializationDeadline")));
 			}
 
 			return courseList;

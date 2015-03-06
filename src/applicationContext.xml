@@ -120,10 +120,7 @@
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
 		</property>
-
 	</bean>
-
-
 
 	<bean id="StudentService" class="tss.service.impl.StudentServiceImpl">
 		<property name="StudentDao">
@@ -147,7 +144,20 @@
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
 		</property>
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
+		</property>
 	</bean>
+	
+	<bean id="TeachingManagerService" class="tss.service.impl.TeachingManagerServiceImpl">
+		<property name="AssignmentDao">
+			<ref bean="AssignmentDao" />
+		</property>
+		<property name="SubmissionDao">
+			<ref bean="SubmissionDao" />
+		</property>
+	</bean>
+	
 	<bean id="LoginAction" class="tss.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService" />
