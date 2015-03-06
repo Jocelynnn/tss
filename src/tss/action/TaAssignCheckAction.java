@@ -6,32 +6,21 @@ import tss.model.Data;
 import tss.model.Submission;
 import tss.service.TeachingManagerService;
 
-public class CourseAssignCheckAction extends BaseAction {
+public class TaAssignCheckAction extends BaseAction {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4019797266111841616L;
+	private static final long serialVersionUID = 4527133647758645260L;
+	
 	private TeachingManagerService teachingManagerService;
-
-	public TeachingManagerService getTeachingManagerService() {
-		return teachingManagerService;
-	}
-
-	public void setTeachingManagerService(TeachingManagerService teachingManagerService) {
-		this.teachingManagerService = teachingManagerService;
-	}
 	
 	public String execute(){
 		try{
-			// 课程数量
-			int courseCount = teachingManagerService.getCourseList().size();
-			request.setAttribute("courseCount", courseCount);
-			// 作业数量
-			int assignCount = teachingManagerService.getAssignmentList().size();
-			request.setAttribute("assignCount", assignCount);
-			
-			// 统计不同分数段百分比
+			// 计算成绩分布
 			Data[] gradeData = new Data[2];
+			int gradedNum = 0;
+			int passedNum = 0;
 			
 			Data fLevel = new Data();
 			fLevel.setData(0);
@@ -40,6 +29,12 @@ public class CourseAssignCheckAction extends BaseAction {
 			
 			ArrayList<Submission> submissionList = teachingManagerService.getSubmissionList();
 			for (Submission submission : submissionList){
+				if (submission.getIsGraded() != 1){
+					gradedNum++;
+				}
+				if (submission.getIsPassed() == 2){
+					passedNum++;
+				}
 				if (submission.getGrade() < 60){
 					fLevel.setData(fLevel.getData() + 1);
 				}
@@ -59,11 +54,24 @@ public class CourseAssignCheckAction extends BaseAction {
 			
 			request.setAttribute("gradeData", gradeData);
 			
+			// 计算批改作业数量
+			request.setAttribute("gradedNum", gradedNum);
+			request.setAttribute("passedNum", passedNum);
+			
 			return SUCCESS;
 		}
 		catch (Exception e){
 			e.printStackTrace();
 			return ERROR;
 		}
+	}
+	
+	public TeachingManagerService getTeachingManagerService() {
+		return teachingManagerService;
+	}
+
+	public void setTeachingManagerService(
+			TeachingManagerService teachingManagerService) {
+		this.teachingManagerService = teachingManagerService;
 	}
 }

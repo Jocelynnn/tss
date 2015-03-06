@@ -49,13 +49,13 @@
 					</div>
 					<div class="col-6 col-sm-6 col-lg-4">
 						<h2>
-							<s:a action="sumclub" namespace="/action">助教情况</s:a>
+							<s:a action="taAssignCheckAction" namespace="/action">助教情况</s:a>
 						</h2>
 						<p>批改作业情况</p>
 					</div>
 					<div class="col-6 col-sm-6 col-lg-4">
 						<h2>
-							<s:a action="sumclub" namespace="/action">教师情况</s:a>
+							<s:a action="teacherAssignCheckAction" namespace="/action">教师情况</s:a>
 						</h2>
 						<p>作业安排情况</p>
 					</div>
@@ -65,8 +65,8 @@
 				<div class="list-group">
 					<s:a cssClass="list-group-item" action="courseAssignCheckAction" namespace="/action">课程作业情况</s:a>
 					<s:a cssClass="list-group-item" action="studentCheckAction" namespace="/action">学生情况</s:a>
-					<s:a cssClass="list-group-item" action="sumvip" namespace="/action">助教情况</s:a>
-					<s:a cssClass="list-group-item" action="sumvip" namespace="/action">教师情况</s:a>
+					<s:a cssClass="list-group-item" action="taAssignCheckAction" namespace="/action">助教情况</s:a>
+					<s:a cssClass="list-group-item" action="teacherAssignCheckAction" namespace="/action">教师情况</s:a>
 					
 				</div>
 			</div>

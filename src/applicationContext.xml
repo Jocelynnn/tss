@@ -356,5 +356,17 @@
 			<ref bean="TeachingManagerService" />
 		</property>
 	</bean>
+	
+	<bean id="TaAssignCheckAction" class="tss.action.TaAssignCheckAction">
+		<property name="TeachingManagerService">
+			<ref bean="TeachingManagerService" />
+		</property>
+	</bean>
+	
+	<bean id="TeacherAssignCheckAction" class="tss.action.TeacherAssignCheckAction">
+		<property name="TeachingManagerService">
+			<ref bean="TeachingManagerService" />
+		</property>
+	</bean>
 
 </beans>
