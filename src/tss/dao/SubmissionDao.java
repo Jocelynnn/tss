@@ -20,5 +20,6 @@ public interface SubmissionDao {
 	
 	public boolean teacherPassSubmission(int submissionId);
 	public boolean teacherUnpassSubmission(int submissionId);
+	public boolean taSubmitGrade(int submissionId,int grade,String evaluation);
 
 }

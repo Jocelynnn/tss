@@ -45,7 +45,7 @@
 											class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
-											<li><s:a href="/tss/action/logout.action" >登出</s:a></li>
+											<li><s:a href="/tss/action/logout.action">登出</s:a></li>
 										</ul></li>
 								</ul>
 							</div>
@@ -71,29 +71,37 @@
 
 								<div id="searchResult">
 									<%
-										String[] rows = {"success","error","warning","info"};
+										String[] rows = { "success", "error", "warning", "info" };
 									%>
-									<table class="table table-hover table-bordered">
-										<thead>
-											<tr>
-												<th>用户名</th>
-												<th>姓名</th>
-												<th>email</th>
-												<th>性别</th>
-												<th>角色</th>
-											</tr>
-										</thead>
-										<s:iterator value="users" id="user">
-											<tr class="success">
-												<td><s:property value="#user.username" /></td>
-												<td><s:property value="#user.realName" /></td>
-												<td><s:property value="#user.email" /></td>
-												<td><s:property value="#user.gender" /></td>
-												<td><s:property value="#user.role" /></td>
+									<s:form>
+										<table class="table table-hover table-bordered">
+											<thead>
+												<tr>
+													<th>用户名</th>
+													<th>姓名</th>
+													<th>email</th>
+													<th>性别</th>
+													<th>角色</th>
+												</tr>
+											</thead>
+											<s:iterator value="users" id="user">
+												<tr class="success">
+													<td><s:textfield name="username"
+															value="%{#user.username}"></s:textfield></td>
+													<td><s:textfield name="realName"
+															value="%{#user.realName}"></s:textfield></td>
+													<td><s:textfield name="email" value="%{#user.email}"></s:textfield></td>
+													<td><s:textfield name="gender" value="%{#user.gender}"></s:textfield></td>
+													<td><s:textfield name="role" value="%{#user.role}"></s:textfield></td>
 
-											</tr>
-										</s:iterator>
-									</table>
+												</tr>
+											</s:iterator>
+										</table>
+
+
+
+									</s:form>
+
 								</div>
 
 							</div>

@@ -313,7 +313,11 @@
 	
 	<bean id="TaDownloadStuAssignment" class="tss.action.TaDownloadStuAssignment">
 	</bean>
-	
+	<bean id="TaSubmitGrade" class="tss.action.TaSubmitGrade">
+		<property name="TaService">
+			<ref bean="TaService" />
+		</property>
+	</bean>
 	
 
 </beans>
