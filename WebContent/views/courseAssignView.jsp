@@ -19,7 +19,7 @@
 <%
 	Integer courseCount = (Integer) request.getAttribute("courseCount");
 	Integer assignCount = (Integer) request.getAttribute("assignCount");
-
+	Data[] gradeData = (Data[]) request.getAttribute("gradeData");
 %>
 <script type="text/javascript"
 	src="<s:url value="/js/jquery-1.11.0.js"></s:url>"></script>
@@ -85,6 +85,42 @@
 			} ]
 		});
 	});
+	
+	$(function() {
+		$('#container2')
+				.highcharts(
+						{
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false
+							},
+							title : {
+								text : '分数分布情况'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										enabled : true,
+										color : '#000000',
+										connectorColor : '#000000',
+										format : '<b>{point.name}</b>: {point.percentage:.1f} %'
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'Browser share',
+								data : [ [ "<%=gradeData[0].getName()%>",parseFloat(<%=gradeData[0].getData()%>)],
+										[ "<%=gradeData[1].getName()%>",parseFloat(<%=gradeData[1].getData()%>)] ]
+							} ]
+						});
+	});
 </script>
 
 </head>
@@ -113,7 +149,10 @@
 		<div id="container1"
 			style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		<br>
-
+		
+		<div id="container2"
+			style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<br>
 	</div>
 </body>
 </html>

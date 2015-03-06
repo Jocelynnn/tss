@@ -32,9 +32,11 @@ public class StudentGetSingleAssignment extends BaseAction {
 			try {
 				if (sdf.parse(sdf.format(this.assignment.getSubmissionDeadline())).compareTo(sdf.parse(sdf.format(date))) == -1){
 					type = 4;
+					return SUCCESS;
 				}
 				else{
 					type = 1;
+					return SUCCESS;
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -50,10 +52,12 @@ public class StudentGetSingleAssignment extends BaseAction {
 				if (sdf.parse(sdf.format(date)).compareTo(sdf.parse(sdf.format(this.assignment.getSubmissionDeadline()))) == -1){
 					// 已提交未过期
 					type = 2;
+					return SUCCESS;
 				}
 				else{
 					// 已提交已过期
 					type = 3;
+					return SUCCESS;
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -61,7 +65,7 @@ public class StudentGetSingleAssignment extends BaseAction {
 		}
 		System.out.println(type+"!!!");
 		
-		return SUCCESS;
+		return ERROR;
 	}
 	
 	public int getType() {
