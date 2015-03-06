@@ -17,7 +17,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="<s:url value="/views/index.jsp"></s:url>"><img
+				<a href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>"><img
 					alt="logo" src="<s:url value="/img/logo.png"></s:url>" /></a>
 			</div>
 		</div>
@@ -30,9 +30,8 @@
 						data-toggle="offcanvas">Toggle nav</button>
 				</p>
 				<div class="jumbotron">
-					<h1>Hello,&nbsp;Manager!</h1>
-					<p>Welcome to your personal home page, your can see what you
-						can do here.</p>
+					<h1>你好,&nbsp;教学负责人!</h1>
+					<p>欢迎来到统计界面，你在这里可以查看整个教学管理系统数据图表。</p>
 				</div>
 				<div class="row">
 					<div class="col-6 col-sm-6 col-lg-4">

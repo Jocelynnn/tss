@@ -65,14 +65,16 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="<s:url value="/views/index.jsp"></s:url>"><img
+				<a href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>"><img
 					alt="logo" src="<s:url value="/img/logo.png"></s:url>" /></a>
 			</div>
 			<s:div cssClass="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<s:url value="/manager/index.jsp"></s:url>">Home</a></li>
-					<li><s:a action="sumvip" namespace="/action">VIP Statistics</s:a></li>
-					<li><s:a action="sumclub" namespace="/action">Club Statistics</s:a></li>
+					<li><a href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>">主页</a></li>
+					<li><s:a action="courseAssignCheckAction" namespace="/action">课程作业情况</s:a></li>
+					<li><s:a action="studentCheckAction" namespace="/action">学生情况</s:a></li>
+					<li><s:a action="taAssignCheckAction" namespace="/action">助教情况</s:a></li>
+					<li><s:a action="teacherAssignCheckAction" namespace="/action">教师情况</s:a></li>
 				</ul>
 			</s:div>
 		</div>
