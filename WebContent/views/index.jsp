@@ -43,7 +43,7 @@
 					</div>
 					<div class="col-6 col-sm-6 col-lg-4">
 						<h2>
-							<s:a action="sumclub" namespace="/action">学生情况</s:a>
+							<s:a action="studentCheckAction" namespace="/action">学生情况</s:a>
 						</h2>
 						<p>作业提交、得分等</p>
 					</div>
@@ -64,7 +64,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 				<div class="list-group">
 					<s:a cssClass="list-group-item" action="courseAssignCheckAction" namespace="/action">课程作业情况</s:a>
-					<s:a cssClass="list-group-item" action="sumclub" namespace="/action">学生情况</s:a>
+					<s:a cssClass="list-group-item" action="studentCheckAction" namespace="/action">学生情况</s:a>
 					<s:a cssClass="list-group-item" action="sumvip" namespace="/action">助教情况</s:a>
 					<s:a cssClass="list-group-item" action="sumvip" namespace="/action">教师情况</s:a>
 					

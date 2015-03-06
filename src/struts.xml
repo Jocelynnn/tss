@@ -214,6 +214,11 @@
 			<result name="success">/views/adminIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="studentCheckAction" class="StudentCheckAction">
+			<result name="success">/views/studentCheckView.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

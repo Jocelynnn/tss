@@ -58,7 +58,6 @@ public class CourseAssignCheckAction extends BaseAction {
 		
 		request.setAttribute("gradeData", gradeData);
 		
-		
 		return SUCCESS;
 	}
 }
