@@ -29,6 +29,8 @@ public class AdminAddCourses extends BaseAction {
 		String description=request.getParameter("description");
 		
 		int s=Integer.valueOf(request.getParameter("semester"));
+		
+		
 		String semester=semesters[s];
 		String instructor=request.getParameter("instructor");
 		Date date=new Date();

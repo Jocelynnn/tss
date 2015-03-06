@@ -123,6 +123,9 @@
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
 		</property>
+		<property name="UserDao">
+			<ref bean="UserDao" />
+		</property>
 	</bean>
 
 	<bean id="StudentService" class="tss.service.impl.StudentServiceImpl">
@@ -350,19 +353,19 @@
 			<ref bean="AdminService" />
 		</property>
 	</bean>
-	
+
 	<bean id="StudentCheckAction" class="tss.action.StudentCheckAction">
 		<property name="TeachingManagerService">
 			<ref bean="TeachingManagerService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TaAssignCheckAction" class="tss.action.TaAssignCheckAction">
 		<property name="TeachingManagerService">
 			<ref bean="TeachingManagerService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeacherAssignCheckAction" class="tss.action.TeacherAssignCheckAction">
 		<property name="TeachingManagerService">
 			<ref bean="TeachingManagerService" />

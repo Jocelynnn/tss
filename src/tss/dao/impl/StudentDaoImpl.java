@@ -107,7 +107,7 @@ public class StudentDaoImpl implements StudentDao {
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				nameList.add(result.getString("assistantName"));
+				nameList.add(result.getString("assistantId"));
 			}
 			System.out.println(nameList.size());
 			Iterator<String> iter = nameList.iterator();

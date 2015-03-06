@@ -17,6 +17,16 @@ public class User {
 //	1（系统管理员）2（授课教师）3（选课学生）4（助教）5（教学负责人）6（选课学生和助教）7（授课教师和教学负责人）
 	private Integer role;
 	
+	public static int ADMIN=1;
+	public static int TEACHER=2;
+	public static int STUDENT=3;
+	public static int TEACHING_ASSISTANT=4;
+	public static int TEACHING_MANAGER=5;
+	public static int STUDENT_AS_TA=6;
+	public static int TEACHER_AS_MANAGER=7;
+
+
+	
 	public String getUsername() {
 		return username;
 	}

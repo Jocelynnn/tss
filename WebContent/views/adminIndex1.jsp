@@ -14,6 +14,29 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+
+<script>
+	function validate() {
+		if (document.getElementById("username").value == "") {
+			alert("Please enter user Name.");
+			document.getElementById("username").focus();
+			return false;
+		}
+		if (document.getElementById("password").value == "") {
+			alert("Please enter password.");
+			document.getElementById("password").focus();
+			return false;
+		}
+		if (document.getElementById("role").value == -1) {
+			alert("Please select role.");
+			document.getElementById("role").focus();
+			return false;
+		}
+		/* alert ( "Welcome User" );
+		 */
+		return true;
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -32,8 +55,7 @@
 								<ul class="nav">
 									<li class="active"><a
 										href="/tss/action/adminGetAllUser.action">用户管理</a></li>
-									<li><a
-										href="/tss/action/adminGetAllCourse.action">课程管理</a></li>
+									<li><a href="/tss/action/adminGetAllCourse.action">课程管理</a></li>
 
 
 								</ul>
@@ -58,7 +80,8 @@
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#panel-386299" data-toggle="tab">修改信息</a>
 						</li>
-						<li><a href="#panel-29008" data-toggle="tab">注册用户</a></li>
+						<li><a href="#panel-29008" data-toggle="tab">注册新用户</a></li>
+
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-386299">
@@ -117,14 +140,15 @@
 						</div>
 						<div class="tab-pane" id="panel-29008">
 							<div>
-								<s:form action="/action/adminAddUser" method="post">
+								<s:form action="/action/adminAddUser" method="post"
+									onsubmit="return validate();">
 
-									<s:select headerKey="-1" headerValue="选择角色"
+									<s:select headerKey="-1" headerValue="选择角色(必选)"
 										list="#{'2':'授课教师', '3':'学生','4':'助教','5':'教学负责人'}"
-										name="role" value="-1" />
+										name="role" value="-1" id="role" />
 									<div>
-										<s:label>用户名</s:label>
-										<s:textfield name="username"></s:textfield>
+										<s:label>用户名(必填)</s:label>
+										<s:textfield name="username" id="username"></s:textfield>
 									</div>
 
 									<div>
@@ -133,8 +157,8 @@
 									</div>
 
 									<div>
-										<s:label>密码</s:label>
-										<s:password name="password"></s:password>
+										<s:label>密码(必填)</s:label>
+										<s:password name="password" id="password"></s:password>
 									</div>
 
 									<div>
@@ -146,33 +170,10 @@
 									<div>
 										<button class="btn" type="submit">注册</button>
 									</div>
-									<%-- <label  for="username">用户名</label>
-											<input id="username" type="text" placeholder="username" />
-
-										<label class="control-label" for="realName">姓名</label>
-										<div class="controls">
-											<input id="realName" type="text" placeholder="name" />
-										</div>
-
-										<label class="control-label" for="password">密码</label>
-										<div class="controls">
-											<input id="password" type="password" placeholder="password" />
-										</div>
-
-										<label class="control-label" for="email">E-mail</label>
-										<div class="controls">
-											<input id="email" type="text" placeholder="email" />
-										</div>
-
-										<s:select headerKey="-1" headerValue="选择性别"
-											list="#{'1':'男', '2':'女'}" name="gender" value="-1" />
-
-										<div class="controls">
-											<button class="btn" type="submit">注册</button>
-										</div> --%>
 								</s:form>
 							</div>
 						</div>
+
 					</div>
 				</div>
 

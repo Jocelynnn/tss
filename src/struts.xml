@@ -63,7 +63,7 @@
 		</action>
 
 		<action name="adminAddCourses" class="AdminAddCoursesAction">
-			<result name="success">/views/adminIndex1.jsp</result>
+			<result name="success">/views/adminIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 
 		</action>

@@ -216,7 +216,7 @@ public class CourseDaoImpl implements CourseDao {
 
 		try {
 			stmt = con
-					.prepareStatement("INSERT INTO teachingAssistant(assistantName, courseId) values (?,?)");
+					.prepareStatement("INSERT INTO teachingAssistant(assistantId, courseId) values (?,?)");
 			stmt.setString(1, taId);
 			stmt.setString(2, courseId);
 
@@ -270,7 +270,7 @@ public class CourseDaoImpl implements CourseDao {
 
 		try {
 			stmt = con
-					.prepareStatement("DELETE FROM teachingAssistant WHERE assistantName = ? And courseId = ?");
+					.prepareStatement("DELETE FROM teachingAssistant WHERE assistantId = ? And courseId = ?");
 			stmt.setString(1, taId);
 			stmt.setString(2, courseId);
 

@@ -50,6 +50,8 @@ public class AdminAddUser extends BaseAction {
 		String email=request.getParameter("email");
 		int gender=Integer.valueOf(request.getParameter("gender"));
 		int role=Integer.valueOf(request.getParameter("role"));
+		
+			
 		System.out.println(gender);
 		System.out.println(role);
 		System.out.println(username);

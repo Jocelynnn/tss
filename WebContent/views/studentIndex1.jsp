@@ -44,9 +44,8 @@
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
 
-											<li><a href="#">登出</a></li>
-											<li class="divider"></li>
-											<li><a href="#">链接3</a></li>
+											<li><a href="/tss/action/logout.action">登出</a></li>
+											
 										</ul></li>
 								</ul>
 							</div>

@@ -14,6 +14,23 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+<script>
+function validate(){
+if (document.getElementById("courseid").value == ""){
+alert ( "Please enter courseid." );
+document.getElementById("courseid").focus();
+return false;
+}
+if (document.getElementById("coursename").value == ""){
+alert ( "Please enter coursename." );
+document.getElementById("coursename").focus();
+return false;
+}
+/* alert ( "Welcome User" );
+ */
+ return true;
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -78,6 +95,7 @@
 												<th>课程描述</th>
 												<th>学期</th>
 												<th>授课教师</th>
+												<th>截止日期</th>
 												<th>操作</th>
 											</tr>
 										</thead>
@@ -95,7 +113,7 @@
 													<td><s:textfield style="width: 100px"
 															name="teacherName" value="%{#course.teacherName}"></s:textfield></td>
 													<td><s:textfield style="width: 100px"
-															name="teacherName"
+															name="initializationDeadline"
 															value="%{#course.initializationDeadline}"></s:textfield></td>
 													<td>
 														<button class="btn" type="submit">保存</button>
@@ -112,16 +130,16 @@
 						</div>
 						<div class="tab-pane " id="panel-386299">
 							<div>
-								<s:form action="/action/adminAddCourses" method="post">
+								<s:form action="/action/adminAddCourses" method="post" onsubmit="return validate();">
 									<div>
 										<s:label>课程编号</s:label>
-										<s:textfield name="courseid"></s:textfield>
+										<s:textfield name="courseid" id="courseid"></s:textfield>
 									</div>
 
 
 									<div>
 										<s:label>课程名</s:label>
-										<s:textfield name="coursename"></s:textfield>
+										<s:textfield name="coursename" id="coursename"></s:textfield>
 									</div>
 
 									<div>

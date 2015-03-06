@@ -7,6 +7,7 @@ import tss.dao.AssignmentDao;
 import tss.dao.CourseDao;
 import tss.dao.StudentDao;
 import tss.dao.SubmissionDao;
+import tss.dao.UserDao;
 import tss.model.Assignment;
 import tss.model.Course;
 import tss.model.Submission;
@@ -18,6 +19,15 @@ public class TeacherServiceImpl implements TeacherService {
 	private StudentDao studentDao;
 	private AssignmentDao assignmentDao;
 	private SubmissionDao submissionDao;
+	private UserDao userDao;
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
 
 	public SubmissionDao getSubmissionDao() {
 		return submissionDao;
@@ -90,6 +100,12 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public boolean addCourseTA(String courseId, String taId) {
 		// TODO Auto-generated method stub
+		// add a student to teaching assistant list; alter the role of the
+		// student
+
+		User user = userDao.getPersonalInfo(taId);
+		user.setRole(User.STUDENT_AS_TA);
+		userDao.updatePersonalInfo(user);
 		return courseDao.addCourseTA(courseId, taId);
 	}
 
@@ -102,13 +118,19 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public boolean removeCourseTA(String courseId, String taId) {
 		// TODO Auto-generated method stub
+		// remove a student from teaching assistant list; alter the role back to
+		// student
+		User user = userDao.getPersonalInfo(taId);
+		user.setRole(User.STUDENT);
+		userDao.updatePersonalInfo(user);
 		return courseDao.removeCourseTA(courseId, taId);
 	}
 
 	@Override
-	public Map<String,ArrayList<Assignment>> getCourseAssignments(String teacherId) {
+	public Map<String, ArrayList<Assignment>> getCourseAssignments(
+			String teacherId) {
 		// TODO Auto-generated method stub
-		
+
 		return assignmentDao.getCourseAssignment(teacherId);
 	}
 
@@ -135,7 +157,7 @@ public class TeacherServiceImpl implements TeacherService {
 		// TODO Auto-generated method stub
 		return assignmentDao.getAssignment(assignId);
 	}
-	
+
 	@Override
 	public ArrayList<Submission> getUnpassedSubmission(int assignmentId) {
 		// TODO Auto-generated method stub
