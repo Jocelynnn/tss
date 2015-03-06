@@ -43,7 +43,13 @@ public class StudentGetSingleAssignment extends BaseAction {
 			}
 		}
 		else{
+			if (submission.getSubmission() == null){
+				return ERROR;
+			}
 			String[] temp = submission.getSubmission().split("/");
+			if (temp == null || temp.length == 0){
+				return ERROR;
+			}
 			this.fileName = temp[temp.length-1];
 
 			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
