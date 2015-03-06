@@ -144,9 +144,6 @@
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
 		</property>
-		<property name="CourseDao">
-			<ref bean="CourseDao" />
-		</property>
 	</bean>
 	
 	<bean id="TeachingManagerService" class="tss.service.impl.TeachingManagerServiceImpl">
@@ -155,6 +152,9 @@
 		</property>
 		<property name="SubmissionDao">
 			<ref bean="SubmissionDao" />
+		</property>
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
 		</property>
 	</bean>
 	
