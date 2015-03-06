@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import tss.dao.AdminDao;
 import tss.dao.CourseDao;
+import tss.dao.UserDao;
 import tss.model.Course;
 import tss.model.User;
 import tss.service.AdminService;
@@ -11,6 +12,15 @@ import tss.service.AdminService;
 public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
 	private CourseDao courseDao;
+	private UserDao userDao;
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
 
 	public CourseDao getCourseDao() {
 		return courseDao;
@@ -123,6 +133,18 @@ public class AdminServiceImpl implements AdminService {
 	public ArrayList<Course> searchCourse(String searchKey) {
 		// TODO Auto-generated method stub
 		return courseDao.getCourses(searchKey);
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		// TODO Auto-generated method stub
+		return userDao.updatePersonalInfo(user);
+	}
+
+	@Override
+	public ArrayList<User> getAllUser() {
+		// TODO Auto-generated method stub
+		return userDao.getAllUser();
 	}
 
 

@@ -73,33 +73,41 @@
 									<%
 										String[] rows = { "success", "error", "warning", "info" };
 									%>
-									<s:form>
+									<s:form action="/action/adminModifyUser" method="post">
 										<table class="table table-hover table-bordered">
 											<thead>
 												<tr>
 													<th>用户名</th>
 													<th>姓名</th>
+													<th>密码</th>
 													<th>email</th>
 													<th>性别</th>
 													<th>角色</th>
+													<th>操作</th>
 												</tr>
 											</thead>
 											<s:iterator value="users" id="user">
-												<tr class="success">
-													<td><s:textfield name="username"
+												<tr>
+													<s:password></s:password>
+													<td><s:textfield style="width: 100px" name="username"
 															value="%{#user.username}"></s:textfield></td>
-													<td><s:textfield name="realName"
+													<td><s:textfield style="width: 100px" name="realName"
 															value="%{#user.realName}"></s:textfield></td>
-													<td><s:textfield name="email" value="%{#user.email}"></s:textfield></td>
-													<td><s:textfield name="gender" value="%{#user.gender}"></s:textfield></td>
-													<td><s:textfield name="role" value="%{#user.role}"></s:textfield></td>
+													<td><s:textfield style="width: 100px" name="password"
+															value="%{#user.password}"></s:textfield></td>
+													<td><s:textfield style="width: 100px" name="email"
+															value="%{#user.email}"></s:textfield></td>
+													<td><s:textfield style="width: 100px" name="gender"
+															value="%{#user.gender}"></s:textfield></td>
+													<td><s:textfield style="width: 100px" name="role"
+															value="%{#user.role}"></s:textfield></td>
+													<td>
+														<button class="btn" type="submit">保存</button>
 
+													</td>
 												</tr>
 											</s:iterator>
 										</table>
-
-
-
 									</s:form>
 
 								</div>

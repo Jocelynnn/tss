@@ -106,6 +106,9 @@
 		<property name="CourseDao">
 			<ref bean="CourseDao" />
 		</property>
+		<property name="UserDao">
+			<ref bean="UserDao" />
+		</property>
 	</bean>
 	<bean id="TeacherService" class="tss.service.impl.TeacherServiceImpl">
 		<property name="CourseDao">
@@ -145,7 +148,7 @@
 			<ref bean="SubmissionDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeachingManagerService" class="tss.service.impl.TeachingManagerServiceImpl">
 		<property name="AssignmentDao">
 			<ref bean="AssignmentDao" />
@@ -157,7 +160,7 @@
 			<ref bean="CourseDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="LoginAction" class="tss.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService" />
@@ -277,40 +280,40 @@
 	</bean>
 	<bean id="TeacherUpload" class="tss.action.UploadTeacherSampleAction">
 	</bean>
-	
+
 	<bean id="StudentGetAssignment" class="tss.action.StudentGetAssignment">
 		<property name="StudentService">
 			<ref bean="StudentService" />
 		</property>
 	</bean>
-	
+
 	<bean id="StudentGetSingleAssignment" class="tss.action.StudentGetSingleAssignment">
 		<property name="StudentService">
 			<ref bean="StudentService" />
 		</property>
 	</bean>
-	
+
 	<bean id="UploadStudentAssignAction" class="tss.action.UploadStudentAssignAction">
 		<property name="StudentService">
 			<ref bean="StudentService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeacherPassSubmission" class="tss.action.TeacherPassSubmission">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-	
+
 	<bean id="TeacherUnpassSubmission" class="tss.action.TeacherUnpassSubmission">
 		<property name="TeacherService">
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-	
+
 	<bean id="AutoSync" class="tss.action.AutoSync">
 	</bean>
-	
+
 	<bean id="TaDownloadStuAssignment" class="tss.action.TaDownloadStuAssignment">
 	</bean>
 	<bean id="TaSubmitGrade" class="tss.action.TaSubmitGrade">
@@ -318,6 +321,17 @@
 			<ref bean="TaService" />
 		</property>
 	</bean>
+
+	<bean id="AdminModifyUser" class="tss.action.AdminModifyUser">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
 	
+	<bean id="AdminGetAllUser" class="tss.action.AdminGetAllUser">
+		<property name="AdminService">
+			<ref bean="AdminService" />
+		</property>
+	</bean>
 
 </beans>

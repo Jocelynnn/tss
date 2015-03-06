@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updatePersonalInfo(User User, String password) {
+	public boolean updatePersonalInfo(User user) {
 		// TODO Auto-generated method stub
-		return userDao.updatePersonalInfo(User, password);
+		return userDao.updatePersonalInfo(user);
 	}
 
 }

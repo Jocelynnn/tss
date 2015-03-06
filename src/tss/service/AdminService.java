@@ -7,13 +7,15 @@ import tss.model.User;
 
 
 public interface AdminService {
+	
 	public boolean addUser(User user);
+	public boolean updateUser(User user);
 	public ArrayList<User> searchUser(String searchKey);
 	public ArrayList<Course> searchCourse(String searchKey);
 	
 	public boolean addCourse(Course course);
 	
-	
+	public ArrayList<User> getAllUser();
 	public ArrayList<User> getAllTeacher();
 	public ArrayList<User> getAllStudent();
 	public ArrayList<User> getAllTeachingAssistant();
@@ -28,5 +30,6 @@ public interface AdminService {
 	public boolean updateStudent(User user, String password);
 	public boolean updateTeachingAssistan(User user, String password);
 	public boolean updateTeachingManager(User user, String password);
+	
 
 }
