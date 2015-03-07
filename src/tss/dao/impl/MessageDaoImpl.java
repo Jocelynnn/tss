@@ -84,8 +84,6 @@ public class MessageDaoImpl implements MessageDao {
 		try {
 			for (Assignment assignment : assignmentList) {
 				// 如果今天日期是提交日期前一天
-				System.out.println(calculateDayDiff(assignment.getSubmissionDeadline(),
-						new Date()));
 				if (calculateDayDiff(assignment.getSubmissionDeadline(),
 						new Date()) == 1) {
 					ArrayList<User> studentList = courseDao
