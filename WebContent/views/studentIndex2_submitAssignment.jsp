@@ -40,7 +40,7 @@
 									<li><a href="#">学生</a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">学生<strong class="caret"></strong></a>
+										class="dropdown-toggle" href="#">${username}<strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
 

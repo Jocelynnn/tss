@@ -86,6 +86,8 @@ public class SelectRole extends BaseAction {
 		role = request.getParameter("role");
 		username=(String) request.getSession().getAttribute("username");
 		switch (role) {
+		case "1":
+			return "admin";
 		// 授课教师
 		case "2":
 			teacherCourses = teacherService.getTeacherCourses(username);

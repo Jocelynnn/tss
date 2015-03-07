@@ -30,22 +30,26 @@
 								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><s:a href="/tss/action/studentSearchCourse.action" >我的课程</s:a></li>
-									<li><s:a
-											href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
+									<li class="active"><s:a
+											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
 								<ul class="nav pull-right">
 									<li><a href="#">学生</a></li>
-									<li class="divider-vertical"></li>
+									<li class="divider-vertical"></li> 
+									<% String
+									username=(String)request.getSession().getAttribute("username"); %>
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">学生<strong class="caret"></strong></a>
+										class="dropdown-toggle" href="#">${username}<span class="badge">42</span><strong
+											class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="#">个人信息</a></li>
-
+											<li><a href="#">Inbox<span class="badge">42</span>
+											</a></li>
 											<li><a href="/tss/action/logout.action">登出</a></li>
-											
+
 										</ul></li>
 								</ul>
 							</div>
@@ -72,7 +76,8 @@
 									<td><s:property value="#course.courseName" /></td>
 									<td><s:property value="#course.description" /></td>
 									<td><s:property value="#course.semester" /></td>
-									<td><a href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
+									<td><a
+										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

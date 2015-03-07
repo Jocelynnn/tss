@@ -37,15 +37,15 @@
 
 
 	<div class="row">
-		<div class="col-md-3 col-md-offset-3">
+		<div class="col-md-4 col-md-offset-2 ">
 			<s:a href="selectRole.action?role=4">
-				<i class="icon-user icon-5x"> 助教</i>
+				<i class="icon-user icon-4x"> 助教</i>
 			</s:a>
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<s:a href="selectRole.action?role=3">
-				<i class="icon-user icon-5x"> 学生</i>
+				<i class="icon-user icon-4x"> 学生</i>
 			</s:a>
 		</div>
 
