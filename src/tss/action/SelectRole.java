@@ -84,12 +84,12 @@ public class SelectRole extends BaseAction {
 
 	public String execute() {
 		role = request.getParameter("role");
-		System.out.println(request.getSession().getAttribute("username"));
+		username=(String) request.getSession().getAttribute("username");
 		switch (role) {
 		// 授课教师
 		case "2":
-			teacherCourses = teacherService.getTeacherCourses(request
-					.getParameter("username"));
+			teacherCourses = teacherService.getTeacherCourses(username);
+//			System.out.println(teacherCourses.size());
 			return "teacher";
 
 			// 选课学生
@@ -99,8 +99,7 @@ public class SelectRole extends BaseAction {
 
 			// 助教
 		case "4":
-			allAssigns = taService.getCourseAssignments(request
-					.getParameter("username"));
+			allAssigns = taService.getCourseAssignments(username);
 
 			return "teachingAssistant";
 
