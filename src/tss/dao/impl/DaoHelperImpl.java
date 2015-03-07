@@ -23,7 +23,7 @@ public class DaoHelperImpl implements DaoHelper {
 	private Connection connection = null;
 	private DataSource datasource = null;
 
-	private DaoHelperImpl() {
+	public DaoHelperImpl() {
 		jndiContext = null;
 		 connection = null;
 		 datasource = null;

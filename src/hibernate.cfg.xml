@@ -19,7 +19,7 @@
 <mapping class="tss.model.Assignment" />        
 <mapping class="tss.model.Submission" />
 <mapping class="tss.model.Course" />
-
+<mapping class="tss.model.Message" />
 
 </session-factory>
 </hibernate-configuration>
