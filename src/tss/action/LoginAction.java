@@ -17,9 +17,9 @@ public class LoginAction extends BaseAction {
 	private TeacherService teacherService;
 	private TaService taService;
 	ArrayList<Course> teacherCourses;
-	Map<String,ArrayList<Assignment>> allAssigns;
+	Map<String, ArrayList<Assignment>> allAssigns;
 	private String userName;
-	
+
 	public Map<String, ArrayList<Assignment>> getAllAssigns() {
 		return allAssigns;
 	}
@@ -54,7 +54,6 @@ public class LoginAction extends BaseAction {
 		this.teacherService = teacherService;
 	}
 
-
 	public ArrayList<Course> getCourseList() {
 		return courseList;
 	}
@@ -70,7 +69,7 @@ public class LoginAction extends BaseAction {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -115,12 +114,12 @@ public class LoginAction extends BaseAction {
 
 			// 助教
 		case 4:
-			allAssigns=taService.getCourseAssignments(request
+			allAssigns = taService.getCourseAssignments(request
 					.getParameter("username"));
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			
+
 			return "teachingAssistant";
 
 			// 教学负责人

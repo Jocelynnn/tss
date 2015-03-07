@@ -5,11 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath()%>/bootstrap/bootstrap.min.css"
+<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/Font-Awesome/css/font-awesome.min.css">
@@ -40,14 +38,17 @@
 
 	<div class="row">
 		<div class="col-md-3 col-md-offset-3">
-			<s:a><i class="icon-user icon-5x"> 助教</i></s:a>
+			<s:a href="selectRole.action?role=4">
+				<i class="icon-user icon-5x"> 助教</i>
+			</s:a>
 		</div>
 
 		<div class="col-md-3">
-			<s:a><i class="icon-user icon-5x"> 学生</i></s:a>
+			<s:a href="selectRole.action?role=3">
+				<i class="icon-user icon-5x"> 学生</i>
+			</s:a>
 		</div>
 
-	</div>
 	</div>
 
 

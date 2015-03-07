@@ -26,6 +26,9 @@
 			<result name="student" type="redirectAction">
 				<param name="actionName">studentSearchCourse</param>
 			</result>
+			<result name="student_ta">/views/selectRoles.jsp</result>
+			<result name="teacher_manager">/views/selectRoles2.jsp</result>
+
 		</action>
 
 		<action name="studentSearchCourse" class="StudentSearchCourse">
@@ -214,20 +217,30 @@
 			<result name="success">/views/adminIndex2.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="studentCheckAction" class="StudentCheckAction">
 			<result name="success">/views/studentCheckView.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="taAssignCheckAction" class="TaAssignCheckAction">
 			<result name="success">/views/taAssignView.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
-		
+
 		<action name="teacherAssignCheckAction" class="TeacherAssignCheckAction">
 			<result name="success">/views/teacherAssignView.jsp</result>
 			<result name="error">/views/error.jsp</result>
+		</action>
+
+
+		<action name="selectRole" class="SelectRole">
+			<result name="teacher">/views/teacherIndex1.jsp</result>
+			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
+			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
+			<result name="student" type="redirectAction">
+				<param name="actionName">studentSearchCourse</param>
+			</result>
 		</action>
 	</package>
 </struts>

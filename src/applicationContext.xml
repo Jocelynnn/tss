@@ -372,4 +372,15 @@
 		</property>
 	</bean>
 
+	<bean id="SelectRole" class="tss.action.SelectRole">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+		<property name="TaService">
+			<ref bean="TaService" />
+		</property>
+	</bean>
+
+
+
 </beans>
