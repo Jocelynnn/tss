@@ -94,7 +94,7 @@ public class LoginAction extends BaseAction {
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			request.getSession().setAttribute("role", "1");
+			request.getSession().setAttribute("role",new Integer(1));
 			return "admin";
 
 			// 授课教师
@@ -104,7 +104,7 @@ public class LoginAction extends BaseAction {
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			request.getSession().setAttribute("role", "2");
+			request.getSession().setAttribute("role", new Integer(2));
 
 			return "teacher";
 
@@ -113,7 +113,7 @@ public class LoginAction extends BaseAction {
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			request.getSession().setAttribute("role", "3");
+			request.getSession().setAttribute("role", new Integer(3));
 
 			return "student";
 
@@ -124,7 +124,7 @@ public class LoginAction extends BaseAction {
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			request.getSession().setAttribute("role", "4");
+			request.getSession().setAttribute("role",new Integer(4));
 
 			return "teachingAssistant";
 
@@ -133,7 +133,7 @@ public class LoginAction extends BaseAction {
 			request.setAttribute("username", request.getParameter("username"));
 			request.getSession().setAttribute("username",
 					request.getParameter("username"));
-			request.getSession().setAttribute("role", "5");
+			request.getSession().setAttribute("role",new Integer(5));
 			return "teachingManager";
 
 			// 3&4

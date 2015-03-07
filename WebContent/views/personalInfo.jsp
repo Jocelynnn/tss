@@ -26,7 +26,7 @@
 							<a data-target=".navbar-responsive-collapse"
 								data-toggle="collapse" class="btn btn-navbar"><span
 								class="icon-bar"></span><span class="icon-bar"></span><span
-								class="icon-bar"></span></a> <a href="#" class="brand">教务系统</a>
+								class="icon-bar"></span></a> <a href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav pull-right">
 									<li class="divider-vertical"></li>
@@ -34,7 +34,7 @@
 										class="dropdown-toggle" href="#">${username}<strong
 											class="caret"></strong></a>
 										<ul class="dropdown-menu">
-											<li><a href="#">个人信息</a></li>
+											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
 
 											<li><a href="/tss/action/logout.action">登出</a></li>
 										</ul></li>

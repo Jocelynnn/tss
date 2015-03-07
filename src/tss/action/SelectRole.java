@@ -87,26 +87,29 @@ public class SelectRole extends BaseAction {
 		username=(String) request.getSession().getAttribute("username");
 		switch (role) {
 		case "1":
+			request.getSession().setAttribute("role",new Integer(1));
 			return "admin";
 		// 授课教师
 		case "2":
+			request.getSession().setAttribute("role",new Integer(2));
 			teacherCourses = teacherService.getTeacherCourses(username);
 //			System.out.println(teacherCourses.size());
 			return "teacher";
 
 			// 选课学生
 		case "3":
-			
+			request.getSession().setAttribute("role",new Integer(3));
 			return "student";
 
 			// 助教
 		case "4":
+			request.getSession().setAttribute("role",new Integer(4));
 			allAssigns = taService.getCourseAssignments(username);
-
 			return "teachingAssistant";
 
 			// 教学负责人
 		case "5":
+			request.getSession().setAttribute("role",new Integer(5));
 			return "teachingManager";
 		default:
 			return "error";

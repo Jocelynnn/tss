@@ -235,6 +235,27 @@
 
 
 		<action name="selectRole" class="SelectRole">
+			<result name="admin" type="redirectAction">
+				<param name="actionName">adminGetAllUser</param>
+			</result>
+			<result name="teacher">/views/teacherIndex1.jsp</result>
+			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
+			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
+			<result name="student" type="redirectAction">
+				<param name="actionName">studentSearchCourse</param>
+			</result>
+		</action>
+
+
+		<action name="userGetPersonalInfo" class="UserGetPersonalInfo">
+			<result name="success">/views/personalInfo.jsp</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+
+		<action name="userBackToFirst" class="UserBackToFirst">
+			<result name="admin" type="redirectAction">
+				<param name="actionName">adminGetAllUser</param>
+			</result>
 			<result name="teacher">/views/teacherIndex1.jsp</result>
 			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
 			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="<%=request.getContextPath()%>/back/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/Font-Awesome/css/font-awesome.min.css">
@@ -37,15 +37,15 @@
 
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-2 ">
+		<div class="col-md-3 col-md-offset-3 ">
 			<s:a href="selectRole.action?role=4">
-				<i class="icon-user icon-4x"> 助教</i>
+				<i class="icon-user icon-5x"> 助教</i>
 			</s:a>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<s:a href="selectRole.action?role=3">
-				<i class="icon-user icon-4x"> 学生</i>
+				<i class="icon-user icon-5x"> 学生</i>
 			</s:a>
 		</div>
 

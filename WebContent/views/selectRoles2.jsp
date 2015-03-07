@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="<%=request.getContextPath()%>/back/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/Font-Awesome/css/font-awesome.min.css">

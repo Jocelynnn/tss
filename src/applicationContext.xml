@@ -380,7 +380,7 @@
 			<ref bean="TaService" />
 		</property>
 	</bean>
-	
+
 	<bean id="MessageDao" class="tss.dao.impl.MessageDaoImpl">
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
@@ -401,51 +401,64 @@
 			<ref bean="UserDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="TimeJobService" class="tss.service.impl.TimeJobServiceImpl">
 		<property name="MessageDao">
 			<ref bean="MessageDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="jobClass" class="tss.timeJob.TimeJob">
 		<property name="TimeJobService">
 			<ref bean="TimeJobService" />
 		</property>
 	</bean>
-	
-	<bean name="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">
-     <property name="jobClass" value="tss.timeJob.TimeJob"/>
-      <!-- 为任务Bean注入属性 -->
-     <property name="jobDataAsMap">
-         <map>
-             <!--程序在10s之后首次调用你的TestJob-->
-             <entry key="timeout" value="10" />
-             <entry key="TimeJobService" value-ref="TimeJobService"/>  
-         </map>
-     </property>
- 	</bean>
- 	
- 	<bean id="myTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
-     <property name="jobDetail">
-         <ref bean="myjob"/>
-     </property>
-     <property name="startDelay">  
-         <!--这里是服务启动后延时多少时间,开始计时任务,单位ms-->  
-         <value>6000</value>  
-     </property>  
-     <!-- 每隔1s中执行一次 -->
-     <property name="repeatInterval">
-         <value>10000</value>
-     </property>
-	</bean>
-	
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-     <property name="triggers">
-       <list>
-         <ref bean="myTrigger"/>
-       </list>
-     </property>
- 	</bean>
 
+	<bean name="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tss.timeJob.TimeJob" />
+		<!-- 为任务Bean注入属性 -->
+		<property name="jobDataAsMap">
+			<map>
+				<!--程序在10s之后首次调用你的TestJob -->
+				<entry key="timeout" value="10" />
+				<entry key="TimeJobService" value-ref="TimeJobService" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="myTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref bean="myjob" />
+		</property>
+		<property name="startDelay">
+			<!--这里是服务启动后延时多少时间,开始计时任务,单位ms -->
+			<value>6000</value>
+		</property>
+		<!-- 每隔1s中执行一次 -->
+		<property name="repeatInterval">
+			<value>10000</value>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="myTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="UserGetPersonalInfo" class="tss.action.UserGetPersonalInfo">
+		<property name="UserService">
+			<ref bean="UserService" />
+		</property>
+	</bean>
+	<bean id="UserBackToFirst" class="tss.action.UserBackToFirst">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+		<property name="TaService">
+			<ref bean="TaService" />
+		</property>
+	</bean>
 </beans>
