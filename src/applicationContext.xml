@@ -49,6 +49,9 @@
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
 		</property>
+		<property name="MessageDao">
+			<ref bean="MessageDao" />
+		</property>
 
 	</bean>
 	<bean id="AdminDao" class="tss.dao.impl.AdminDaoImpl">

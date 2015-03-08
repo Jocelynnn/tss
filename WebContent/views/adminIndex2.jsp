@@ -15,26 +15,31 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 <script>
-function validate(){
-if (document.getElementById("courseid").value == ""){
-alert ( "Please enter courseid." );
-document.getElementById("courseid").focus();
-return false;
-}
-if (document.getElementById("coursename").value == ""){
-alert ( "Please enter coursename." );
-document.getElementById("coursename").focus();
-return false;
-}
-/* alert ( "Welcome User" );
- */
- return true;
-}
+	function validate() {
+		if (document.getElementById("courseid").value == "") {
+			alert("Please enter courseid.");
+			document.getElementById("courseid").focus();
+			return false;
+		}
+		if (document.getElementById("coursename").value == "") {
+			alert("Please enter coursename.");
+			document.getElementById("coursename").focus();
+			return false;
+		}
+		/* alert ( "Welcome User" );
+		 */
+		return true;
+	}
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+		String username = (String) request.getSession().getAttribute(
+				"username");
+		int count = (Integer) request.getSession().getAttribute(
+				"messageCount");
+	%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -44,13 +49,13 @@ return false;
 							<a data-target=".navbar-responsive-collapse"
 								data-toggle="collapse" class="btn btn-navbar"><span
 								class="icon-bar"></span><span class="icon-bar"></span><span
-								class="icon-bar"></span></a> <a href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
+								class="icon-bar"></span></a> <a
+								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li ><s:a
-										href="/tss/action/adminGetAllUser.action">用户管理</s:a></li>
+									<li><s:a href="/tss/action/adminGetAllUser.action">用户管理</s:a></li>
 									<li class="active"><s:a
-										href="/tss/action/adminGetAllCourse.action">课程管理</s:a></li>
+											href="/tss/action/adminGetAllCourse.action">课程管理</s:a></li>
 
 
 								</ul>
@@ -58,11 +63,12 @@ return false;
 									<li><a href="#">管理员</a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">${username}<strong
-											class="caret"></strong></a>
+										class="dropdown-toggle" href="#"><%=username%> <span
+											class="badge"><%=count%></span><strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
-											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
-											<li><s:a href="/tss/action/logout.action">登出</s:a></li>
+											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息<span
+													class="badge"><%=count%></span></a></li>
+											<li><a href="/tss/action/logout.action">登出</a></li>
 
 										</ul></li>
 								</ul>
@@ -130,7 +136,8 @@ return false;
 						</div>
 						<div class="tab-pane " id="panel-386299">
 							<div>
-								<s:form action="/action/adminAddCourses" method="post" onsubmit="return validate();">
+								<s:form action="/action/adminAddCourses" method="post"
+									onsubmit="return validate();">
 									<div>
 										<s:label>课程编号</s:label>
 										<s:textfield name="courseid" id="courseid"></s:textfield>
@@ -175,5 +182,6 @@ return false;
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

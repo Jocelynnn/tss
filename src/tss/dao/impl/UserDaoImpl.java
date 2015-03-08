@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import tss.dao.DaoHelper;
+import tss.dao.MessageDao;
 import tss.dao.UserDao;
 import tss.model.Message;
 import tss.model.Submission;
@@ -23,6 +24,15 @@ public class UserDaoImpl implements UserDao {
 	private Session session;
 
 	private DaoHelper daoHelper;
+	private MessageDao messageDao;
+
+	public MessageDao getMessageDao() {
+		return messageDao;
+	}
+
+	public void setMessageDao(MessageDao messageDao) {
+		this.messageDao = messageDao;
+	}
 
 	public DaoHelper getDaoHelper() {
 		return daoHelper;
@@ -160,7 +170,9 @@ public class UserDaoImpl implements UserDao {
 
 		try {
 			// 未读消息排在前面
-			stmt = con.prepareStatement("SELECT * FROM message order by flag");
+			stmt = con
+					.prepareStatement("SELECT * FROM message WHERE userId = ?  order by flag");
+			stmt.setString(1, userId);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
@@ -168,12 +180,18 @@ public class UserDaoImpl implements UserDao {
 						.getString("userId"), result.getString("message"),
 						result.getInt("flag"), result.getDate("date")));
 			}
-			ArrayList<Message> newList=new ArrayList<Message>();
-			
+
 			return messageList;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			for (Message m : messageList) {
+				System.out.println("update message status");
+				// 2 for 已读
+				Message modify = new Message(m.getId(), m.getUserId(),
+						m.getMessage(), new Integer(2), m.getDate());
+				messageDao.markTheMessageRead(modify);
+			}
 			daoHelper.closeConnection(con);
 			daoHelper.closePreparedStatement(stmt);
 			daoHelper.closeResult(result);
@@ -192,8 +210,10 @@ public class UserDaoImpl implements UserDao {
 
 		try {
 			// 未读消息排在前面
-			stmt = con.prepareStatement("SELECT * FROM message where flag = ?");
-			stmt.setInt(1, new Integer(1));
+			stmt = con
+					.prepareStatement("SELECT * FROM message where userId = ? AND flag = ?");
+			stmt.setString(1, userId);
+			stmt.setInt(2, new Integer(1));
 			result = stmt.executeQuery();
 
 			while (result.next()) {

@@ -14,8 +14,8 @@ public class TimeJob extends QuartzJobBean {
 	@Override
 	protected void executeInternal(JobExecutionContext arg0)
 			throws JobExecutionException {
-		timeJobService.updateStudentMessage();
-		System.out.println("自动检测教学课程中");
+//		timeJobService.updateStudentMessage();
+//		System.out.println("自动检测教学课程中");
 	}
 
 

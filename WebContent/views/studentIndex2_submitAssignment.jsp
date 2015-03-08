@@ -16,7 +16,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+		String username = (String) request.getSession().getAttribute(
+				"username");
+		int count = (Integer) request.getSession().getAttribute(
+				"messageCount");
+	%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -26,7 +31,8 @@
 							<a data-target=".navbar-responsive-collapse"
 								data-toggle="collapse" class="btn btn-navbar"><span
 								class="icon-bar"></span><span class="icon-bar"></span><span
-								class="icon-bar"></span></a> <a href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
+								class="icon-bar"></span></a> <a
+								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
 									<li><a
@@ -40,11 +46,13 @@
 									<li><a href="#">学生</a></li>
 									<li class="divider-vertical"></li>
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">${username}<strong class="caret"></strong></a>
+										class="dropdown-toggle" href="#"><%=username%> <span
+											class="badge"><%=count%></span><strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
-											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
-
+											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息<span
+													class="badge"><%=count%></span></a></li>
 											<li><a href="/tss/action/logout.action">登出</a></li>
+
 										</ul></li>
 								</ul>
 							</div>
@@ -57,38 +65,41 @@
 				<div>
 					<form action="/tss/action/uploadStudentAssignAction.action"
 						enctype="multipart/form-data" method="post">
-						<input type="hidden" name="courseId" value="<s:property value="assignment.courseId"/>">
-						<input type="hidden" name="assignmentNumber" value="<s:property value="assignment.number"/>">
-						<input type="hidden" name="assignmentId" value="<s:property value="assignment.id"/>">
-						<input type="hidden" name="submissionId" value="<s:property value="submission.id"/>">
+						<input type="hidden" name="courseId"
+							value="<s:property value="assignment.courseId"/>"> <input
+							type="hidden" name="assignmentNumber"
+							value="<s:property value="assignment.number"/>"> <input
+							type="hidden" name="assignmentId"
+							value="<s:property value="assignment.id"/>"> <input
+							type="hidden" name="submissionId"
+							value="<s:property value="submission.id"/>"> <label>课程名:
+							<s:property value="assignment.courseName" />
+						</label> <label>作业编号: <s:property value="assignment.number" /></label> <label>作业描述:
+							<s:property value="assignment.description" />
+						</label> <label>截止时间: <s:property
+								value="assignment.submissionDeadline" /></label>
 
-						
-						<label>课程名: <s:property value="assignment.courseName"/> </label> 
-						<label>作业编号: <s:property value="assignment.number"/></label> 
-						<label>作业描述: <s:property value="assignment.description"/></label> 
-						<label>截止时间: <s:property value="assignment.submissionDeadline"/></label>
-						
 						<s:if test="%{type==1}">
-							<label> <input type="file" name="image"></label> 
+							<label> <input type="file" name="image"></label>
 							<label> <input type="submit" value="上传" /></label>
 						</s:if>
-						
+
 						<s:if test="%{type==2}">
-							<label>已提交作业名称: <s:property value="fileName"/></label>
-							<label> <input type="file" name="image"></label> 
+							<label>已提交作业名称: <s:property value="fileName" /></label>
+							<label> <input type="file" name="image"></label>
 							<label> <input type="submit" value="上传" /></label>
 						</s:if>
-						
+
 						<s:if test="%{type==3}">
-							<label>已提交作业名称: <s:property value="fileName"/></label>
-							<label>提交日期: <s:property value="submission.submitDate"/></label>
-							<label>分数: <s:property value="submission.grade"/></label>
+							<label>已提交作业名称: <s:property value="fileName" /></label>
+							<label>提交日期: <s:property value="submission.submitDate" /></label>
+							<label>分数: <s:property value="submission.grade" /></label>
 						</s:if>
-						
+
 						<s:if test="%{type==4}">
 							<label>提交情况: 你完了，你作业没交~</label>
 						</s:if>
-						
+
 					</form>
 				</div>
 
