@@ -421,10 +421,12 @@ public class SubmissionDaoImpl implements SubmissionDao {
 	}
 
 	@Override
-	public boolean taSubmitGrade(int submissionId, int grade, String evaluation) {
+	public boolean taSubmitGrade(String taId,int submissionId, int grade, String evaluation) {
 		// TODO Auto-generated method stub
 		Submission s = this.getSubmission(submissionId);
+		s.setIsGraded(2);
 		s.setGrade(grade);
+		s.setGrader(taId);
 		s.setEvaluation(evaluation);
 		if (this.updateSubmission(s))
 			return true;

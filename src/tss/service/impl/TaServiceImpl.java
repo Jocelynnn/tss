@@ -72,8 +72,8 @@ public class TaServiceImpl implements TaService {
 	}
 
 	@Override
-	public boolean submitGrade(int submissionId, int grade, String evaluation) {
+	public boolean submitGrade(String taId,int submissionId, int grade, String evaluation) {
 		// TODO Auto-generated method stub
-		return submissionDao.taSubmitGrade(submissionId, grade, evaluation);
+		return submissionDao.taSubmitGrade(taId,submissionId, grade, evaluation);
 	}
 }

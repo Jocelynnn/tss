@@ -90,7 +90,7 @@
 					<s:label>作业范例：</s:label>
 					<s:if test="%{sampleState==2}">
 						<label> <input type="file" name="image"></label>
-						<label> <input type="submit" value="上传" /></label>
+						<button class="btn" type="submit">上传</button>
 					</s:if>
 
 					<s:if test="%{sampleState==1}">

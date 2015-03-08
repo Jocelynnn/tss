@@ -172,10 +172,11 @@ public class StudentDaoImpl implements StudentDao {
 				stmt.setString(1, courseId);
 				result = stmt.executeQuery();
 				while (result.next()) {
-					courseList.add(new Course(result.getString("courseId"), result
-							.getString("courseName"), result.getString("description"), result
-							.getString("semester"),
-							result.getString("teacherName"), null));
+					courseList.add(new Course(result.getString("courseId"),
+							result.getString("courseName"), result
+									.getString("description"), result
+									.getString("semester"), result
+									.getString("teacherName"), null));
 				}
 
 			}
@@ -207,11 +208,50 @@ public class StudentDaoImpl implements StudentDao {
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				return new Submission(result.getInt("id"), result.getInt("assignmentId"), result.getString("studentId"), result.getString("studentName"),
-						result.getString("submission"), result.getDate("submitDate"), result.getString("grader"), 
-						result.getInt("grade"), result.getString("evaluation"), result.getInt("isGraded"), result.getInt("isPassed"));
+				return new Submission(result.getInt("id"),
+						result.getInt("assignmentId"),
+						result.getString("studentId"),
+						result.getString("studentName"),
+						result.getString("submission"),
+						result.getDate("submitDate"),
+						result.getString("grader"), result.getInt("grade"),
+						result.getString("evaluation"),
+						result.getInt("isGraded"), result.getInt("isPassed"));
 			}
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
+	@Override
+	public ArrayList<User> getAllTas() {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<User> users = new ArrayList<User>();
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM user WHERE role = ? OR role = ? ORDER BY username");
+			stmt.setInt(1, 3);
+			stmt.setInt(2, 4);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				users.add(new User(result.getString("username"), null, result
+						.getString("realName"), result.getString("email"),
+						result.getInt("gender"), result.getInt("role")));
+			}
+
+			return users;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

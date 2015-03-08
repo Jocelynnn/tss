@@ -55,8 +55,9 @@ public class TaSubmitGrade extends BaseAction {
 	}
 
 	public String execute() {
+		String taId=(String) request.getSession().getAttribute("username");
 		System.out.println(submissionId+" "+assignId+" "+grade+" "+evaluation);
-		if (taService.submitGrade(submissionId, grade, evaluation))
+		if (taService.submitGrade(taId,submissionId, grade, evaluation))
 			return SUCCESS;
 		else
 			return ERROR;

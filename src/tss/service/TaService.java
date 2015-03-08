@@ -20,7 +20,7 @@ public interface TaService {
 	public ArrayList<Submission> getUngradedSubmission(int assignmentId);
 
 	public ArrayList<Submission> getGradedSubmission(int assignmentId);
-	public boolean submitGrade(int submissionId,int grade,String evaluation);
+	public boolean submitGrade(String taId,int submissionId,int grade,String evaluation);
 
 
 }

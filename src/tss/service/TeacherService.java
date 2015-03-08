@@ -16,6 +16,8 @@ public interface TeacherService {
 	public ArrayList<User> searchStudent(String searchkey);
 
 	public ArrayList<User> getAllStudent();
+	public ArrayList<User> getAllTas();
+
 
 	public ArrayList<User> getCourseTA(String courseId);
 

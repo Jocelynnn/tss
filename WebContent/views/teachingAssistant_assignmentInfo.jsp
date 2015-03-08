@@ -134,7 +134,6 @@
 												<th>学生姓名</th>
 												<th>文件路径</th>
 												<th>提交时间</th>
-												<th>批改人</th>
 												<th>分数</th>
 												<th>评价</th>
 												<th>教师审核</th>
@@ -158,7 +157,6 @@
 													<%-- <td><s:date name="#submission.submitDate"
 										format="yyyy/MM/dd hh:mm:ss" /></td> --%>
 													<td><s:property value="#submission.submitDate" /></td>
-													<td><s:property value="#submission.grader" /></td>
 													<td><s:textfield name="grade" maxlength="3"
 															style="width: 25px" value="%{#submission.grade}"></s:textfield></td>
 													<td><s:textarea name="evaluation"
@@ -217,6 +215,8 @@
 									</table>
 								</div>
 							</div>
+							
+							
 						</div>
 
 

@@ -74,7 +74,7 @@ public class TeacherGetTA extends BaseAction {
 		courseId=request.getParameter("courseId");
 		courseName=request.getParameter("courseName");
 
-		studentList=teacherService.getAllStudent();
+		studentList=teacherService.getAllTas();
 		taList=teacherService.getCourseTA(courseId);
 		taCount=taList.size();
 		

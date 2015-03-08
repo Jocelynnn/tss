@@ -85,6 +85,10 @@ public class TeacherServiceImpl implements TeacherService {
 		return studentDao.getAllStudent();
 	}
 
+	public ArrayList<User> getAllTas(){
+		return studentDao.getAllTas();
+	}
+
 	@Override
 	public ArrayList<User> getCourseTA(String courseId) {
 		// TODO Auto-generated method stub
@@ -104,7 +108,13 @@ public class TeacherServiceImpl implements TeacherService {
 		// student
 
 		User user = userDao.getPersonalInfo(taId);
-		user.setRole(User.STUDENT_AS_TA);
+//		set student as ta
+		if(user.getRole()==User.STUDENT){
+			user.setRole(User.STUDENT_AS_TA);
+		}
+		else{
+			user.setRole(User.TEACHING_ASSISTANT);
+		}
 		userDao.updatePersonalInfo(user);
 		return courseDao.addCourseTA(courseId, taId);
 	}

@@ -62,52 +62,58 @@
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-750199">
-							<table class="table table-hover table-bordered">
-								<thead>
-									<tr>
-										<th>时间</th>
-										<th>内容</th>
-									</tr>
-								</thead>
-								<tbody>
-									<s:iterator value="messageList" id="message">
-										<s:if test="%{#message.flag==1}">
-											<tr class="error">
-												<td><s:property value="#message.date" /></td>
-												<td><s:property value="#message.message" /></td>
-											</tr>
-										</s:if>
-										<s:else>
-											<tr>
-												<td><s:property value="#message.date" /></td>
-												<td><s:property value="#message.message" /></td>
-											</tr>
-										</s:else>
+							<s:if test="%{messageList.size()==0}">
+								<s:label>无消息</s:label>
+							</s:if>
 
-									</s:iterator>
-								</tbody>
-							</table>
+							<s:else>
+								<table class="table table-hover table-bordered">
+									<thead>
+										<tr>
+											<th>时间</th>
+											<th>内容</th>
+										</tr>
+									</thead>
+									<tbody>
+										<s:iterator value="messageList" id="message">
+											<s:if test="%{#message.flag==1}">
+												<tr class="error">
+													<td><s:property value="#message.date" /></td>
+													<td><s:property value="#message.message" /></td>
+												</tr>
+											</s:if>
+											<s:else>
+												<tr>
+													<td><s:property value="#message.date" /></td>
+													<td><s:property value="#message.message" /></td>
+												</tr>
+											</s:else>
+
+										</s:iterator>
+									</tbody>
+								</table>
+							</s:else>
 
 
 						</div>
 						<div class="tab-pane " id="panel-5708">
 							<div>
-								<s:label>
+								<s:label>用户名：
 									<s:property value="username"></s:property>
 								</s:label>
 							</div>
 							<div>
-								<s:label>
+								<s:label> 姓名：
 									<s:property value="realName"></s:property>
 								</s:label>
 							</div>
 							<div>
-								<s:label>
+								<s:label> 邮箱：
 									<s:property value="email"></s:property>
 								</s:label>
 							</div>
 							<div>
-								<s:label>
+								<s:label> 性别：
 									<s:property value="gender"></s:property>
 								</s:label>
 							</div>
