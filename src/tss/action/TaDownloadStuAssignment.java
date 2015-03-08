@@ -52,8 +52,13 @@ public class TaDownloadStuAssignment extends ActionSupport{
       
     @Override  
     public String execute() throws Exception {  
-          
-        return SUCCESS;  
+    	File file = new File(this.url);
+    	if (file.exists()){
+    		return SUCCESS;
+    	}
+    	else{
+    		return ERROR;
+    	}
     }
 
 	public String getUrl() {
