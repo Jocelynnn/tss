@@ -51,4 +51,7 @@ public interface TeacherService {
 	
 	public boolean passSubmission(int submissionId);
 	public boolean unpassSubmission(int submissionId);
+	
+	
+	public boolean updateAssignment(Assignment a);
 }

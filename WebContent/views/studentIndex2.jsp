@@ -36,9 +36,9 @@
 								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><s:a
+									<li ><s:a
 											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
-									<li><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
+									<li class="active"><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
@@ -87,9 +87,7 @@
 										<td rowspan="${total}"><s:property value="courseName" /></td>
 
 									</s:if>
-									<td><s:a href="/tss/action/">
-											<s:property value="number" />
-										</s:a></td>
+									<td><s:property value="number" /></td>
 									<td><s:property value="description" /></td>
 									<td><s:property value="level" /></td>
 									<td><s:property value="submissionDeadline" /></td>

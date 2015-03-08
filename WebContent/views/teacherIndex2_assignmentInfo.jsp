@@ -76,7 +76,7 @@
 
 
 
-				<form action="/tss/action/teacherUpload.action"
+				<form action="/tss/action/uploadTeacherSampleAction.action"
 					enctype="multipart/form-data" method="post">
 					<input type="hidden" name="courseId"
 						value="<s:property value="courseId"/>"> <input
@@ -88,22 +88,40 @@
 						value="<s:property value="teacherId"/>">
 
 					<s:label>作业范例：</s:label>
-					<input type="file" name="image" id="image">
-					<button class="btn" type="submit">上传</button>
-					<s:label>
-						<s:property value="alterstr"></s:property>
-					</s:label>
+					<s:if test="%{sampleState==2}">
+						<label> <input type="file" name="image"></label>
+						<label> <input type="submit" value="上传" /></label>
+					</s:if>
+
+					<s:if test="%{sampleState==1}">
+						<label>已提交作业名称: <s:property value="filename" /></label>
+						<label> <input type="file" name="image"></label>
+						<button class="btn" type="submit">上传</button>
+					</s:if>
+					
+					
 				</form>
 
-				<div>
-					<s:label>总体点评</s:label>
-					<s:textarea></s:textarea>
+				<form action="/tss/action/teacherAddGeneralGrade.action"
+					method="post">
+					<input type="hidden" name="courseId"
+						value="<s:property value="courseId"/>"> <input
+						type="hidden" name="assignNumber"
+						value="<s:property value="assignNumber"/>"> <input
+						type="hidden" name="assignmentId"
+						value="<s:property value="assignId"/>"> <input
+						type="hidden" name="teacherId"
+						value="<s:property value="teacherId"/>">
+					<div>
+						<s:label>总体点评</s:label>
+						<textarea name="generalGrade"><s:property
+								value="generalGrade" /></textarea>
+					</div>
+					<div>
+						<button class="btn" type="submit">提交</button>
 
-				</div>
-				<div>
-					<button class="btn" type="submit">提交</button>
-
-				</div>
+					</div>
+				</form>
 
 				<br> <br> <br> <br>
 

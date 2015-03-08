@@ -20,6 +20,10 @@ public class TeacherGetAssignInfo extends BaseAction {
 	private Assignment assignment;
 	private String courseName;
 	private String courseId;
+	private String generalGrade;
+	// 1 for having samples 2 for not having
+	private int sampleState;
+	private String filename;
 	private ArrayList<Submission> submissionList;
 
 	private ArrayList<Submission> unviewedSubmissionList;
@@ -41,7 +45,8 @@ public class TeacherGetAssignInfo extends BaseAction {
 		return passedSubmissionList;
 	}
 
-	public void setPassedSubmissionList(ArrayList<Submission> passedSubmissionList) {
+	public void setPassedSubmissionList(
+			ArrayList<Submission> passedSubmissionList) {
 		this.passedSubmissionList = passedSubmissionList;
 	}
 
@@ -67,7 +72,8 @@ public class TeacherGetAssignInfo extends BaseAction {
 		return gradedSubmissionList;
 	}
 
-	public void setGradedSubmissionList(ArrayList<Submission> gradedSubmissionList) {
+	public void setGradedSubmissionList(
+			ArrayList<Submission> gradedSubmissionList) {
 		this.gradedSubmissionList = gradedSubmissionList;
 	}
 
@@ -139,18 +145,53 @@ public class TeacherGetAssignInfo extends BaseAction {
 		teacherId = (String) request.getSession().getAttribute("username");
 		assignId = Integer.valueOf(request.getParameter("assignId"));
 		assignment = teacherService.getAssignment(assignId);
+		if (!(assignment.getSample()==null)) {
+			sampleState = 1;
+			String[] temp = assignment.getSample().split("/");
+			if (temp == null || temp.length == 0) {
+				return ERROR;
+			}
+			this.filename = temp[temp.length - 1];
+		} else {
+			sampleState = 2;
+		}
 
-		unviewedSubmissionList=teacherService.getUnviewedSubmission(assignId);
+		unviewedSubmissionList = teacherService.getUnviewedSubmission(assignId);
 		passedSubmissionList = teacherService.getPassedSubmission(assignId);
-		unpassedSubmissionList=teacherService.getUnpassedSubmission(assignId);
-		gradedSubmissionList=teacherService.getGradedSubmission(assignId);
-		ungradedSubmissionList=teacherService.getUngradedSubmission(assignId);
-		
+		unpassedSubmissionList = teacherService.getUnpassedSubmission(assignId);
+		gradedSubmissionList = teacherService.getGradedSubmission(assignId);
+		ungradedSubmissionList = teacherService.getUngradedSubmission(assignId);
+
 		courseId = assignment.getCourseId();
 		courseName = assignment.getCourseName();
 		assignNumber = assignment.getNumber();
+		generalGrade = assignment.getGeneralGrade();
 		submissionList = teacherService.getSubmissionList(assignId);
 
 		return SUCCESS;
+	}
+
+	public String getGeneralGrade() {
+		return generalGrade;
+	}
+
+	public void setGeneralGrade(String generalGrade) {
+		this.generalGrade = generalGrade;
+	}
+
+	public int getSampleState() {
+		return sampleState;
+	}
+
+	public void setSampleState(int sampleState) {
+		this.sampleState = sampleState;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }

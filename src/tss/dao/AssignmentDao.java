@@ -16,4 +16,6 @@ public interface AssignmentDao {
 	
 	public ArrayList<Assignment> getCourseAssign(int courseId);
 	public ArrayList<Assignment> getAssignmentList();
+	
+	public boolean updateAssign(Assignment assignment);
 }

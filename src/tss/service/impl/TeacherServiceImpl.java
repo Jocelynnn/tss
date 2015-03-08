@@ -200,4 +200,10 @@ public class TeacherServiceImpl implements TeacherService {
 		return submissionDao.teacherUnpassSubmission(submissionId);
 	}
 
+	@Override
+	public boolean updateAssignment(Assignment a) {
+		// TODO Auto-generated method stub
+		return assignmentDao.updateAssign(a);
+	}
+
 }

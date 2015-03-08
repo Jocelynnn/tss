@@ -284,7 +284,10 @@
 			<ref bean="TaService" />
 		</property>
 	</bean>
-	<bean id="TeacherUpload" class="tss.action.UploadTeacherSampleAction">
+	<bean id="UploadTeacherSampleAction" class="tss.action.UploadTeacherSampleAction">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
 	</bean>
 
 	<bean id="StudentGetAssignment" class="tss.action.StudentGetAssignment">
@@ -470,4 +473,11 @@
 			<ref bean="UserService" />
 		</property>
 	</bean>
+
+	<bean id="TeacherAddGeneralGrade" class="tss.action.TeacherAddGeneralGrade">
+		<property name="TeacherService">
+			<ref bean="TeacherService" />
+		</property>
+	</bean>
+	
 </beans>

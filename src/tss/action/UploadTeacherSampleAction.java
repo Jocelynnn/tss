@@ -4,6 +4,9 @@ import java.io.File;
 
 import org.apache.commons.io.FileUtils;
 
+import tss.model.Assignment;
+import tss.service.TeacherService;
+
 import com.opensymphony.xwork2.ActionContext;
 
 @SuppressWarnings("serial")
@@ -12,16 +15,10 @@ public class UploadTeacherSampleAction extends BaseAction {
 	private File image; // 上传的文件
 	private String imageFileName; // 文件名称
 	private String imageContentType; // 文件类型
-	private String alterstr;
+	private TeacherService teacherService;
+	private int assignId;
 
 
-	public String getAlterstr() {
-		return alterstr;
-	}
-
-	public void setAlterstr(String alterstr) {
-		this.alterstr = alterstr;
-	}
 
 	public String execute() throws Exception {
 		String realpath = "/Users/uploadFiles/teacherSample";
@@ -38,10 +35,14 @@ public class UploadTeacherSampleAction extends BaseAction {
 				savefile.getParentFile().mkdirs();
 			FileUtils.copyFile(image, savefile);
 			ActionContext.getContext().put("message", "文件上传成功");
-			alterstr="upload successfully!";
+			
+//			save to database
+			assignId=Integer.valueOf(request.getParameter("assignmentId"));
+			Assignment a=teacherService.getAssignment(assignId);
+			a.setSample(realpath + "/" + imageFileName);
+			teacherService.updateAssignment(a);
 			return SUCCESS;
 		}
-		alterstr="upload failed";
 		return ERROR;
 		
 	}
@@ -68,6 +69,22 @@ public class UploadTeacherSampleAction extends BaseAction {
 
 	public void setImageContentType(String imageContentType) {
 		this.imageContentType = imageContentType;
+	}
+
+	public TeacherService getTeacherService() {
+		return teacherService;
+	}
+
+	public void setTeacherService(TeacherService teacherService) {
+		this.teacherService = teacherService;
+	}
+
+	public int getAssignId() {
+		return assignId;
+	}
+
+	public void setAssignId(int assignId) {
+		this.assignId = assignId;
 	}
 
 	

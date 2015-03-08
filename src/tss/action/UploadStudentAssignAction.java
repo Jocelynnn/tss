@@ -1,17 +1,15 @@
-	package tss.action;
+package tss.action;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
 
 import tss.model.Submission;
 import tss.service.StudentService;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class UploadStudentAssignAction extends BaseAction {
@@ -19,7 +17,7 @@ public class UploadStudentAssignAction extends BaseAction {
 	private File image; // 上传的文件
 	private String imageFileName; // 文件名称
 	private String imageContentType; // 文件类型
-
+	private int assignmentId;
 	private StudentService studentService;
 
 	public StudentService getStudentService() {
@@ -31,6 +29,7 @@ public class UploadStudentAssignAction extends BaseAction {
 	}
 
 	public String execute() throws Exception {
+		setAssignmentId(Integer.valueOf(request.getParameter("assignmentId")));
 		String realpath = "/Users/uploadFiles/studentSubmission";
 		System.out.println("realpath: " + realpath);
 		if (image != null) {
@@ -49,20 +48,28 @@ public class UploadStudentAssignAction extends BaseAction {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 			Date date = new Date();
-			
-			System.out.println("!!!" + request.getParameter("submissionId") + "~~~");
+
+			System.out.println("!!!" + request.getParameter("submissionId")
+					+ "~~~");
 			// 保存到数据库submission信息
-			if (request.getParameter("submissionId").equals("")){
-				studentService.saveSubmission(new Submission(0,  Integer.parseInt(request.getParameter("assignmentId")),
-					(String) request.getSession().getAttribute("username"), studentService.getUserRealname((String) request.getSession().getAttribute("username")) , realpath + "/" + imageFileName,
-					sdf.parse(sdf.format(date)), "", -1, "", 1, 1));
+			if (request.getParameter("submissionId").equals("")) {
+				studentService.saveSubmission(new Submission(0, Integer
+						.parseInt(request.getParameter("assignmentId")),
+						(String) request.getSession().getAttribute("username"),
+						studentService.getUserRealname((String) request
+								.getSession().getAttribute("username")),
+						realpath + "/" + imageFileName, sdf.parse(sdf
+								.format(date)), "", -1, "", 1, 1));
+			} else {
+				studentService.updateSubmission(new Submission(Integer
+						.parseInt(request.getParameter("submissionId")),
+						Integer.parseInt(request.getParameter("assignmentId")),
+						(String) request.getSession().getAttribute("username"),
+						studentService.getUserRealname((String) request
+								.getSession().getAttribute("username")),
+						realpath + "/" + imageFileName, sdf.parse(sdf
+								.format(date)), "", -1, "", 1, 1));
 			}
-			else{
-				studentService.updateSubmission(new Submission(Integer.parseInt(request.getParameter("submissionId")), Integer.parseInt(request.getParameter("assignmentId")),
-						(String) request.getSession().getAttribute("username"), studentService.getUserRealname((String) request.getSession().getAttribute("username")), realpath + "/" + imageFileName,
-						sdf.parse(sdf.format(date)), "", -1, "", 1, 1));
-			}
-			
 
 			return SUCCESS;
 		}
@@ -93,5 +100,15 @@ public class UploadStudentAssignAction extends BaseAction {
 	public void setImageContentType(String imageContentType) {
 		this.imageContentType = imageContentType;
 	}
+
+	public int getAssignmentId() {
+		return assignmentId;
+	}
+
+	public void setAssignmentId(int assignmentId) {
+		this.assignmentId = assignmentId;
+	}
+
+	
 
 }

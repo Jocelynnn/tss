@@ -142,13 +142,19 @@
 		</action>
 
 
-		<action name="teacherUpload" class="TeacherUpload">
-			<result name="success">/views/teacherIndex2_assignmentInfo.jsp</result>
+		<action name="uploadTeacherSampleAction" class="UploadTeacherSampleAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">teacherGetAssignInfo</param>
+				<param name="assignId">${assignId}</param>
+			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 
 		<action name="uploadStudentAssignAction" class="UploadStudentAssignAction">
-			<result name="success">/views/message.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">studentGetSingleAssignment</param>
+				<param name="assignmentId">${assignmentId}</param>
+			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 
@@ -262,6 +268,15 @@
 			<result name="student" type="redirectAction">
 				<param name="actionName">studentSearchCourse</param>
 			</result>
+		</action>
+
+
+		<action name="teacherAddGeneralGrade" class="TeacherAddGeneralGrade">
+			<result name="success" type="redirectAction">
+				<param name="actionName">teacherGetAssignInfo</param>
+				<param name="assignId">${assignId}</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
 		</action>
 	</package>
 </struts>

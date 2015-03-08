@@ -35,10 +35,9 @@
 								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li><a
-										href="<%=request.getContextPath()%>/views/teacherIndex1.jsp">我的课程</a></li>
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/views/teacherIndex2.jsp">我的作业</a></li>
+									<li ><s:a
+											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li class="active"><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
@@ -81,13 +80,13 @@
 
 						<s:if test="%{type==1}">
 							<label> <input type="file" name="image"></label>
-							<label> <input type="submit" value="上传" /></label>
+							<button class="btn" type="submit">上传</button>
 						</s:if>
 
 						<s:if test="%{type==2}">
 							<label>已提交作业名称: <s:property value="fileName" /></label>
 							<label> <input type="file" name="image"></label>
-							<label> <input type="submit" value="上传" /></label>
+							<button class="btn" type="submit">上传</button>
 						</s:if>
 
 						<s:if test="%{type==3}">
