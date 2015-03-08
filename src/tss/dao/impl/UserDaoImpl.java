@@ -13,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 
 import tss.dao.DaoHelper;
 import tss.dao.UserDao;
+import tss.model.Message;
 import tss.model.Submission;
 import tss.model.User;
 
@@ -149,4 +150,34 @@ public class UserDaoImpl implements UserDao {
 
 		return null;
 	}
+
+	@Override
+	public ArrayList<Message> getUserMessage(String userId) {
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<Message> messageList = new ArrayList<Message>();
+
+		try {
+			// 未读消息排在前面
+			stmt = con.prepareStatement("SELECT * FROM message order by flag");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				messageList.add(new Message(result.getInt("Id"), result
+						.getString("userId"), result.getString("message"),
+						result.getInt("flag"),result.getDate("date")));
+			}
+			return messageList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
 }

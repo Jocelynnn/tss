@@ -96,7 +96,7 @@ public class MessageDaoImpl implements MessageDao {
 							Transaction tx = session.beginTransaction();
 							session.save(new Message(1,
 									student.getUsername(),
-									"you have homework deadline tomorrow", 1)); // 保存Entity到数据库中
+									"you have homework deadline tomorrow", 1,new Date())); // 保存Entity到数据库中
 							tx.commit();
 							session.close();
 							sessionFactory.close();

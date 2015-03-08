@@ -1,5 +1,7 @@
 package tss.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -11,13 +13,16 @@ public class Message {
 	private Integer Id;
 	private String userId;
 	private String message;
+//	1 for 未读  2 for 已读
 	private Integer flag;
+	private Date date;
 	
-	public Message(Integer Id, String userId, String message, Integer flag){
+	public Message(Integer Id, String userId, String message, Integer flag,Date date){
 		this.Id = Id;
 		this.userId = userId;
 		this.message = message;
 		this.flag = flag;
+		this.date = date;
 	}
 	
 	public Integer getId() {

@@ -1,10 +1,13 @@
 package tss.action;
 
+import java.util.ArrayList;
+
+import tss.model.Message;
 import tss.model.User;
 import tss.service.UserService;
 
 public class UserGetPersonalInfo extends BaseAction {
-	
+
 	/**
 	 * 
 	 */
@@ -13,10 +16,28 @@ public class UserGetPersonalInfo extends BaseAction {
 	private String username;
 	private String realName;
 	private String email;
-//	1 (male) 2 (female)
+	// 1 (male) 2 (female)
 	private Integer gender;
 	private Integer role;
-	
+	private ArrayList<Message> messageList;
+	private int messageCount;
+
+	public ArrayList<Message> getMessageList() {
+		return messageList;
+	}
+
+	public void setMessageList(ArrayList<Message> messageList) {
+		this.messageList = messageList;
+	}
+
+	public int getMessageCount() {
+		return messageCount;
+	}
+
+	public void setMessageCount(int messageCount) {
+		this.messageCount = messageCount;
+	}
+
 	public UserService getUserService() {
 		return userService;
 	}
@@ -65,16 +86,28 @@ public class UserGetPersonalInfo extends BaseAction {
 		this.role = role;
 	}
 
-	public String execute(){
-		username=(String) request.getSession().getAttribute("username");
-		role=(Integer) request.getSession().getAttribute("role");
-		
-		User user=userService.getUserInfo(username);
-		realName=user.getRealName();
-		email=user.getEmail();
-		gender=user.getGender();
+	public String execute() {
+		username = (String) request.getSession().getAttribute("username");
+		role = (Integer) request.getSession().getAttribute("role");
+
+		messageList = userService.getUserMessage(username);
+		messageCount = 0;
+		System.out.println(messageList.size());
+		for (Message m : messageList) {
+			// if 未读消息
+			if (m.getFlag() == 1) {
+				messageCount++;
+			}
+		}
+		System.out.println("未读消息数量" + messageCount);
+		request.getSession().setAttribute("messageCount", messageCount);
+
+		User user = userService.getUserInfo(username);
+		realName = user.getRealName();
+		email = user.getEmail();
+		gender = user.getGender();
 		return SUCCESS;
-		
+
 	}
 
 }

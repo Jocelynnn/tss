@@ -2,6 +2,7 @@ package tss.dao;
 
 import java.util.ArrayList;
 
+import tss.model.Message;
 import tss.model.User;
 
 
@@ -17,6 +18,8 @@ public interface UserDao {
 	public boolean updatePersonalInfo(User user);
 
 	public ArrayList<User> getAllUser();
+	
+	public ArrayList<Message> getUserMessage(String userId); 
 
 
 

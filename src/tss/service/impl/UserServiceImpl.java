@@ -1,6 +1,9 @@
 package tss.service.impl;
 
+import java.util.ArrayList;
+
 import tss.dao.UserDao;
+import tss.model.Message;
 import tss.model.User;
 import tss.service.UserService;
 
@@ -38,6 +41,12 @@ public class UserServiceImpl implements UserService {
 	public boolean updatePersonalInfo(User user) {
 		// TODO Auto-generated method stub
 		return userDao.updatePersonalInfo(user);
+	}
+
+	@Override
+	public ArrayList<Message> getUserMessage(String userId) {
+		// TODO Auto-generated method stub
+		return userDao.getUserMessage(userId);
 	}
 
 }

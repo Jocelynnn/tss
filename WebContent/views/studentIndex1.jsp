@@ -18,6 +18,12 @@
 </head>
 <body>
 
+	<%
+		String username = (String) request.getSession().getAttribute(
+				"username");
+		int count = (Integer) request.getSession().getAttribute(
+				"messageCount");
+	%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -27,7 +33,8 @@
 							<a data-target=".navbar-responsive-collapse"
 								data-toggle="collapse" class="btn btn-navbar"><span
 								class="icon-bar"></span><span class="icon-bar"></span><span
-								class="icon-bar"></span></a> <a href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
+								class="icon-bar"></span></a> <a
+								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
 									<li class="active"><s:a
@@ -38,16 +45,13 @@
 								</ul>
 								<ul class="nav pull-right">
 									<li><a href="#">学生</a></li>
-									<li class="divider-vertical"></li> 
-									<% String
-									username=(String)request.getSession().getAttribute("username"); %>
+									<li class="divider-vertical"></li>
+
 									<li class="dropdown"><a data-toggle="dropdown"
-										class="dropdown-toggle" href="#">${username}<span class="badge">42</span><strong
-											class="caret"></strong></a>
+										class="dropdown-toggle" href="#"><%=username%> <span
+											class="badge"><%=count%></span><strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
 											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
-											<li><a href="#">Inbox<span class="badge">42</span>
-											</a></li>
 											<li><a href="/tss/action/logout.action">登出</a></li>
 
 										</ul></li>
