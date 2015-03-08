@@ -84,7 +84,7 @@
 									<s:if test="#st.first">
 										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
  --%>
-										<td rowspan="${total}"><s:property value="courseName" /></td>
+										<td rowspan="${total}"><s:property value="#column.key" /></td>
 
 									</s:if>
 									<td><s:property value="number" /></td>
