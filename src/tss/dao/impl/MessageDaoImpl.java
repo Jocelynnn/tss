@@ -99,16 +99,14 @@ public class MessageDaoImpl implements MessageDao {
 								sessionFactory = config.buildSessionFactory();
 								session = sessionFactory.openSession();
 								Transaction tx = session.beginTransaction();
-								session.save(new Message(1,
+								session.save(new Message(0,
 										student.getUsername(),
 										"you have homework deadline tomorrow", 1,new Date())); // 保存Entity到数据库中
 								tx.commit();
 								session.close();
 								sessionFactory.close();
 								System.out.println("insert messageInfo ok");
-								return true;
 							} catch (Exception e) {
-								return false;
 							}
 						}
 					}
@@ -118,7 +116,7 @@ public class MessageDaoImpl implements MessageDao {
 			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 	private int calculateDayDiff(Date dateOne, Date dateTwo) {
@@ -149,7 +147,7 @@ public class MessageDaoImpl implements MessageDao {
 
 		try {
 			stmt = con
-					.prepareStatement("SELECT * FROM message WHERE userId = ? AND flag = 2");
+					.prepareStatement("SELECT * FROM message WHERE userId = ? AND flag = 1");
 			stmt.setString(1, userId);
 			result = stmt.executeQuery();
 
@@ -185,5 +183,72 @@ public class MessageDaoImpl implements MessageDao {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public boolean updateTAMessage() {
+		ArrayList<Assignment> assignmentList = assignmentDao
+				.getAssignmentList();
+
+		try {
+			for (Assignment assignment : assignmentList) {
+				// 如果今天日期是批改日期前一天
+				if (calculateDayDiff(assignment.getSubmissionDeadline(),
+						new Date()) == 1) {
+					ArrayList<String> taList = this.getCourseTA(assignment.getCourseId()); 
+					for (String ta : taList) {
+						// 如果message提醒未存在于数据库，则存入
+						if (this.getUserUnReadMessage(ta) == null){
+							try {
+								config = new Configuration().configure();
+								sessionFactory = config.buildSessionFactory();
+								session = sessionFactory.openSession();
+								Transaction tx = session.beginTransaction();
+								session.save(new Message(0,
+										ta,
+										"you have to grade some work before tomorrow", 1, new Date())); // 保存Entity到数据库中
+								tx.commit();
+								session.close();
+								sessionFactory.close();
+								System.out.println("insert messageInfo ok");
+							} catch (Exception e) {
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+
+		return true;
+	}
+	
+	private ArrayList<String> getCourseTA(String courseId){
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<String> list = new ArrayList<String>();
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM teachingAssistant WHERE courseId = ?");
+			stmt.setString(1, courseId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				list.add(result.getString("assistantId"));
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
 	}
 }

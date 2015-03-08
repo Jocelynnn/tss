@@ -29,6 +29,11 @@ public class TimeJobServiceImpl implements TimeJobService {
 	public boolean markTheMessageRead(Message message) {
 		return messageDao.markTheMessageRead(message);
 	}
+
+	@Override
+	public boolean updateTAMessage() {
+		return messageDao.updateTAMessage();
+	}
 	
 
 }

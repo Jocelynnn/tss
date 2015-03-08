@@ -7,4 +7,5 @@ public interface TimeJobService {
 	public Message getUserUnReadMessage(String userId);
 	
 	public boolean markTheMessageRead(Message message);
+	public boolean updateTAMessage();
 }
