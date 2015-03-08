@@ -82,7 +82,7 @@
 									<td><s:property value="#course.description" /></td>
 									<td><s:property value="#course.semester" /></td>
 									<td><a
-										href="<%=request.getContextPath()%>/views/studentIndex2.jsp">查看列表</a></td>
+										href="/tss/action/studentGetAssignment.action">查看列表</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

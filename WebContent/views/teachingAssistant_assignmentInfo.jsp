@@ -140,7 +140,7 @@
 												<th>教师审核</th>
 											</tr>
 										</thead>
-										<s:iterator value="unpassedSubmissionList" id="submission">
+										<s:iterator value="ungradedSubmissionList" id="submission">
 											<s:form action="/action/taSubmitGrade" method="post">
 												<input type="hidden" name="submissionId"
 													value="<s:property value="#submission.id"/>" />
