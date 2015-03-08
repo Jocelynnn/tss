@@ -101,7 +101,7 @@ public class UserGetPersonalInfo extends BaseAction {
 		}
 		System.out.println("未读消息数量" + messageCount);
 		request.getSession().setAttribute("messageCount", messageCount);
-
+		
 		User user = userService.getUserInfo(username);
 		realName = user.getRealName();
 		email = user.getEmail();

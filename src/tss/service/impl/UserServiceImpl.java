@@ -49,4 +49,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserMessage(userId);
 	}
 
+	@Override
+	public int getUnreadMessageCount(String userId) {
+		// TODO Auto-generated method stub
+		return userDao.getUnreadMessageCount(userId);
+	}
+
 }

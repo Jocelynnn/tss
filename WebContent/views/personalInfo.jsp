@@ -41,7 +41,8 @@
 										class="dropdown-toggle" href="#"><%=username%> <span
 											class="badge"><%=count%></span><strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
-											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
+											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息<span
+													class="badge"><%=count%></span></a></li>
 											<li><a href="/tss/action/logout.action">登出</a></li>
 
 										</ul></li>
@@ -54,43 +55,18 @@
 				</div>
 
 				<div class="tabbable" id="tabs-742700">
+
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#panel-750199" data-toggle="tab">个人信息</a>
-						</li>
-						<li><a href="#panel-5708" data-toggle="tab">消息列表</a></li>
+						<li class="active"><a href="#panel-750199" data-toggle="tab">消息列表</a></li>
+						<li><a href="#panel-5708" data-toggle="tab">个人信息</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-750199">
-							<div>
-								<s:label>
-									<s:property value="username"></s:property>
-								</s:label>
-							</div>
-							<div>
-								<s:label>
-									<s:property value="realName"></s:property>
-								</s:label>
-							</div>
-							<div>
-								<s:label>
-									<s:property value="email"></s:property>
-								</s:label>
-							</div>
-							<div>
-								<s:label>
-									<s:property value="gender"></s:property>
-								</s:label>
-							</div>
-						</div>
-						<div class="tab-pane" id="panel-5708">
 							<table class="table table-hover table-bordered">
 								<thead>
 									<tr>
-										<th>课程编号</th>
-										<th>课程名</th>
-										<th>课程描述</th>
-										<th>开课时间</th>
-										<th>课程作业</th>
+										<th>时间</th>
+										<th>内容</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -114,6 +90,29 @@
 
 
 						</div>
+						<div class="tab-pane " id="panel-5708">
+							<div>
+								<s:label>
+									<s:property value="username"></s:property>
+								</s:label>
+							</div>
+							<div>
+								<s:label>
+									<s:property value="realName"></s:property>
+								</s:label>
+							</div>
+							<div>
+								<s:label>
+									<s:property value="email"></s:property>
+								</s:label>
+							</div>
+							<div>
+								<s:label>
+									<s:property value="gender"></s:property>
+								</s:label>
+							</div>
+						</div>
+
 					</div>
 				</div>
 

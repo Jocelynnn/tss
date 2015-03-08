@@ -5,7 +5,6 @@ import java.util.Map;
 
 import tss.model.Assignment;
 import tss.model.Course;
-import tss.model.Message;
 import tss.service.TaService;
 import tss.service.TeacherService;
 import tss.service.UserService;
@@ -20,7 +19,6 @@ public class LoginAction extends BaseAction {
 	ArrayList<Course> teacherCourses;
 	Map<String, ArrayList<Assignment>> allAssigns;
 	private String userName;
-	private ArrayList<Message> messageList;
 	private int messageCount;
 	
 
@@ -32,13 +30,6 @@ public class LoginAction extends BaseAction {
 		this.messageCount = messageCount;
 	}
 
-	public ArrayList<Message> getMessageList() {
-		return messageList;
-	}
-
-	public void setMessageList(ArrayList<Message> messageList) {
-		this.messageList = messageList;
-	}
 
 	
 
@@ -104,15 +95,8 @@ public class LoginAction extends BaseAction {
 
 //		System.out.println(userService == null);
 		this.userName = request.getParameter("username");
-		messageList=userService.getUserMessage(userName);
-		messageCount=0;
-		System.out.println(messageList.size());
-		for(Message m:messageList){
-//			if 未读消息
-			if(m.getFlag()==1){
-				messageCount++;
-			}
-		}
+		messageCount=userService.getUnreadMessageCount(userName);
+		
 		System.out.println("未读消息数量"+messageCount);
 		request.getSession().setAttribute("messageCount", messageCount);
 		switch (userService.validateLogin(request.getParameter("username"),

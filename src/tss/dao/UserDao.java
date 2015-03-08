@@ -20,6 +20,7 @@ public interface UserDao {
 	public ArrayList<User> getAllUser();
 	
 	public ArrayList<Message> getUserMessage(String userId); 
+	public int getUnreadMessageCount(String userId);
 
 
 

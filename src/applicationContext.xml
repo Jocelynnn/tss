@@ -379,6 +379,9 @@
 		<property name="TaService">
 			<ref bean="TaService" />
 		</property>
+		<property name="UserService">
+			<ref bean="UserService" />
+		</property>
 	</bean>
 
 	<bean id="MessageDao" class="tss.dao.impl.MessageDaoImpl">
@@ -459,6 +462,9 @@
 		</property>
 		<property name="TaService">
 			<ref bean="TaService" />
+		</property>
+		<property name="UserService">
+			<ref bean="UserService" />
 		</property>
 	</bean>
 </beans>

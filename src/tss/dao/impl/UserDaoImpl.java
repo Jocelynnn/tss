@@ -166,8 +166,10 @@ public class UserDaoImpl implements UserDao {
 			while (result.next()) {
 				messageList.add(new Message(result.getInt("Id"), result
 						.getString("userId"), result.getString("message"),
-						result.getInt("flag"),result.getDate("date")));
+						result.getInt("flag"), result.getDate("date")));
 			}
+			ArrayList<Message> newList=new ArrayList<Message>();
+			
 			return messageList;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -178,6 +180,37 @@ public class UserDaoImpl implements UserDao {
 		}
 
 		return null;
+	}
+
+	@Override
+	public int getUnreadMessageCount(String userId) {
+		// TODO Auto-generated method stub
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		ArrayList<Message> messageList = new ArrayList<Message>();
+
+		try {
+			// 未读消息排在前面
+			stmt = con.prepareStatement("SELECT * FROM message where flag = ?");
+			stmt.setInt(1, new Integer(1));
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				messageList.add(new Message(result.getInt("Id"), result
+						.getString("userId"), result.getString("message"),
+						result.getInt("flag"), result.getDate("date")));
+			}
+			return messageList.size();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return 0;
 	}
 
 }

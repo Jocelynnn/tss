@@ -51,7 +51,8 @@
 										class="dropdown-toggle" href="#"><%=username%> <span
 											class="badge"><%=count%></span><strong class="caret"></strong></a>
 										<ul class="dropdown-menu">
-											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息</a></li>
+											<li><a href="/tss/action/userGetPersonalInfo.action">个人信息<span
+													class="badge"><%=count%></span></a></li>
 											<li><a href="/tss/action/logout.action">登出</a></li>
 
 										</ul></li>

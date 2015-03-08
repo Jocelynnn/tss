@@ -17,6 +17,14 @@ public class Message {
 	private Integer flag;
 	private Date date;
 	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public Message(Integer Id, String userId, String message, Integer flag,Date date){
 		this.Id = Id;
 		this.userId = userId;

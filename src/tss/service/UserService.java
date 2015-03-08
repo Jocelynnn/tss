@@ -15,5 +15,6 @@ public interface UserService {
 	public boolean updatePersonalInfo(User user);
 
 	public ArrayList<Message> getUserMessage(String userId);
+	public int getUnreadMessageCount(String userId);
 
 }
