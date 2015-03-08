@@ -1,5 +1,9 @@
 package tss.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +14,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import tss.dao.*;
-import tss.dao.impl.*;
 import tss.model.Assignment;
 import tss.model.Message;
 import tss.model.User;
@@ -89,27 +92,29 @@ public class MessageDaoImpl implements MessageDao {
 					ArrayList<User> studentList = courseDao
 							.getCourseStudent(assignment.getCourseId());
 					for (User student : studentList) {
-						try {
-							config = new Configuration().configure();
-							sessionFactory = config.buildSessionFactory();
-							session = sessionFactory.openSession();
-							Transaction tx = session.beginTransaction();
-							session.save(new Message(1,
-									student.getUsername(),
-									"you have homework deadline tomorrow", 1,new Date())); // 保存Entity到数据库中
-							tx.commit();
-							session.close();
-							sessionFactory.close();
-							System.out.println("UPDATE userinfo ok");
-							return true;
-						} catch (Exception e) {
-							e.printStackTrace();
+						// 如果message提醒未存在于数据库，则存入
+						if (this.getUserUnReadMessage(student.getUsername()) == null){
+							try {
+								config = new Configuration().configure();
+								sessionFactory = config.buildSessionFactory();
+								session = sessionFactory.openSession();
+								Transaction tx = session.beginTransaction();
+								session.save(new Message(1,
+										student.getUsername(),
+										"you have homework deadline tomorrow", 1,new Date())); // 保存Entity到数据库中
+								tx.commit();
+								session.close();
+								sessionFactory.close();
+								System.out.println("insert messageInfo ok");
+								return true;
+							} catch (Exception e) {
+								return false;
+							}
 						}
 					}
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 
@@ -134,5 +139,51 @@ public class MessageDaoImpl implements MessageDao {
 		}
 
 		return result;
+	}
+
+	@Override
+	public Message getUserUnReadMessage(String userId) {
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con
+					.prepareStatement("SELECT * FROM message WHERE userId = ? AND flag = 2");
+			stmt.setString(1, userId);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				return new Message(result.getInt("id"), result.getString("userId"), result.getString("message"), result.getInt("flag"), result.getDate("date"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
+
+		return null;
+	}
+
+	@Override
+	public boolean markTheMessageRead(Message message) {
+		try {
+			config = new Configuration().configure();
+			sessionFactory = config.buildSessionFactory();
+			session = sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			message.setFlag(2);
+			session.update(message);
+			tx.commit();
+			session.close();
+			sessionFactory.close();
+			System.out.println("UPDATE messageInfo ok");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

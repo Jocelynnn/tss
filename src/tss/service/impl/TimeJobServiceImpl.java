@@ -19,6 +19,16 @@ public class TimeJobServiceImpl implements TimeJobService {
 	public boolean updateStudentMessage() {
 		return messageDao.updateStudentMessage();
 	}
+
+	@Override
+	public Message getUserUnReadMessage(String userId) {
+		return messageDao.getUserUnReadMessage(userId);
+	}
+
+	@Override
+	public boolean markTheMessageRead(Message message) {
+		return messageDao.markTheMessageRead(message);
+	}
 	
 
 }
