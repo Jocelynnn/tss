@@ -36,9 +36,9 @@
 								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li ><s:a
-											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
-									<li class="active"><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
+									<li><s:a href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li class="active"><s:a
+											href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
@@ -79,22 +79,30 @@
 						</thead>
 						<s:iterator value="courseAssignments" id="column">
 							<s:set var="total" name="total" value="#column.value.size" />
-							<s:iterator value="#column.value" id="col" status="st">
+							<s:if test="#total==0">
 								<tr>
-									<s:if test="#st.first">
-										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
- --%>
-										<td rowspan="${total}"><s:property value="#column.key" /></td>
-
-									</s:if>
-									<td><s:property value="number" /></td>
-									<td><s:property value="description" /></td>
-									<td><s:property value="level" /></td>
-									<td><s:property value="submissionDeadline" /></td>
-									<td><s:a
-											href="/tss/action/studentGetSingleAssignment.action?assignmentId=%{#col.Id}">作业详情</s:a></td>
+									<td rowspan=1><s:property value="#column.key" /></td>
+									<td colspan=6>暂无作业</td>
 								</tr>
-							</s:iterator>
+							</s:if>
+							<s:else>
+								<s:iterator value="#column.value" id="col" status="st">
+									<tr>
+										<s:if test="#st.first">
+											<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
+ --%>
+											<td rowspan="${total}"><s:property value="#column.key" /></td>
+
+										</s:if>
+										<td><s:property value="number" /></td>
+										<td><s:property value="description" /></td>
+										<td><s:property value="level" /></td>
+										<td><s:property value="submissionDeadline" /></td>
+										<td><s:a
+												href="/tss/action/studentGetSingleAssignment.action?assignmentId=%{#col.Id}">作业详情</s:a></td>
+									</tr>
+								</s:iterator>
+							</s:else>
 						</s:iterator>
 					</table>
 				</div>

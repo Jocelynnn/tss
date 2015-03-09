@@ -77,7 +77,7 @@ public class AdminModifyCourse extends BaseAction {
 
 	public String execute() {
 		Course c = new Course(courseId, courseName, description, semester, teacherName,
-				initializationDeadline);
+				initializationDeadline, new Integer(0));
 		if (adminService.updateCourse(c)) {
 			return SUCCESS;
 		} 

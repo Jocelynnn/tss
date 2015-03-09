@@ -415,6 +415,12 @@
 		<property name="MessageDao">
 			<ref bean="MessageDao" />
 		</property>
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
+		</property>
+		<property name="AssignmentDao">
+			<ref bean="AssignmentDao" />
+		</property>
 	</bean>
 
 	<bean id="jobClass" class="tss.timeJob.TimeJob">
@@ -479,7 +485,7 @@
 			<ref bean="TeacherService" />
 		</property>
 	</bean>
-	
+
 	<bean id="SystemDao" class="tss.dao.impl.SystemDaoImpl">
 		<property name="DaoHelper">
 			<ref bean="DaoHelper" />
@@ -500,17 +506,17 @@
 			<ref bean="UserDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="SystemService" class="tss.service.impl.SystemServiceImpl">
 		<property name="SystemDao">
 			<ref bean="SystemDao" />
 		</property>
 	</bean>
-	
+
 	<bean id="SaveExcelAction" class="tss.action.SaveExcelAction">
 		<property name="SystemService">
 			<ref bean="SystemService" />
 		</property>
 	</bean>
-	
+
 </beans>

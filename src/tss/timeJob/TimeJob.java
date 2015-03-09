@@ -16,6 +16,8 @@ public class TimeJob extends QuartzJobBean {
 			throws JobExecutionException {
 //		timeJobService.updateStudentMessage();
 //		System.out.println("自动检测教学课程中");
+//		timeJobService.updateCourseStatus();
+//		timeJobService.updateAssignmentStatus();
 	}
 
 

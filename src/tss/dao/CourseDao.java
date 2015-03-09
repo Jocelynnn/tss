@@ -1,5 +1,6 @@
 package tss.dao;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import tss.model.Course;
@@ -19,7 +20,10 @@ public interface CourseDao {
 	public boolean removeCourseTA(String courseId,String taId);
 	
 	public String getCourseName(String courseId);
+	public Course getCourse(String courseId);
 	public boolean updateCourse(Course c);
+	
+	public boolean updateCourseStatus() throws ParseException;
 
 
 }

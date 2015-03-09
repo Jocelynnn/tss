@@ -42,6 +42,7 @@ public class TeacherGetAssignments extends BaseAction {
 		for (String key : allAssigns.keySet()) {
 			System.out.println(key);
 		    ArrayList<Assignment> value= allAssigns.get(key);
+			System.out.println(value==null);
 			System.out.println(value.size());
 		    for(Assignment a:value){
 		    	System.out.println("assignments!!"+key+"   " + a.getDescription());

@@ -7,7 +7,7 @@ import tss.model.Assignment;
 
 public interface AssignmentDao {
 	public boolean save(Assignment a);
-	public Map<String,ArrayList<Assignment>> getCourseAssignment(String teacherId);
+	public Map<String,ArrayList<Assignment>> getTeacherCourseAssignment(String teacherId);
 	public Assignment getAssignment(int assignId);
 	
 	public Map<String,ArrayList<Assignment>> getTACourseAssignment(String taId);
@@ -17,5 +17,6 @@ public interface AssignmentDao {
 	public ArrayList<Assignment> getCourseAssign(int courseId);
 	public ArrayList<Assignment> getAssignmentList();
 	
+	public boolean updateAssignmentStatus();
 	public boolean updateAssign(Assignment assignment);
 }

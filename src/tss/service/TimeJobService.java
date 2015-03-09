@@ -8,4 +8,8 @@ public interface TimeJobService {
 	
 	public boolean markTheMessageRead(Message message);
 	public boolean updateTAMessage();
+	
+	public boolean updateCourseStatus();
+	public boolean updateAssignmentStatus();
+
 }

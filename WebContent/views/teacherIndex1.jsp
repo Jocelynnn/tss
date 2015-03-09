@@ -78,10 +78,21 @@
 								<td><s:property value="#course.courseId" /></td>
 								<td><s:property value="#course.courseName" /></td>
 								<td><s:property value="#course.semester" /></td>
-								<td><a
-									href="teacherGetStudent.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
-								<td><a
-									href="teacherGetTA.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
+								<s:if test=""></s:if>
+								<s:if test="%{#course.status==1}">
+									<td>课程尚未开始</td>
+									<td>课程尚未开始</td>
+								</s:if>
+								<s:if test="%{#course.status==2}">
+									<td><a
+										href="teacherGetStudent.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
+									<td><a
+										href="teacherGetTA.action?courseId=<s:property value='#course.courseId'/>&courseName=<s:property value="#course.courseName" />">现在添加</a></td>
+								</s:if>
+								<s:if test="%{#course.status==3}">
+									<td>课程已结束</td>
+									<td>课程已结束</td>
+								</s:if>
 
 
 							</tr>

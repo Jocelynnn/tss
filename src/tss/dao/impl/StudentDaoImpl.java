@@ -176,7 +176,7 @@ public class StudentDaoImpl implements StudentDao {
 							result.getString("courseName"), result
 									.getString("description"), result
 									.getString("semester"), result
-									.getString("teacherName"), null));
+									.getString("teacherName"), null,result.getInt("status")));
 				}
 
 			}

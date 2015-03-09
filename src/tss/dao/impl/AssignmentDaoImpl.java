@@ -56,7 +56,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 	}
 
 	@Override
-	public Map<String, ArrayList<Assignment>> getCourseAssignment(
+	public Map<String, ArrayList<Assignment>> getTeacherCourseAssignment(
 			String teacherId) {
 		// TODO Auto-generated method stub
 
@@ -69,32 +69,36 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
 		for (Course c : courses) {
 			String courseId = c.getCourseId();
+			// on going courses
+			if (c.getStatus() == Course.ON_GOING || c.getStatus() == Course.END) {
+				try {
+					ArrayList<Assignment> assigns = new ArrayList<Assignment>();
 
-			try {
-				ArrayList<Assignment> assigns = new ArrayList<Assignment>();
+					stmt = con
+							.prepareStatement("SELECT * FROM assignment WHERE courseId = ?");
+					stmt.setString(1, courseId);
+					result = stmt.executeQuery();
 
-				stmt = con
-						.prepareStatement("SELECT * FROM assignment WHERE courseId = ?");
-				stmt.setString(1, courseId);
-				result = stmt.executeQuery();
-
-				while (result.next()) {
-					assigns.add(new Assignment(result.getInt("id"), result
-							.getString("courseId"), result
-							.getString("courseName"), result.getInt("number"),
-							result.getString("description"), result
-									.getString("format"), result
-									.getDate("submissionDeadline"), result
-									.getDate("gradeDeadline"), result
-									.getInt("score"),
-							result.getString("level"), result
-									.getString("sample"), result
-									.getString("generalGrade")));
+					while (result.next()) {
+						assigns.add(new Assignment(result.getInt("id"), result
+								.getString("courseId"), result
+								.getString("courseName"), result
+								.getInt("number"), result
+								.getString("description"), result
+								.getString("format"), result
+								.getDate("submissionDeadline"), result
+								.getDate("gradeDeadline"), result
+								.getInt("score"), result.getString("level"),
+								result.getString("sample"), result
+										.getString("generalGrade"), result
+										.getInt("status")));
+					}
+					allAssign.put(courseId, assigns);
 				}
-				allAssign.put(courseId, assigns);
 
-			} catch (SQLException e) {
-				e.printStackTrace();
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
@@ -156,7 +160,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 						result.getDate("gradeDeadline"),
 						result.getInt("score"), result.getString("level"),
 						result.getString("sample"),
-						result.getString("generalGrade"));
+						result.getString("generalGrade"),
+						result.getInt("status"));
 			}
 
 			return a;
@@ -203,7 +208,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 									.getInt("score"),
 							result.getString("level"), result
 									.getString("sample"), result
-									.getString("generalGrade")));
+									.getString("generalGrade"), result
+									.getInt("status")));
 				}
 				allAssign.put(c, assigns);
 
@@ -245,7 +251,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 						result.getDate("gradeDeadline"),
 						result.getInt("score"), result.getString("level"),
 						result.getString("sample"),
-						result.getString("generalGrade"));
+						result.getString("generalGrade"),
+						result.getInt("status"));
 			}
 
 		} catch (SQLException e) {
@@ -292,7 +299,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 									.getInt("score"),
 							result.getString("level"), result
 									.getString("sample"), result
-									.getString("generalGrade")));
+									.getString("generalGrade"), result
+									.getInt("status")));
 				}
 				allAssign.put(courseId, assigns);
 
@@ -334,7 +342,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 								.getDate("gradeDeadline"), result
 								.getInt("score"), result.getString("level"),
 						result.getString("sample"), result
-								.getString("generalGrade")));
+								.getString("generalGrade"), result
+								.getInt("status")));
 			}
 
 			return assignmentList;
@@ -371,7 +380,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
 								.getDate("gradeDeadline"), result
 								.getInt("score"), result.getString("level"),
 						result.getString("sample"), result
-								.getString("generalGrade")));
+								.getString("generalGrade"), result
+								.getInt("status")));
 			}
 
 			return assignmentList;
@@ -404,6 +414,50 @@ public class AssignmentDaoImpl implements AssignmentDao {
 			e.printStackTrace();
 		}
 
+		return false;
+	}
+
+	@Override
+	public boolean updateAssignmentStatus() {
+		// TODO Auto-generated method stub
+		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+		Connection con = daoHelper.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+
+		try {
+			stmt = con.prepareStatement("SELECT * FROM assignment");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				assignmentList.add(new Assignment(result.getInt("id"), result
+						.getString("courseId"), result.getString("courseName"),
+						result.getInt("number"), result
+								.getString("description"), result
+								.getString("format"), result
+								.getDate("submissionDeadline"), result
+								.getDate("gradeDeadline"), result
+								.getInt("score"), result.getString("level"),
+						result.getString("sample"), result
+								.getString("generalGrade"), result
+								.getInt("status")));
+			}
+			
+			for(Assignment a: assignmentList){
+				String courseId=a.getCourseId();
+				Course c=courseDao.getCourse(courseId);
+				a.setStatus(c.getStatus());
+				updateAssign(a);
+			}
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			daoHelper.closeConnection(con);
+			daoHelper.closePreparedStatement(stmt);
+			daoHelper.closeResult(result);
+		}
 		return false;
 	}
 

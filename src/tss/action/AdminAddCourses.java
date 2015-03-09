@@ -35,7 +35,7 @@ public class AdminAddCourses extends BaseAction {
 		String instructor=request.getParameter("instructor");
 		Date date=new Date();
 
-		Course c=new Course(courseid,courseName,description,semester,instructor,date);
+		Course c=new Course(courseid,courseName,description,semester,instructor,date,new Integer(0));
 		if(adminService.addCourse(c))
 			return SUCCESS;
 		else

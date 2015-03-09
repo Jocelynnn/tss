@@ -15,7 +15,7 @@ public class Assignment {
 	public Assignment(int id, String courseId, String courseName, int number,
 			String description, String format, Date submissionDeadline,
 			Date gradeDeadline, int score, String level, String sample,
-			String generalGrade) {
+			String generalGrade,int status) {
 		super();
 		this.id = id;
 		this.courseId = courseId;
@@ -29,6 +29,7 @@ public class Assignment {
 		this.level = level;
 		this.sample = sample;
 		this.generalGrade = generalGrade;
+		this.status=status;
 	}
 	public String courseName;
 	public String getCourseName() {
@@ -37,15 +38,20 @@ public class Assignment {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	public int number;
-	public String description;
-	public String format;
-	public Date submissionDeadline;
-	public Date gradeDeadline;
-	public int score;
-	public String level;
-	public String sample;
-	public String generalGrade;
+	private int number;
+	private String description;
+	private String format;
+	private Date submissionDeadline;
+	private Date gradeDeadline;
+	private int score;
+	private String level;
+	private String sample;
+	private String generalGrade;
+	private int status;
+	public static int NOT_START=1;
+	public static int ON_GOING=2;
+	public static int END=3;
+
 	
 	
 	public Assignment(String courseId, String courseName, int number,
@@ -128,6 +134,12 @@ public class Assignment {
 	}
 	public void setGeneralGrade(String generalGrade) {
 		this.generalGrade = generalGrade;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

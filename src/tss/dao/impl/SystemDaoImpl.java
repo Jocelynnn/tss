@@ -22,7 +22,6 @@ public class SystemDaoImpl implements SystemDao {
 	private SubmissionDao submissionDao;
 	private CourseDao courseDao;
 	private AssignmentDao assignmentDao;
-	
 
 	public DaoHelper getDaoHelper() {
 		return daoHelper;
@@ -71,7 +70,7 @@ public class SystemDaoImpl implements SystemDao {
 	public void setAssignmentDao(AssignmentDao assignmentDao) {
 		this.assignmentDao = assignmentDao;
 	}
-	
+
 	@Override
 	public String getTeacherName(String courseId) {
 		Connection con = daoHelper.getConnection();
@@ -79,7 +78,8 @@ public class SystemDaoImpl implements SystemDao {
 		ResultSet result = null;
 
 		try {
-			stmt = con.prepareStatement("SELECT * FROM course WHERE courseId = ?");
+			stmt = con
+					.prepareStatement("SELECT * FROM course WHERE courseId = ?");
 			stmt.setString(1, courseId);
 			result = stmt.executeQuery();
 
@@ -105,7 +105,8 @@ public class SystemDaoImpl implements SystemDao {
 		ArrayList<String> taNameList = new ArrayList<String>();
 
 		try {
-			stmt = con.prepareStatement("SELECT * FROM teachingAssistant WHERE courseId = ?");
+			stmt = con
+					.prepareStatement("SELECT * FROM teachingAssistant WHERE courseId = ?");
 			stmt.setString(1, courseId);
 			result = stmt.executeQuery();
 
@@ -132,14 +133,15 @@ public class SystemDaoImpl implements SystemDao {
 		ArrayList<String> studentNameList = new ArrayList<String>();
 
 		try {
-			stmt = con.prepareStatement("SELECT * FROM studentCourseSelection WHERE courseId = ?");
+			stmt = con
+					.prepareStatement("SELECT * FROM studentCourseSelection WHERE courseId = ?");
 			stmt.setString(1, courseId);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
 				studentNameList.add(result.getString("studentName"));
 			}
-			
+
 			return studentNameList;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -156,25 +158,25 @@ public class SystemDaoImpl implements SystemDao {
 	public int getStudentAverageGrade(String studentId) {
 		int count = 0;
 		int allGrade = 0;
-		
+
 		Connection con = daoHelper.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
 
 		try {
-			stmt = con.prepareStatement("SELECT * FROM studentSubmission WHERE studentId = ? AND isGraded = 2 AND isPassed = 2");
+			stmt = con
+					.prepareStatement("SELECT * FROM studentSubmission WHERE studentId = ? AND isGraded = 2 AND isPassed = 2");
 			stmt.setString(1, studentId);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				count ++;
+				count++;
 				allGrade += result.getInt("grade");
 			}
-			
-			if (count != 0){
+
+			if (count != 0) {
 				return allGrade / count;
-			}
-			else{
+			} else {
 				return 0;
 			}
 		} catch (SQLException e) {
@@ -195,12 +197,18 @@ public class SystemDaoImpl implements SystemDao {
 		ResultSet result = null;
 
 		try {
-			stmt = con.prepareStatement("SELECT * FROM course WHERE courseId = ?");
+			stmt = con
+					.prepareStatement("SELECT * FROM course WHERE courseId = ?");
 			stmt.setString(1, courseId);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				return new Course(result.getString("courseId"), result.getString("courseName"), result.getString("description"), result.getString("semester"), result.getString("teacherName"), result.getDate("initializationDeadline"));
+				return new Course(result.getString("courseId"),
+						result.getString("courseName"),
+						result.getString("description"),
+						result.getString("semester"),
+						result.getString("teacherName"),
+						result.getDate("initializationDeadline"),result.getInt("status"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -212,5 +220,5 @@ public class SystemDaoImpl implements SystemDao {
 
 		return null;
 	}
-	
+
 }

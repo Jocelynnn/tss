@@ -141,7 +141,7 @@ public class TeacherServiceImpl implements TeacherService {
 			String teacherId) {
 		// TODO Auto-generated method stub
 
-		return assignmentDao.getCourseAssignment(teacherId);
+		return assignmentDao.getTeacherCourseAssignment(teacherId);
 	}
 
 	@Override

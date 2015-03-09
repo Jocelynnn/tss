@@ -80,31 +80,47 @@
 						</thead>
 						<s:iterator value="allAssigns" id="column">
 							<s:set var="total" name="total" value="#column.value.size" />
-							<s:iterator value="#column.value" id="col" status="st">
+							<s:set var="status" name="status" value="1"/>
+							<s:if test="#total==0">
 								<tr>
-									<s:if test="#st.first">
-										<%-- 										<td rowspan="${total}"><s:property value="#column.key" /></td>
- --%>
-										<td rowspan="${total}"><s:property value="#column.key" /></td>
-
+									<td rowspan=1><s:property value="#column.key" /></td>
+									<td colspan=6><a
+										href="/tss/views/teacherIndex2_addAssignment.jsp?courseId=<s:property value="#column.key"/>&count=<s:property value="#column.value.size+1"/>">新作业</a></td>
+								</tr>
+							</s:if>
+							<s:else>
+								<s:iterator value="#column.value" id="col" status="st">
+									<tr>
+										<s:if test="#st.first">
+											<td rowspan="${total+1}"><s:property value="#column.key" /></td>
+										</s:if>
+										<td><a
+											href="/tss/action/teacherGetAssignInfo?assignId=<s:property value="id" />"><s:property
+													value="number" /></a></td>
+										<td><s:property value="description" /></td>
+										<td><s:property value="score" /></td>
+										<td><s:property value="level" /></td>
+										<td><s:property value="submissionDeadline" /></td>
+										<td><s:property value="gradeDeadline" /></td>
+										<s:set name="status" value="#col.status" />
+									</tr>
+								</s:iterator>
+								<tr>
+									<s:if test="#status==1">
+										<td colspan=6>课程未开始</td>
 									</s:if>
-									<td><a
-										href="/tss/action/teacherGetAssignInfo?assignId=<s:property value="id" />"><s:property
-												value="number" /></a></td>
-									<td><s:property value="description" /></td>
-									<td><s:property value="score" /></td>
-									<td><s:property value="level" /></td>
-									<td><s:property value="submissionDeadline" /></td>
-									<td><s:property value="gradeDeadline" /></td>
+									<s:if test="#status==2">
+										<td colspan=6><a
+											href="/tss/views/teacherIndex2_addAssignment.jsp?courseId=<s:property value="#column.key"/>&count=<s:property value="#column.value.size+1"/>">新作业</a></td>
+									</s:if>
+									<s:if test="#status==3">
+										<td colspan=6>课程已结束</td>
+									</s:if>
 
 								</tr>
-							</s:iterator>
-							<tr>
-								<td></td>
-								<td colspan=6><a
-									href="/tss/views/teacherIndex2_addAssignment.jsp?courseId=<s:property value="#column.key"/>&count=<s:property value="#column.value.size+1"/>">新作业</a></td>
-							</tr>
+							</s:else>
 						</s:iterator>
+
 					</table>
 
 
