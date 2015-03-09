@@ -76,4 +76,10 @@ public class TaServiceImpl implements TaService {
 		// TODO Auto-generated method stub
 		return submissionDao.taSubmitGrade(taId,submissionId, grade, evaluation);
 	}
+
+	@Override
+	public ArrayList<Submission> getUnviewedSubmission(int assignmentId) {
+		// TODO Auto-generated method stub
+		return submissionDao.getUnviewedSubmission(assignmentId);
+	}
 }

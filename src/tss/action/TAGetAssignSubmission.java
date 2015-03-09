@@ -21,6 +21,7 @@ public class TAGetAssignSubmission extends BaseAction {
 	private ArrayList<Submission> unpassedSubmissionList;
 	private ArrayList<Submission> ungradedSubmissionList;
 	private ArrayList<Submission> gradedSubmissionList;
+	private ArrayList<Submission> unviewedSubmissionList;
 
 	public ArrayList<Submission> getPassedSubmissionList() {
 		return passedSubmissionList;
@@ -109,9 +110,18 @@ public class TAGetAssignSubmission extends BaseAction {
 		unpassedSubmissionList=taService.getUnpassedSubmission(assignId);
 		gradedSubmissionList=taService.getGradedSubmission(assignId);
 		ungradedSubmissionList=taService.getUngradedSubmission(assignId);
+		unviewedSubmissionList=taService.getUnviewedSubmission(assignId);
 
 		return SUCCESS;
 
+	}
+
+	public ArrayList<Submission> getUnviewedSubmissionList() {
+		return unviewedSubmissionList;
+	}
+
+	public void setUnviewedSubmissionList(ArrayList<Submission> unviewedSubmissionList) {
+		this.unviewedSubmissionList = unviewedSubmissionList;
 	}
 
 }

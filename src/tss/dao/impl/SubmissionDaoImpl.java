@@ -332,7 +332,7 @@ public class SubmissionDaoImpl implements SubmissionDao {
 		// TODO Auto-generated method stub
 		Submission s = this.getSubmission(submissionId);
 		// 2 for passed
-		s.setIsPassed(2);
+		s.setIsPassed(Submission.PASSED);
 		this.updateSubmission(s);
 		return true;
 	}
@@ -342,7 +342,7 @@ public class SubmissionDaoImpl implements SubmissionDao {
 		// TODO Auto-generated method stub
 		Submission s = this.getSubmission(submissionId);
 		// 3 for unpassed
-		s.setIsPassed(3);
+		s.setIsPassed(Submission.UN_PASSED);
 		this.updateSubmission(s);
 		return true;
 	}
@@ -424,7 +424,8 @@ public class SubmissionDaoImpl implements SubmissionDao {
 	public boolean taSubmitGrade(String taId,int submissionId, int grade, String evaluation) {
 		// TODO Auto-generated method stub
 		Submission s = this.getSubmission(submissionId);
-		s.setIsGraded(2);
+		s.setIsGraded(Submission.GRADED);
+		s.setIsPassed(Submission.UN_VIEWED);
 		s.setGrade(grade);
 		s.setGrader(taId);
 		s.setEvaluation(evaluation);

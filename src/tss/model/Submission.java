@@ -26,6 +26,12 @@ public class Submission {
 //	1 未审阅 2已通过 3未通过 需重批
 	public int isPassed;
 	
+	public static int UN_GRADED=1;
+	public static int GRADED=2;
+	public static int UN_VIEWED=1;
+	public static int PASSED=2;
+	public static int UN_PASSED=3;
+	
 	
 	public String getStudentName() {
 		return studentName;
