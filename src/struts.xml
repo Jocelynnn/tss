@@ -279,6 +279,16 @@
 			</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
+		
+		<action name="saveExcelAction" class="SaveExcelAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
 	</package>
 </struts>
 
