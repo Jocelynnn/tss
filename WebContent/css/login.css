@@ -25,10 +25,10 @@ body {
 
 .login {
 	background: url(../img/login/imac.png) 0 0 no-repeat;
-	background-size:1100px 900px;
+	background-size:950px 900px;
 	color: #ffffff;
 	margin-bottom: 77px;
-	padding: 38px 45px 270px;
+	padding: 38px 45px 45px 38px;
 	position: relative;
 }
 
@@ -39,7 +39,7 @@ div {
 .login-screen {
 	background-color: #1abc9c;
 	min-height: 430px;
-	padding: 123px 100px 0px 500px;
+	padding: 123px 100px 0px 400px;
 }
 
 .login-form {
@@ -73,7 +73,7 @@ div {
 	padding-bottom: 11px;
 	padding-top: 11px;
 	text-indent: 3px;
-	width: 259px;
+	width: 270px;
 }
 
 .login-form .login-field-icon {

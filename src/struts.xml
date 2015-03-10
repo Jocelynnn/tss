@@ -247,7 +247,7 @@
 			</result>
 			<result name="teacher">/views/teacherIndex1.jsp</result>
 			<result name="teachingAssistant">/views/teachingAssistantIndex1.jsp</result>
-			<result name="teachingManager">/views/teachingManagerIndex1.jsp</result>
+			<result name="teachingManager">/views/teachingManagerIndex.jsp</result>
 			<result name="student" type="redirectAction">
 				<param name="actionName">studentSearchCourse</param>
 			</result>
