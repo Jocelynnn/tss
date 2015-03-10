@@ -20,6 +20,11 @@
 				<a href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>"><img
 					alt="logo" src="<s:url value="/img/logo.png"></s:url>" /></a>
 			</div>
+			<s:div cssClass="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><s:a action="logout" namespace="/action">登出</s:a></li>
+				</ul>
+			</s:div>
 		</div>
 	</div>
 	<div class="container">

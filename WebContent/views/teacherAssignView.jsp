@@ -103,6 +103,7 @@
 					<li><s:a action="studentCheckAction" namespace="/action">学生情况</s:a></li>
 					<li><s:a action="taAssignCheckAction" namespace="/action">助教情况</s:a></li>
 					<li><s:a action="teacherAssignCheckAction" namespace="/action">教师情况</s:a></li>
+					<li><s:a action="logout" namespace="/action">登出</s:a></li>
 				</ul>
 			</s:div>
 		</div>
