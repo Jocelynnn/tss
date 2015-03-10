@@ -14,6 +14,60 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<script type="text/javascript">
+function contains(string,substr,isIgnoreCase)
+{
+    if(isIgnoreCase)
+    {
+     string=string.toLowerCase();
+     substr=substr.toLowerCase();
+    }
+     var startChar=substr.substring(0,1);
+     var strLen=substr.length;
+         for(var j=0;j<string.length-strLen+1;j++)
+         {
+             if(string.charAt(j)==startChar)//如果匹配起始字符,开始查找
+             {
+                   if(string.substring(j,j+strLen)==substr)//如果从j开始的字符与str匹配，那ok
+                   {
+                         return true;
+                   }  
+             }
+         }
+         return false;
+}
+
+
+    //指定允许的上传文件类型
+    function LimitAttach(form, format, file){
+        var allowSubmit = false;
+        if (!file){
+            return;
+        }
+
+        while (file.indexOf("\\") != -1){
+            file = file.slice(file.indexOf("\\") + 1);
+        }
+        
+        while (file.indexOf(".") != -1){
+        	file = file.slice(file.indexOf(".") + 1);
+        }
+
+        var ext = file;
+        
+        if (contains(format, ext, true)){
+        	allowSubmit = true;
+        }
+        
+        if (allowSubmit){
+            form.submit();
+        }else{ //检测上传文件类型
+            alert("只能上传以下格式的文件:"+ format + "\n请重新选择再上传.");
+        }
+    }
+</script>
+
 </head>
 <body>
 	<%
@@ -35,9 +89,9 @@
 								href="/tss/action/userBackToFirst.action" class="brand">教务系统</a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li ><s:a
-											href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
-									<li class="active"><s:a href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
+									<li><s:a href="/tss/action/studentSearchCourse.action">我的课程</s:a></li>
+									<li class="active"><s:a
+											href="/tss/action/studentGetAssignment.action">我的作业</s:a></li>
 
 
 								</ul>
@@ -62,7 +116,8 @@
 				</div>
 
 				<div>
-					<form action="/tss/action/uploadStudentAssignAction.action"
+					<form name="upform"
+						action="/tss/action/uploadStudentAssignAction.action"
 						enctype="multipart/form-data" method="post">
 						<input type="hidden" name="courseId"
 							value="<s:property value="assignment.courseId"/>"> <input
@@ -80,13 +135,17 @@
 
 						<s:if test="%{type==1}">
 							<label> <input type="file" name="image"></label>
-							<button class="btn" type="submit">上传</button>
+							<input type="button" name="Submit"
+								onclick="LimitAttach(this.form, '<s:property value="assignment.format"/>', this.form.image.value)"
+								value="提交">
 						</s:if>
 
 						<s:if test="%{type==2}">
 							<label>已提交作业名称: <s:property value="fileName" /></label>
 							<label> <input type="file" name="image"></label>
-							<button class="btn" type="submit">上传</button>
+							<input type="button" name="Submit"
+								onclick="LimitAttach(this.form, '<s:property value="assignment.format"/>', this.form.image.value)"
+								value="提交">
 						</s:if>
 
 						<s:if test="%{type==3}">

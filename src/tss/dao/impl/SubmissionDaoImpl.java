@@ -266,6 +266,7 @@ public class SubmissionDaoImpl implements SubmissionDao {
 	@Override
 	public boolean updateSubmission(Submission submission) {
 		try {
+			System.out.println(submission.getSubmission() + "~~~~~~~");
 			config = new Configuration().configure();
 			sessionFactory = config.buildSessionFactory();
 			session = sessionFactory.openSession();
