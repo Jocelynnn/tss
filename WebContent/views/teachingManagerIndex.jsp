@@ -63,6 +63,12 @@
 						</h2>
 						<p>作业安排情况</p>
 					</div>
+					<div class="col-6 col-sm-6 col-lg-4">
+						<h2>
+							<s:a action="excelExportAction" namespace="/action">导出课程Excel</s:a>
+						</h2>
+						<p>导出已关闭课程信息相关的Excel</p>
+					</div>
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
@@ -71,7 +77,7 @@
 					<s:a cssClass="list-group-item" action="studentCheckAction" namespace="/action">学生情况</s:a>
 					<s:a cssClass="list-group-item" action="taAssignCheckAction" namespace="/action">助教情况</s:a>
 					<s:a cssClass="list-group-item" action="teacherAssignCheckAction" namespace="/action">教师情况</s:a>
-					
+					<s:a cssClass="list-group-item" action="excelExportAction" namespace="/action">导出课程Excel</s:a>
 				</div>
 			</div>
 		</div>

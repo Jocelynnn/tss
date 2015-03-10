@@ -491,7 +491,7 @@ public class CourseDaoImpl implements CourseDao {
 		Connection con = daoHelper.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet result = null;
-		Course course=null;
+		Course course = null;
 
 		try {
 			stmt = con
@@ -500,13 +500,13 @@ public class CourseDaoImpl implements CourseDao {
 			result = stmt.executeQuery();
 
 			while (result.next()) {
-				course = new Course(result.getString("courseId"), result
-						.getString("courseName"), result
-						.getString("description"),
-						result.getString("semester"), result
-								.getString("teacherName"), result
-								.getDate("initializationDeadline"), result
-								.getInt("status"));
+				course = new Course(result.getString("courseId"),
+						result.getString("courseName"),
+						result.getString("description"),
+						result.getString("semester"),
+						result.getString("teacherName"),
+						result.getDate("initializationDeadline"),
+						result.getInt("status"));
 			}
 
 			return course;
@@ -518,6 +518,23 @@ public class CourseDaoImpl implements CourseDao {
 			daoHelper.closeResult(result);
 		}
 
+		return null;
+	}
+
+	public java.util.Date getEndDate(String semester) {
+		try {
+			this.initCourseTimeList();
+			String end = courseTimeList.get(semester)[1];
+
+			// 小写的mm表示的是分钟
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date endDate = format.parse(end);
+
+			return endDate;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 }

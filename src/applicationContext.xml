@@ -518,5 +518,16 @@
 			<ref bean="SystemService" />
 		</property>
 	</bean>
+	
+	<bean id="ExcelService" class="tss.service.impl.ExcelServiceImpl">
+		<property name="CourseDao">
+			<ref bean="CourseDao" />
+		</property>
+	</bean>
 
+	<bean id="ExcelExportAction" class="tss.action.ExcelExportAction">
+		<property name="ExcelService">
+			<ref bean="ExcelService" />
+		</property>
+	</bean>
 </beans>

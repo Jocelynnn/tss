@@ -11,81 +11,15 @@
 <meta name="author" content="Shuaiqi Xia" />
 <link rel="shortcut icon"
 	href="<s:url value="/material/logo.ico"></s:url>" />
-<link rel="stylesheet" href="<s:url value="/css/bootstrapTwo.css"></s:url>" />
+<link rel="stylesheet"
+	href="<s:url value="/css/bootstrapTwo.css"></s:url>" />
 <link rel="stylesheet" href="<s:url value="/css/customize.css"></s:url>" />
 <link rel="stylesheet"
 	href="<s:url value="/css/bootstrap-theme.min.css"></s:url>" />
-<title>Club Statistics</title>
-<%
-	Integer courseCount = (Integer) request.getAttribute("courseCount");
-	Integer assignCount = (Integer) request.getAttribute("assignCount");
-	Data[] gradeData = (Data[]) request.getAttribute("gradeData");
-%>
+<title>Export Excel</title>
+
 <script type="text/javascript"
 	src="<s:url value="/js/jquery-1.11.0.js"></s:url>"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#container1').highcharts({
-			chart : {
-				type : 'bar'
-			},
-			title : {
-				text : '课程数和作业数对比'
-			},
-			subtitle : {
-				text : null
-			},
-			xAxis : {
-				categories : [ '课程数', '作业数' ],
-				title : {
-					text : null
-				}
-			},
-			yAxis : {
-				min : 0,
-				title : {
-					text : '数量',
-					align : 'high'
-				},
-				labels : {
-					overflow : 'justify'
-				}
-			},
-			tooltip : {
-				valueSuffix : null
-			},
-			plotOptions : {
-				bar : {
-					dataLabels : {
-						enabled : true
-					}
-				}
-			},
-			legend : {
-				layout : 'vertical',
-				align : 'right',
-				verticalAlign : 'top',
-				x : -40,
-				y : 100,
-				floating : true,
-				borderWidth : 1,
-				backgroundColor : '#FFFFFF',
-				shadow : true
-			},
-			credits : {
-				enabled : false
-			},
-			series : [ {
-				name : '数量',
-				data : [
-<%=courseCount%>
-	,
-<%=assignCount%>
-	]
-			} ]
-		});
-	});
-</script>
 
 </head>
 <body>
@@ -98,7 +32,8 @@
 			</div>
 			<s:div cssClass="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>">主页</a></li>
+					<li><a
+						href="<s:url value="/views/teachingManagerIndex.jsp"></s:url>">主页</a></li>
 					<li><s:a action="courseAssignCheckAction" namespace="/action">课程作业情况</s:a></li>
 					<li><s:a action="studentCheckAction" namespace="/action">学生情况</s:a></li>
 					<li><s:a action="taAssignCheckAction" namespace="/action">助教情况</s:a></li>
@@ -114,10 +49,37 @@
 	<script src="<s:url value="/js/modules/data.js"></s:url>"></script>
 
 	<div class="container">
-		<div id="container1"
-			style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-		<br>
-		
+		<s:if test="%{isNull==0}">
+			<center>
+				<h2>当前暂无结束课程</h2>
+			</center>
+		</s:if>
+
+		<s:if test="%{isNull==1}">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>课程编号</th>
+						<th>课程名</th>
+						<th>课程描述</th>
+						<th>开课时间</th>
+						<th>下载链接</th>
+					</tr>
+				</thead>
+				<tbody>
+					<s:iterator value="courseList" id="course">
+						<tr class="success">
+							<td><s:property value="#course.courseId" /></td>
+							<td><s:property value="#course.courseName" /></td>
+							<td><s:property value="#course.description" /></td>
+							<td><s:property value="#course.semester" /></td>
+							<td><a
+								href="/tss/action/saveExcelAction?courseId=<s:property value="#course.courseId"/>">下载课程Excel</a></td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</s:if>
 	</div>
 </body>
 </html>

@@ -24,6 +24,6 @@ public interface CourseDao {
 	public boolean updateCourse(Course c);
 	
 	public boolean updateCourseStatus() throws ParseException;
-
+	public java.util.Date getEndDate(String semester);
 
 }

@@ -90,7 +90,6 @@
 		<action name="teacherGetCourse" class="TeacherGetCourse">
 			<result name="success">/views/teacherIndex1.jsp</result>
 			<result name="error">/views/error.jsp</result>
-
 		</action>
 
 		<action name="teacherGetTA" class="TeacherGetTA">
@@ -287,6 +286,11 @@
 				<param name="inputName">downloadFile</param>
 				<param name="bufferSize">1024</param>
 			</result>
+			<result name="error">/views/error.jsp</result>
+		</action>
+		
+		<action name="excelExportAction" class="ExcelExportAction">
+			<result name="success">/views/exportExcelView.jsp</result>
 			<result name="error">/views/error.jsp</result>
 		</action>
 	</package>
