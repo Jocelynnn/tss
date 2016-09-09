@@ -1,12 +1,12 @@
 # tss
-tss for jocelynn
+<!--tss for jocelynn-->
 
-git status
-git pull
-git add filename
-git commit -m "tony shabi"
-git push
-git status
+<!--git status-->
+<!--git pull-->
+<!--git add filename-->
+<!--git commit -m "tony shabi"-->
+<!--git push-->
+<!--git status-->
 
----tony shabi
+<!-----tony shabi-->
 
